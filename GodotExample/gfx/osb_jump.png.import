@@ -2,18 +2,22 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/scroll_bg_cloud_1.png-c3511de42b65d67f17d475d450efaba2.stex"
+path="res://.import/osb_jump.png-862701959d4b46f0a5e4a22bfe29a822.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://gfx/scroll_bg_cloud_1.png"
-dest_files=[ "res://.import/scroll_bg_cloud_1.png-c3511de42b65d67f17d475d450efaba2.stex" ]
+source_file="res://gfx/osb_jump.png"
+dest_files=[ "res://.import/osb_jump.png-862701959d4b46f0a5e4a22bfe29a822.stex" ]
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -23,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=false

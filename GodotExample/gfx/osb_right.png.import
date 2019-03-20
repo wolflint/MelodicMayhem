@@ -2,18 +2,22 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/one_way_platform.png-11f70f5079b656eb009ffc6d9368c5b5.stex"
+path="res://.import/osb_right.png-e362657ab7aab59b4a855e6a941db0f9.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://gfx/one_way_platform.png"
-dest_files=[ "res://.import/one_way_platform.png-11f70f5079b656eb009ffc6d9368c5b5.stex" ]
+source_file="res://gfx/osb_right.png"
+dest_files=[ "res://.import/osb_right.png-e362657ab7aab59b4a855e6a941db0f9.stex" ]
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -23,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=false
