@@ -15,16 +15,19 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Platformer 2D"
+config/name="Melodic Mayhem"
 run/main_scene="res://scenes/stage.tscn"
-config/icon="res://icon.png"
 target_fps="60"
 
 [display]
 
-window/size/width=800
-window/size/height=480
+window/size/width=1280
+window/size/height=720
+window/size/borderless=true
+window/size/test_width=1280
+window/size/test_height=720
 window/stretch/mode="2d"
+window/stretch/aspect="keep_width"
 stretch/aspect="keep_height"
 stretch/mode="2d"
 
