@@ -218,7 +218,7 @@ anims/standing_weapon_ready = SubResource( 10 )
 
 [node name="camera" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 1.5, 1.5 )
+zoom = Vector2( 0.75, 0.75 )
 limit_left = 0
 limit_top = 0
 
