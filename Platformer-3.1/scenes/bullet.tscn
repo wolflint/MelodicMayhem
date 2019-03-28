@@ -9,12 +9,14 @@
 blend_mode = 1
 
 [sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 1
+emission_sphere_radius = 5.41
 flag_disable_z = true
-spread = 0.0
+spread = 1.0
 gravity = Vector3( 0, 0, 0 )
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-scale = 0.8
+scale = 0.5
 color = Color( 1, 1, 1, 0.705882 )
 
 [sub_resource type="CanvasItemMaterial" id=4]
