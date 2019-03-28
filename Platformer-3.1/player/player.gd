@@ -94,7 +94,7 @@ func _shoot():
 	# Shooting
 	if Input.is_action_just_pressed("shoot"):
 		if current_weapon:
-			var bullet = preload("res://scenes/note.tscn").instance()
+			var bullet = preload("res://player/note.tscn").instance()
 			bullet.position = $sprite/bullet_shoot.global_position #use node for shoot position
 			bullet.linear_velocity = Vector2(sprite.scale.x * BULLET_VELOCITY, 0)
 			bullet.add_collision_exception_with(self) # don't want player to collide with bullet

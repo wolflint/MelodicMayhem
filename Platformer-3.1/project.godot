@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Melodic Mayhem"
-run/main_scene="res://scenes/stage.tscn"
+run/main_scene="res://environment/stage.tscn"
 target_fps="60"
 
 [display]

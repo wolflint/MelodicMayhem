@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://scenes/bullet.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/note_particle.png" type="Texture" id=2]
-[ext_resource path="res://assets/note_projectile.png" type="Texture" id=3]
+[ext_resource path="res://player/bullet.tscn" type="PackedScene" id=1]
+[ext_resource path="res://player/note_particle.png" type="Texture" id=2]
+[ext_resource path="res://player/note_projectile.png" type="Texture" id=3]
 
 [node name="note" index="0" instance=ExtResource( 1 )]
 
