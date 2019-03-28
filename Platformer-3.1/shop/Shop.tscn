@@ -1,0 +1,19 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://shop/Shop.gd" type="Script" id=1]
+[ext_resource path="res://inventory/Inventory.tscn" type="PackedScene" id=2]
+[ext_resource path="res://inventory/items/TestItem1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://inventory/items/TestItem2.tscn" type="PackedScene" id=4]
+[ext_resource path="res://inventory/items/TestItem3.tscn" type="PackedScene" id=5]
+
+[node name="Shop" type="Node"]
+script = ExtResource( 1 )
+
+[node name="Inventory" parent="." instance=ExtResource( 2 )]
+
+[node name="TestItem1" parent="Inventory" instance=ExtResource( 3 )]
+
+[node name="TestItem2" parent="Inventory" instance=ExtResource( 4 )]
+
+[node name="TestItem3" parent="Inventory" instance=ExtResource( 5 )]
+

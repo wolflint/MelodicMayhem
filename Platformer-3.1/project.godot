@@ -19,6 +19,10 @@ config/name="Melodic Mayhem"
 run/main_scene="res://environment/stage.tscn"
 target_fps="60"
 
+[autoload]
+
+ItemDatabase="*res://inventory/ItemDatabase.tscn"
+
 [display]
 
 window/size/width=1280

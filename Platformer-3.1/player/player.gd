@@ -102,11 +102,8 @@ func _shoot():
 			$sound_shoot.play()
 			shoot_time = 0
 
-func _animate_sprite():
+func _animate_sprite(new_anim = "idle"):
 	### ANIMATION ###
-
-	var new_anim = "idle"
-
 	if on_floor:
 		if linear_vel.x < -SIDING_CHANGE_SPEED:
 			sprite.scale.x = -1
@@ -123,7 +120,8 @@ func _animate_sprite():
 			sprite.scale.x = -1
 		if Input.is_action_pressed("move_right") and not Input.is_action_pressed("move_left"):
 			sprite.scale.x = 1
-
+		if Input.is_action_just_pressed("drop_down"):
+			new_anim = "crouch"
 		if linear_vel.y < 0:
 			new_anim = "jumping"
 		else:
