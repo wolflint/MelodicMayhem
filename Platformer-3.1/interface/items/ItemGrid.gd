@@ -2,7 +2,8 @@ extends GridContainer
 
 func initialize():
 	update_focus_neighbours()
-	get_child(0).grab_focus()
+	if get_child_count() > 0:
+		get_child(0).grab_focus()
 
 func update_focus_neighbours(ignore=null):
 	var buttons_to_update = get_children()

@@ -8,7 +8,7 @@ func _ready():
 	$anim.play("idle")
 
 func _input(event):
-	if not event.is_action_pressed("ui_accept"):
+	if not event.is_action_pressed("interact"):
 		return
 	for body in get_overlapping_bodies():
 		print(body.name)

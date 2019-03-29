@@ -17,8 +17,9 @@ func initialize(args = [shop, buyer, items]):
 	for item in items:
 		var price = shop.get_buy_value(item) if ACTION == "buy_from" else item.price
 		var item_button = _items_list.add_item_button(item, price)
-		if price > buyer.get_node("Purse").coins:
-			item_button.disabled = true
+		if ACTION == "sell_to":
+			if price > buyer.get_node("Purse").coins:
+				item_button.disabled = true
 
 		item_button.connect("pressed", self, "_on_ItemButton_pressed", [shop, buyer, item])
 		item_button.connect("pressed", _info_panel, "_on_focused_Item_amount_changed", [item])
