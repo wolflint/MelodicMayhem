@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://level/test.gd" type="Script" id=1]
 [ext_resource path="res://assets/tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://characters/merchant/merchant.tscn" type="PackedScene" id=3]
 [ext_resource path="res://characters/player/player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://collectibles/coin/coin.tscn" type="PackedScene" id=5]
+[ext_resource path="res://interface/leveling-system/ExperienceBar.tscn" type="PackedScene" id=5]
+[ext_resource path="res://level/Label.gd" type="Script" id=6]
+[ext_resource path="res://collectibles/coin/coin.tscn" type="PackedScene" id=7]
+[ext_resource path="res://environment/parallax_bg.tscn" type="PackedScene" id=8]
 
 [node name="test" type="Node"]
 script = ExtResource( 1 )
@@ -22,66 +25,99 @@ position = Vector2( 252.954, 1559.02 )
 
 [node name="UI" type="CanvasLayer" parent="."]
 
+[node name="Interface" type="Control" parent="UI"]
+anchor_right = 1.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="ColorRect" type="ColorRect" parent="UI/Interface"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.152941, 0.152941, 0.152941, 0.392157 )
+
+[node name="ExperienceBar" parent="UI/Interface" instance=ExtResource( 5 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -69.0
+margin_right = 861.0
+margin_bottom = 0.0
+rect_scale = Vector2( 0.5, 0.5 )
+
+[node name="Label" type="Label" parent="UI/Interface"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -40.0
+margin_bottom = 14.0
+autowrap = true
+script = ExtResource( 6 )
+
 [node name="Coins" type="Node" parent="."]
+editor/display_folded = true
 
-[node name="coin" parent="Coins" instance=ExtResource( 5 )]
+[node name="coin" parent="Coins" instance=ExtResource( 7 )]
 position = Vector2( 370.11, 1509.64 )
 
-[node name="coin2" parent="Coins" instance=ExtResource( 5 )]
+[node name="coin2" parent="Coins" instance=ExtResource( 7 )]
 position = Vector2( 370.11, 1509.64 )
 
-[node name="coin3" parent="Coins" instance=ExtResource( 5 )]
+[node name="coin3" parent="Coins" instance=ExtResource( 7 )]
 position = Vector2( 370.11, 1509.64 )
 
-[node name="coin4" parent="Coins" instance=ExtResource( 5 )]
+[node name="coin4" parent="Coins" instance=ExtResource( 7 )]
 position = Vector2( 370.11, 1509.64 )
 
-[node name="coin5" parent="Coins" instance=ExtResource( 5 )]
+[node name="coin5" parent="Coins" instance=ExtResource( 7 )]
 position = Vector2( 370.11, 1509.64 )
 
-[node name="coin6" parent="Coins" instance=ExtResource( 5 )]
+[node name="coin6" parent="Coins" instance=ExtResource( 7 )]
 position = Vector2( 370.11, 1509.64 )
 
-[node name="coin7" parent="Coins" instance=ExtResource( 5 )]
+[node name="coin7" parent="Coins" instance=ExtResource( 7 )]
 position = Vector2( 370.11, 1509.64 )
 
-[node name="coin8" parent="Coins" instance=ExtResource( 5 )]
+[node name="coin8" parent="Coins" instance=ExtResource( 7 )]
 position = Vector2( 370.11, 1509.64 )
 
-[node name="coin9" parent="Coins" instance=ExtResource( 5 )]
+[node name="coin9" parent="Coins" instance=ExtResource( 7 )]
 position = Vector2( 370.11, 1509.64 )
 
-[node name="coin10" parent="Coins" instance=ExtResource( 5 )]
+[node name="coin10" parent="Coins" instance=ExtResource( 7 )]
 position = Vector2( 370.11, 1509.64 )
 
-[node name="coin11" parent="Coins" instance=ExtResource( 5 )]
+[node name="coin11" parent="Coins" instance=ExtResource( 7 )]
 position = Vector2( 370.11, 1509.64 )
 
-[node name="coin12" parent="Coins" instance=ExtResource( 5 )]
+[node name="coin12" parent="Coins" instance=ExtResource( 7 )]
 position = Vector2( 370.11, 1509.64 )
 
-[node name="coin13" parent="Coins" instance=ExtResource( 5 )]
+[node name="coin13" parent="Coins" instance=ExtResource( 7 )]
 position = Vector2( 370.11, 1509.64 )
 
-[node name="coin14" parent="Coins" instance=ExtResource( 5 )]
+[node name="coin14" parent="Coins" instance=ExtResource( 7 )]
 position = Vector2( 370.11, 1509.64 )
 
-[node name="coin15" parent="Coins" instance=ExtResource( 5 )]
+[node name="coin15" parent="Coins" instance=ExtResource( 7 )]
 position = Vector2( 370.11, 1509.64 )
 
-[node name="coin16" parent="Coins" instance=ExtResource( 5 )]
+[node name="coin16" parent="Coins" instance=ExtResource( 7 )]
 position = Vector2( 370.11, 1509.64 )
 
-[node name="coin17" parent="Coins" instance=ExtResource( 5 )]
+[node name="coin17" parent="Coins" instance=ExtResource( 7 )]
 position = Vector2( 370.11, 1509.64 )
 
-[node name="coin18" parent="Coins" instance=ExtResource( 5 )]
+[node name="coin18" parent="Coins" instance=ExtResource( 7 )]
 position = Vector2( 370.11, 1509.64 )
 
-[node name="coin19" parent="Coins" instance=ExtResource( 5 )]
+[node name="coin19" parent="Coins" instance=ExtResource( 7 )]
 position = Vector2( 370.11, 1509.64 )
 
-[node name="coin20" parent="Coins" instance=ExtResource( 5 )]
+[node name="coin20" parent="Coins" instance=ExtResource( 7 )]
 position = Vector2( 370.11, 1509.64 )
+
+[node name="parallax_bg" type="ParallaxBackground" parent="." instance=ExtResource( 8 )]
+scale = Vector2( 1.5, 1.5 )
+transform = Transform2D( 1.5, 0, 0, 1.5, 0, 0 )
+scroll_base_scale = Vector2( 0.7, 0 )
 
 [connection signal="shop_open_requested" from="merchant" to="." method="_on_merchant_shop_open_requested"]
+[connection signal="experience_gained" from="player" to="UI/Interface/ExperienceBar" method="_on_player_experience_gained"]
