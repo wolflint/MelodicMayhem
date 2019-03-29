@@ -267,7 +267,7 @@ tracks/1/keys = {
 
 [sub_resource type="CanvasItemMaterial" id=5]
 
-[sub_resource type="CapsuleShape2D" id=9]
+[sub_resource type="CapsuleShape2D" id=6]
 radius = 12.5622
 height = 13.5831
 
@@ -309,10 +309,8 @@ flip_h = true
 hframes = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.722473, -2 )
 rotation = -1.5708
-scale = Vector2( 1.03275, 1.03275 )
-shape = SubResource( 9 )
+shape = SubResource( 6 )
 
 [node name="detect_floor_left" type="RayCast2D" parent="."]
 position = Vector2( -33.2868, -9.34363 )
