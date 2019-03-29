@@ -151,5 +151,5 @@ func take_damage(damager, amount):
 func _on_Health_health_changed(new_health):
 #	_change_state(IDLE)
 	print('%s new health is %s' % [self.name, new_health])
-	if new_health == 0:
-		queue_free()
+#	if new_health == 0:
+#		queue_free()

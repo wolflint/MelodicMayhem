@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://level/test.gd" type="Script" id=1]
 [ext_resource path="res://assets/tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://characters/merchant/merchant.tscn" type="PackedScene" id=3]
 [ext_resource path="res://characters/player/player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://collectibles/coin/coin.tscn" type="PackedScene" id=5]
 
 [node name="test" type="Node"]
 script = ExtResource( 1 )
@@ -20,5 +21,67 @@ position = Vector2( 783.576, 1575.31 )
 position = Vector2( 252.954, 1559.02 )
 
 [node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Coins" type="Node" parent="."]
+
+[node name="coin" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 370.11, 1509.64 )
+
+[node name="coin2" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 370.11, 1509.64 )
+
+[node name="coin3" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 370.11, 1509.64 )
+
+[node name="coin4" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 370.11, 1509.64 )
+
+[node name="coin5" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 370.11, 1509.64 )
+
+[node name="coin6" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 370.11, 1509.64 )
+
+[node name="coin7" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 370.11, 1509.64 )
+
+[node name="coin8" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 370.11, 1509.64 )
+
+[node name="coin9" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 370.11, 1509.64 )
+
+[node name="coin10" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 370.11, 1509.64 )
+
+[node name="coin11" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 370.11, 1509.64 )
+
+[node name="coin12" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 370.11, 1509.64 )
+
+[node name="coin13" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 370.11, 1509.64 )
+
+[node name="coin14" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 370.11, 1509.64 )
+
+[node name="coin15" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 370.11, 1509.64 )
+
+[node name="coin16" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 370.11, 1509.64 )
+
+[node name="coin17" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 370.11, 1509.64 )
+
+[node name="coin18" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 370.11, 1509.64 )
+
+[node name="coin19" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 370.11, 1509.64 )
+
+[node name="coin20" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 370.11, 1509.64 )
 
 [connection signal="shop_open_requested" from="merchant" to="." method="_on_merchant_shop_open_requested"]
