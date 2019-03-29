@@ -8,7 +8,8 @@ export(NodePath) var SUB_MENU_PATH
 func _ready():
 	set_process_input(false)
 
-func open():
+#warning-ignore:unused_argument
+func open(args=[]):
 	emit_signal("open")
 	set_process_input(true)
 	show()
@@ -26,8 +27,9 @@ func _input(event):
 # The main drawback is you lose the initialize method's signature
 # Instead you have to group the arguments in an array
 #func initialize():
-#func initialize(args=[]):
-#	return
+#warning-ignore:unused_argument
+func initialize(args=[]):
+	return
 
 func open_sub_menu(menu, args=[]):
 	var sub_menu = menu.instance()

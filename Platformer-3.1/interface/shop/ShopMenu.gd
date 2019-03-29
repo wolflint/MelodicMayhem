@@ -23,7 +23,7 @@ func open_submenu(Menu, shop, buyer, inventory):
 	
 	var active_menu = Menu.instance()
 	_submenu.add_child(active_menu)
-	active_menu.initialize(shop, buyer, inventory.get_items())
+	active_menu.initialize([shop, buyer, inventory.get_items()])
 	set_process_input(false)
 	active_menu.open()
 	yield(active_menu, "closed")
