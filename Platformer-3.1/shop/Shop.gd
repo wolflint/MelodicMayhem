@@ -10,6 +10,7 @@ onready var inventory = $Inventory
 onready var purse = $Purse
 
 func buy_from(actor, item, amount=1):
+	print("buy_from")
 	amount = clamp(amount, 1, MAX_TRANSACTION_COUNT)
 	var transaction_value = max(get_buy_value(item) * amount, purse.coins)
 
@@ -22,6 +23,7 @@ func buy_from(actor, item, amount=1):
 		purse.remove_coins(transaction_value)
 
 func sell_to(actor, item, amount=1):
+	print("sell_to")
 	amount = clamp(amount, 1, MAX_TRANSACTION_COUNT)
 	var transaction_value = item.price * amount
 #	The UI should show/handle that by disabling buttons

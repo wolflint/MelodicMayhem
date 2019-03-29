@@ -19,7 +19,6 @@ amount = 99
 amount = 99
 
 [node name="TestItem3" parent="Inventory" instance=ExtResource( 5 )]
-price = 1000
 
 [node name="Purse" parent="." instance=ExtResource( 6 )]
 
