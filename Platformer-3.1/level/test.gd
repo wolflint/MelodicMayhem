@@ -27,4 +27,6 @@ func _on_merchant_shop_open_requested(shop, user):
 	yield(shop_menu, "closed")
 	get_tree().paused = false
 
-
+func _on_enemy_died(experience_to_give):
+	_character.gain_experience(34)
+	_label.update_text(_character.level, _character.experience, _character.experience_required)

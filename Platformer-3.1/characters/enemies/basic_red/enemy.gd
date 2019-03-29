@@ -1,5 +1,9 @@
 extends KinematicBody2D
 
+signal died(experience_to_give)
+
+# Experience
+export(float) var experience_to_give = 50.0
 
 const GRAVITY_VEC = Vector2(0, 900)
 const FLOOR_NORMAL = Vector2(0, -1)
@@ -14,15 +18,18 @@ var anim=""
 
 var state = STATE_WALKING
 
+onready var LEVEL_ROOT = get_tree().get_root().get_node("test")
 onready var detect_floor_left = $detect_floor_left
 onready var detect_wall_left = $detect_wall_left
 onready var detect_floor_right = $detect_floor_right
 onready var detect_wall_right = $detect_wall_right
 onready var sprite = $sprite
 onready var player = preload("res://characters/player/player.tscn")
+onready var coin = preload("res://collectibles/coin/coin.tscn")
 
 func _ready():
 	$anim.play("SETUP")
+	connect("died", LEVEL_ROOT, "_on_enemy_died", [experience_to_give])
 #	state = STATE_KILLED
 
 func _physics_process(delta):
@@ -57,7 +64,15 @@ func _physics_process(delta):
 		$anim.play(anim)
 
 func hit_by_bullet():
-	state = STATE_KILLED
+	if state != STATE_KILLED:
+		state = STATE_KILLED
+		emit_signal("died")
+		var new_coin = coin.instance()
+		new_coin.position = position
+		LEVEL_ROOT.add_child(new_coin)
+	
+	
+	
 func check_collisions():
 	if get_slide_count() > 0:
 				var body = get_slide_collision(0).collider

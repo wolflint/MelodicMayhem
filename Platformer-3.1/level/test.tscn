@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://level/test.gd" type="Script" id=1]
 [ext_resource path="res://assets/tileset.tres" type="TileSet" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://level/Label.gd" type="Script" id=6]
 [ext_resource path="res://collectibles/coin/coin.tscn" type="PackedScene" id=7]
 [ext_resource path="res://environment/parallax_bg.tscn" type="PackedScene" id=8]
+[ext_resource path="res://characters/enemies/basic_red/enemy.tscn" type="PackedScene" id=9]
 
 [node name="test" type="Node"]
 script = ExtResource( 1 )
@@ -114,10 +115,10 @@ position = Vector2( 370.11, 1509.64 )
 [node name="coin20" parent="Coins" instance=ExtResource( 7 )]
 position = Vector2( 370.11, 1509.64 )
 
-[node name="parallax_bg" type="ParallaxBackground" parent="." instance=ExtResource( 8 )]
-scale = Vector2( 1.5, 1.5 )
-transform = Transform2D( 1.5, 0, 0, 1.5, 0, 0 )
-scroll_base_scale = Vector2( 0.7, 0 )
+[node name="parallax_bg" parent="." instance=ExtResource( 8 )]
+
+[node name="enemy" parent="." instance=ExtResource( 9 )]
+position = Vector2( 679.628, 1587.91 )
 
 [connection signal="shop_open_requested" from="merchant" to="." method="_on_merchant_shop_open_requested"]
 [connection signal="experience_gained" from="player" to="UI/Interface/ExperienceBar" method="_on_player_experience_gained"]
