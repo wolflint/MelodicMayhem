@@ -8,7 +8,7 @@ func _on_merchant_shop_open_requested(shop, user):
 
 	var shop_menu = ShopMenu.instance()
 	$UI.add_child(shop_menu)
-	shop_menu.open(shop, user)
+	shop_menu.open([shop, user])
 	
 	get_tree().paused = true
 	yield(shop_menu, "closed")

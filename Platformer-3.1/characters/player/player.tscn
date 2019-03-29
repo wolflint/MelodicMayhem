@@ -190,7 +190,9 @@ tracks/0/keys = {
 [sub_resource type="CapsuleShape2D" id=11]
 height = 44.4787
 
-[node name="player" type="KinematicBody2D"]
+[node name="player" type="KinematicBody2D" groups=[
+"player",
+]]
 collision_layer = 2
 script = ExtResource( 1 )
 
@@ -276,7 +278,7 @@ weapon_type = "not null"
 
 [node name="Inventory" parent="." instance=ExtResource( 10 )]
 
-[node name="TestItem" parent="Inventory" instance=ExtResource( 11 )]
+[node name="TestItem1" parent="Inventory" instance=ExtResource( 11 )]
 
 [node name="Purse" parent="." instance=ExtResource( 12 )]
 

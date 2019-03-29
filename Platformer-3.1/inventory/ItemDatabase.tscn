@@ -9,6 +9,7 @@
 script = ExtResource( 1 )
 
 [node name="TestItem1" parent="." instance=ExtResource( 2 )]
+display_name = "t3st Item 1"
 
 [node name="TestItem2" parent="." instance=ExtResource( 3 )]
 

@@ -9,7 +9,7 @@ func _ready():
 	set_process_input(false)
 
 #warning-ignore:unused_argument
-func open(args=[]):
+func open():
 	emit_signal("open")
 	set_process_input(true)
 	show()

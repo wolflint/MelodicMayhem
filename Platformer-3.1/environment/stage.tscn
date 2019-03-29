@@ -9,7 +9,6 @@
 [ext_resource path="res://environment/parallax_bg.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/music.ogg" type="AudioStream" id=8]
 
-
 [node name="stage" type="Node"]
 
 [node name="tile_map" type="TileMap" parent="."]

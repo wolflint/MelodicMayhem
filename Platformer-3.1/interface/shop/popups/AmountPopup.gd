@@ -1,17 +1,22 @@
-extends Popup
+extends "res://interface/Menu.gd"
 
 signal amount_confirmed(value)
 
+onready var amount_popup = self
 onready var slider = $VBoxContainer/Slider/HSlider
 onready var label = $VBoxContainer/Slider/Amount
 
-func initialize(value, max_value):
+
+func initialize(args = [value, max_value]):
+	var value = args[0]
+	var max_value = args[1]
+	
 	label.initialize(value, max_value)
 	slider.initialize(value, max_value)
 	slider.grab_focus()
 
 func open():
-	popup_centered()
+	amount_popup.popup_centered()
 	.open()
 	var amount = yield(self, "amount_confirmed")
 	close()
@@ -24,3 +29,8 @@ func _input(event):
 	elif event.is_action_pressed("ui_accept"):
 		emit_signal("amount_confirmed", slider.value)
 		get_tree().set_input_as_handled()
+
+
+func _on_OkButton_pressed():
+	emit_signal("amount_confirmed", slider.value)
+	get_tree().set_input_as_handled()
