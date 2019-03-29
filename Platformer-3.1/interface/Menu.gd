@@ -25,9 +25,9 @@ func _input(event):
 # You can streamline opening sub menus with these methods
 # The main drawback is you lose the initialize method's signature
 # Instead you have to group the arguments in an array
-func initialize(args=[]):
+#func initialize():
 #func initialize(args=[]):
-	return
+#	return
 
 func open_sub_menu(menu, args=[]):
 	var sub_menu = menu.instance()

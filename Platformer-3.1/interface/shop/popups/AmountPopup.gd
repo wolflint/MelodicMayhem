@@ -1,4 +1,4 @@
-extends "res://interface/Menu.gd"
+extends Popup
 
 signal amount_confirmed(value)
 

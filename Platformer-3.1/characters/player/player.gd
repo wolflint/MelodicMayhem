@@ -27,6 +27,10 @@ var on_floor = false
 var shoot_time=99999 #time since last shot
 var jump_count = 0
 
+var knockback_direction = Vector2()
+export(float) var knockback = 10
+const STAGGER_DURATION = 0.4
+
 onready var current_weapon = $weapon.weapon_type
 
 var anim=""
@@ -94,7 +98,7 @@ func _shoot():
 	# Shooting
 	if Input.is_action_just_pressed("shoot"):
 		if current_weapon:
-			var bullet = preload("res://player/note.tscn").instance()
+			var bullet = preload("note.tscn").instance()
 			bullet.position = $sprite/bullet_shoot.global_position #use node for shoot position
 			bullet.linear_velocity = Vector2(sprite.scale.x * BULLET_VELOCITY, 0)
 			bullet.add_collision_exception_with(self) # don't want player to collide with bullet
@@ -133,3 +137,19 @@ func _animate_sprite(new_anim = "idle"):
 	if new_anim != anim:
 		anim = new_anim
 		$anim.play(anim)
+
+func _stagger():
+	$Tween.interpolate_property(self, 'position', position, position + knockback * -knockback_direction, STAGGER_DURATION, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	$Tween.start()
+
+func take_damage(damager, amount):
+	if self.is_a_parent_of(damager):
+		return
+	knockback_direction = (damager.global_position - global_position).normalized()
+	$Health.take_damage(amount)
+
+func _on_Health_health_changed(new_health):
+#	_change_state(IDLE)
+	print('%s new health is %s' % [self.name, new_health])
+	if new_health == 0:
+		queue_free()

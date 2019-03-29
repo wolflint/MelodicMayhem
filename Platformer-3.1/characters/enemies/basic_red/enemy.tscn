@@ -1,12 +1,10 @@
 [gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://enemies/basic_red/enemy.gd" type="Script" id=1]
-[ext_resource path="res://enemies/basic_red/enemy.png" type="Texture" id=2]
-[ext_resource path="res://player/bullet.png" type="Texture" id=3]
+[ext_resource path="res://characters/enemies/basic_red/enemy.gd" type="Script" id=1]
+[ext_resource path="res://characters/enemies/basic_red/enemy.png" type="Texture" id=2]
+[ext_resource path="res://characters/player/bullet.png" type="Texture" id=3]
 [ext_resource path="res://assets/sound_hit.wav" type="AudioStream" id=4]
 [ext_resource path="res://assets/sound_explode.wav" type="AudioStream" id=5]
-
-
 
 [sub_resource type="Animation" id=1]
 resource_name = "SETUP"
@@ -269,9 +267,9 @@ tracks/1/keys = {
 
 [sub_resource type="CanvasItemMaterial" id=5]
 
-[sub_resource type="CapsuleShape2D" id=6]
-radius = 13.4556
-height = 14.2002
+[sub_resource type="CapsuleShape2D" id=9]
+radius = 12.5622
+height = 13.5831
 
 [sub_resource type="CanvasItemMaterial" id=7]
 blend_mode = 1
@@ -311,9 +309,10 @@ flip_h = true
 hframes = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.00525069, -0.727495 )
+position = Vector2( 0.722473, -2 )
 rotation = -1.5708
-shape = SubResource( 6 )
+scale = Vector2( 1.03275, 1.03275 )
+shape = SubResource( 9 )
 
 [node name="detect_floor_left" type="RayCast2D" parent="."]
 position = Vector2( -33.2868, -9.34363 )
