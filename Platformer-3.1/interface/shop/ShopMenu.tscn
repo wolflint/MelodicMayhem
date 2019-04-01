@@ -31,7 +31,7 @@ rect_min_size = Vector2( 0, 80 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = ExtResource( 4 )
-text = "Terrence's Shop"
+text = "Item Store"
 align = 1
 valign = 1
 

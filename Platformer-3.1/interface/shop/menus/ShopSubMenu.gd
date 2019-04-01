@@ -33,7 +33,8 @@ func _on_ItemList_focused_button_changed(item_button):
 
 func open():
 	.open()
-	_items_list.get_child(0).grab_focus()
+	_items_list.get_child(0).get_child(0).grab_focus()
+	
 
 func close():
 	.close()
@@ -42,7 +43,8 @@ func close():
 func _on_ItemButton_pressed(shop, buyer, item):
 	assert item != null
 	var focused_item = get_focus_owner()
-	_amount_popup.initialize([1, item.amount])
+	var max_amount = min(round(buyer.get_node("Purse").coins / item.price), item.amount)
+	_amount_popup.initialize([1, max_amount])
 	var amount = yield(_amount_popup.open(), "completed")
 	focused_item.grab_focus()
 	if not amount:
