@@ -33,9 +33,11 @@ func _on_ItemList_focused_button_changed(item_button):
 
 func open():
 	.open()
-	if not _items_list.get_child(0).get_child(0):
-		return
-	_items_list.get_child(0).get_child(0).grab_focus()
+	# Check if there are items in sell inventory, if not, return from the function
+	### TODO: This is a patch, need to find a better way to avoid this crash
+	if _items_list.get_child_count() > 0:
+		if _items_list.get_child(0).get_child_count() > 0:
+			_items_list.get_child(0).get_child(0).grab_focus()
 	
 
 func close():
