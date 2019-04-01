@@ -33,6 +33,8 @@ func _on_ItemList_focused_button_changed(item_button):
 
 func open():
 	.open()
+	if not _items_list.get_child(0).get_child(0):
+		return
 	_items_list.get_child(0).get_child(0).grab_focus()
 	
 
