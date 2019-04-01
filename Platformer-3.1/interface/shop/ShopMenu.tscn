@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://interface/theme/default.theme" type="Theme" id=1]
 [ext_resource path="res://interface/shop/ShopMenu.gd" type="Script" id=2]
-[ext_resource path="res://interface/shop/menus/BuySubMenu.tscn" type="PackedScene" id=3]
-[ext_resource path="res://interface/shop/menus/SellSubMenu.tscn" type="PackedScene" id=4]
-[ext_resource path="res://interface/theme/fonts/source_code_pro_26.tres" type="DynamicFont" id=5]
+[ext_resource path="res://interface/shop/menus/SellSubMenu.tscn" type="PackedScene" id=3]
+[ext_resource path="res://interface/theme/fonts/source_code_pro_26.tres" type="DynamicFont" id=4]
 
 [node name="ShopMenu" type="Control"]
 pause_mode = 2
@@ -12,10 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
-_sections_unfolded = [ "Pause", "Theme" ]
-SUB_MENU_PATH = null
-BuyMenu = ExtResource( 3 )
-SellMenu = ExtResource( 4 )
+SellMenu = ExtResource( 3 )
 
 [node name="DarkOverlay" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -34,7 +30,7 @@ rect_min_size = Vector2( 0, 80 )
 [node name="Label" type="Label" parent="Column/Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 4 )
 text = "Terrence's Shop"
 align = 1
 valign = 1

@@ -23,11 +23,11 @@ func take_damage(amount):
 	health -= amount
 	health = max(0, health)
 	emit_signal("health_changed", health)
-	print("%s got hit and took %s damage. Health: %s/%s" % [get_name(), amount, health, max_health])
+#	print("%s got hit and took %s damage. Health: %s/%s" % [get_name(), amount, health, max_health])
 
 
 func heal(amount):
 	health += amount
 	health = max(health, max_health)
 	emit_signal("health_changed", health)
-	print("%s got healed by %s points. Health: %s/%s" % [get_name(), amount, health, max_health])
+#	print("%s got healed by %s points. Health: %s/%s" % [get_name(), amount, health, max_health])

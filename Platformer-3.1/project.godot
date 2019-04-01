@@ -23,11 +23,16 @@ target_fps="60"
 
 ItemDatabase="*res://inventory/ItemDatabase.tscn"
 
+[debug]
+
+gdscript/warnings/unused_variable=false
+gdscript/warnings/unused_class_variable=false
+gdscript/warnings/unused_argument=false
+
 [display]
 
 window/size/width=1280
 window/size/height=720
-window/size/borderless=true
 window/size/test_width=1280
 window/size/test_height=720
 window/stretch/mode="2d"

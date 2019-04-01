@@ -5,13 +5,15 @@ export(PackedScene) var SellMenu = preload("res://interface/shop/menus/BuySubMen
 
 onready var _buttons = $Column/Buttons
 onready var _submenu = $Column/Menu
+onready var _buy_button = $Column/Buttons/BuyButton
+onready var _sell_button = $Column/Buttons/SellButton
 
 func open(args = [shop, buyer]):
 	var shop = args[0]
 	var buyer = args[1]
-	$Column/Buttons/BuyButton.connect("pressed", self, "open_submenu",
+	_buy_button.connect("pressed", self, "open_submenu",
 		[BuyMenu, [shop, buyer, shop.inventory]])
-	$Column/Buttons/SellButton.connect("pressed", self, "open_submenu",
+	_sell_button.connect("pressed", self, "open_submenu",
 		[SellMenu, [shop, buyer, buyer.get_node("Inventory")]])
 	_buttons.get_child(0).grab_focus()
 	.open()

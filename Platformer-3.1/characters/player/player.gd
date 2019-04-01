@@ -185,5 +185,4 @@ func level_up():
 	set(random_stat, get(random_stat) + randi() % 4)
 
 func _on_Health_health_changed(new_health):
-#	_change_state(IDLE)
-	print('%s new health is %s' % [self.name, new_health])
+	pass
