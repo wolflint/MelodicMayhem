@@ -1,0 +1,18 @@
+[gd_scene format=2]
+
+[node name="ItemButton" type="Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Name" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Amount" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+
