@@ -1,6 +1,7 @@
 extends Node
 
 onready var ShopMenu = preload("res://interface/shop/ShopMenu.tscn")
+onready var InventoryMenu = preload("res://interface/inventory-menu/InventoryMenu.tscn")
 onready var _character = $Player
 onready var _label = $UI/Interface/Label
 onready var _bar = $UI/Interface/ExperienceBar
@@ -12,10 +13,23 @@ func _ready():
 	_character.get_node("Purse").coins += 1000
 
 func _input(event):
-	if not event.is_action_pressed('test_experience'):
+	if event.is_action_pressed('test_experience'):
+		_character.gain_experience(34)
+		_label.update_text(_character.level, _character.experience, _character.experience_required)
+	if event.is_action_pressed("open_inventory"):
+		open_inventory()
+
+func open_inventory():
+	if not _character.has_node("Inventory"):
 		return
-	_character.gain_experience(34)
-	_label.update_text(_character.level, _character.experience, _character.experience_required)
+	var inventory = _character.get_node("Inventory")
+	var inventory_menu = InventoryMenu.instance()
+	$UI.add_child(inventory_menu)
+	inventory_menu.initialize([inventory, _character])
+		
+	get_tree().paused = true
+	yield(inventory_menu, "closed")
+	get_tree().paused = false
 
 func _on_merchant_shop_open_requested(shop, user):
 	if not user.has_node("Inventory"):

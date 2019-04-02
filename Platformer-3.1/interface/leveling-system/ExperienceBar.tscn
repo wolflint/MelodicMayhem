@@ -6,17 +6,17 @@
 [ext_resource path="res://interface/leveling-system/text_experience.png" type="Texture" id=4]
 
 [node name="ExperienceBar" type="TextureProgress"]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 861.0
+margin_bottom = 69.0
 value = 75.0
 texture_under = ExtResource( 1 )
 texture_progress = ExtResource( 2 )
 script = ExtResource( 3 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_top = -50.119
+margin_top = 10.0
 margin_right = 343.0
-margin_bottom = -10.119
+margin_bottom = 50.0
 texture = ExtResource( 4 )
 
 [node name="Tween" type="Tween" parent="."]

@@ -18,9 +18,9 @@ script = ExtResource( 1 )
 position = Vector2( 252.954, 1559.02 )
 
 [node name="UI" type="CanvasLayer" parent="."]
-editor/display_folded = true
 
 [node name="Interface" type="Control" parent="UI"]
+editor/display_folded = true
 anchor_right = 1.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 0, 100 )

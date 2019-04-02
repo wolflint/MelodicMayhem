@@ -1,22 +1,43 @@
-extends Control
+extends "res://interface/Menu.gd"
 
 signal item_use_requested(item, actor)
 
 export(PackedScene) var ItemButton
 
-onready var _item_grid = $Column/ItemsList/Margin/Grid
-onready var _description_label = $Column/DescriptionPanel/Margin/Label
+onready var _item_grid = $VBox/ItemsList/Margin/Grid
+onready var _description_label = $VBox/DescriptionPanel/Margin/Label
+var character
 
-func initialize(inventory):
+func initialize(args = [inventory, character]):
+	var inventory = args[0]
+	character = args[1]
+
 	for item in inventory.get_items():
 		var item_button = create_item_button(item)
 		item_button.connect("focus_entered", self, "_on_ItemButton_focus_entered")
 		item_button.connect("pressed", self, "_on_ItemButton_pressed", [item])
 
 	_item_grid.initialize()
-
+	if _item_grid.get_child_count() > 0:
+		_item_grid.get_child(0).grab_focus()
 	inventory.connect("item_added", self, "create_item_button")
 	connect("item_use_requested", inventory, "use")
+
+	emit_signal("open")
+	set_process_input(true)
+	print("input process = true")
+	show()
+
+func close():
+	.close()
+	print("close")
+	queue_free()
+
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		print("ui_cancel")
+		close()
+
 
 func create_item_button(item):
 	var item_button = ItemButton.instance()
@@ -29,9 +50,5 @@ func _on_ItemButton_focus_entered():
 
 func _on_ItemButton_pressed(item):
 	var button = get_focus_owner()
-	$UserSelectMenu.open()
-	var actor = yield($UserSelectMenu, "closed")
 	button.grab_focus()
-	if not actor:
-		return
-	emit_signal("item_use_requested", item, actor)
+	emit_signal("item_use_requested", item, character)

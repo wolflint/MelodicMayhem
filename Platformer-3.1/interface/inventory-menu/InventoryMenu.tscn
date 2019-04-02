@@ -1,12 +1,15 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://interface/inventory-menu/InventoryMenu.gd" type="Script" id=1]
-[ext_resource path="res://interface/inventory-menu/ItemList-Grid.gd" type="Script" id=2]
+[ext_resource path="res://interface/inventory-menu/ItemButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://interface/inventory-menu/ItemList-Grid.gd" type="Script" id=3]
 
 [node name="InventoryMenu" type="Control"]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+ItemButton = ExtResource( 2 )
 
 [node name="VBox" type="VBoxContainer" parent="."]
 anchor_right = 1.0
@@ -22,12 +25,20 @@ size_flags_vertical = 3
 [node name="Margin" type="MarginContainer" parent="VBox/ItemsList"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_constants/margin_right = 16
+custom_constants/margin_top = 16
+custom_constants/margin_left = 16
+custom_constants/margin_bottom = 16
 
 [node name="Grid" type="GridContainer" parent="VBox/ItemsList/Margin"]
-margin_right = 1280.0
-margin_bottom = 612.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 1264.0
+margin_bottom = 596.0
+custom_constants/vseparation = 16
+custom_constants/hseparation = 16
 columns = 2
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 
 [node name="DescriptionPanel" type="Panel" parent="VBox"]
 modulate = Color( 1, 1, 1, 0.501961 )
@@ -39,10 +50,17 @@ rect_min_size = Vector2( 0, 100 )
 [node name="Margin" type="MarginContainer" parent="VBox/DescriptionPanel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_constants/margin_right = 16
+custom_constants/margin_top = 16
+custom_constants/margin_left = 16
+custom_constants/margin_bottom = 16
 
 [node name="Label" type="Label" parent="VBox/DescriptionPanel/Margin"]
+margin_left = 16.0
 margin_top = 43.0
-margin_right = 1280.0
+margin_right = 1264.0
 margin_bottom = 57.0
 text = "Item description here."
+autowrap = true
+uppercase = true
 

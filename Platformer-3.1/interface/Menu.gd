@@ -23,11 +23,6 @@ func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		close()
 
-# You can streamline opening sub menus with these methods
-# The main drawback is you lose the initialize method's signature
-# Instead you have to group the arguments in an array
-#func initialize():
-#warning-ignore:unused_argument
 func initialize(args=[]):
 	return
 
