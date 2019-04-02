@@ -31,3 +31,9 @@ func heal(amount):
 	health = max(health, max_health)
 	emit_signal("health_changed", health)
 #	print("%s got healed by %s points. Health: %s/%s" % [get_name(), amount, health, max_health])
+
+func _on_Player_gained_max_health():
+	randomize()
+	var rand_amount = randi() % 4
+	set("max_health", get("max_health") + rand_amount)
+	set("health", get("health") + rand_amount)

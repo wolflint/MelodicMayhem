@@ -283,7 +283,7 @@ editor/display_folded = true
 [node name="Purse" parent="." instance=ExtResource( 12 )]
 
 [node name="Health" parent="." instance=ExtResource( 13 )]
-max_health = 5
+max_health = 100
 
 [node name="Tween" type="Tween" parent="."]
 

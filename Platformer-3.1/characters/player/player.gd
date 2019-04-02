@@ -1,6 +1,8 @@
 extends KinematicBody2D
 
 signal experience_gained(growth_data, player)
+signal health_changed(health, max_health)
+signal gained_max_health()
 
 # Character stats
 export (int) var max_hp = 12
@@ -54,6 +56,7 @@ onready var sprite = $sprite
 
 func _ready():
 	state = States.IDLE
+	connect("gained_max_health", $Health, "_on_Player_gained_max_health")
 
 func _input(event):
 	# Jumping
@@ -87,7 +90,7 @@ func _physics_process(delta):
 	# Drop down
 	if Input.is_action_pressed("drop_down"):
 		self.global_position += Vector2(0,1)
-	
+
 	_shoot()
 
 	_animate_sprite()
@@ -179,10 +182,19 @@ func gain_experience(amount):
 func level_up():
 	level += 1
 	experience_required = get_required_experience(level + 1)
-	
+	randomize()
 	var stats = ['max_hp', 'strength', 'music']
 	var random_stat = stats[randi() % stats.size()]
-	set(random_stat, get(random_stat) + randi() % 4)
+	match random_stat:
+		'max_hp':
+			emit_signal("gained_max_health")
+			emit_signal("health_changed", $Health.health, $Health.max_health)
+		'strength', 'music':
+			set(random_stat, get(random_stat) + randi() % 4)
+
 
 func _on_Health_health_changed(new_health):
-	pass
+	if new_health <= 0:
+		pass
+	emit_signal("health_changed", [new_health, $Health.max_health], self)
+	
