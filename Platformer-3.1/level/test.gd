@@ -1,7 +1,7 @@
 extends Node
 
 onready var ShopMenu = preload("res://interface/shop/ShopMenu.tscn")
-onready var _character = $player
+onready var _character = $Player
 onready var _label = $UI/Interface/Label
 onready var _bar = $UI/Interface/ExperienceBar
 

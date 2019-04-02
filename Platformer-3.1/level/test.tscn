@@ -1,31 +1,24 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://level/test.gd" type="Script" id=1]
-[ext_resource path="res://assets/tileset.tres" type="TileSet" id=2]
-[ext_resource path="res://characters/merchant/merchant.tscn" type="PackedScene" id=3]
-[ext_resource path="res://characters/player/player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://interface/leveling-system/ExperienceBar.tscn" type="PackedScene" id=5]
-[ext_resource path="res://level/Label.gd" type="Script" id=6]
-[ext_resource path="res://collectibles/coin/coin.tscn" type="PackedScene" id=7]
-[ext_resource path="res://environment/parallax_bg.tscn" type="PackedScene" id=8]
-[ext_resource path="res://level/Enemies.gd" type="Script" id=9]
-[ext_resource path="res://characters/enemies/basic_red/enemy.tscn" type="PackedScene" id=10]
+[ext_resource path="res://characters/player/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://interface/leveling-system/ExperienceBar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://level/Label.gd" type="Script" id=4]
+[ext_resource path="res://assets/tileset.tres" type="TileSet" id=5]
+[ext_resource path="res://characters/merchant/merchant.tscn" type="PackedScene" id=6]
+[ext_resource path="res://level/Enemies.gd" type="Script" id=7]
+[ext_resource path="res://characters/enemies/basic_red/enemy.tscn" type="PackedScene" id=8]
+[ext_resource path="res://environment/parallax_bg.tscn" type="PackedScene" id=9]
+[ext_resource path="res://collectibles/coin/coin.tscn" type="PackedScene" id=10]
 
-[node name="test" type="Node"]
+[node name="Game" type="Node"]
 script = ExtResource( 1 )
 
-[node name="TileMap" type="TileMap" parent="."]
-tile_set = ExtResource( 2 )
-format = 1
-tile_data = PoolIntArray( 1310720, 2, 0, 1310735, 2, 0, 1376256, 2, 0, 1376271, 2, 0, 1441792, 2, 0, 1441807, 2, 0, 1507328, 2, 0, 1507343, 2, 0, 1572864, 2, 0, 1572879, 2, 0, 1638400, 10, 0, 1638401, 0, 0, 1638402, 0, 0, 1638403, 0, 0, 1638404, 0, 0, 1638405, 0, 0, 1638406, 0, 0, 1638407, 0, 0, 1638408, 0, 0, 1638409, 0, 0, 1638410, 0, 0, 1638411, 0, 0, 1638412, 0, 0, 1638413, 0, 0, 1638414, 0, 0, 1638415, 10, 0, 1703936, 10, 0, 1703937, 10, 0, 1703938, 10, 0, 1703939, 10, 0, 1703940, 10, 0, 1703941, 10, 0, 1703942, 10, 0, 1703943, 10, 0, 1703944, 10, 0, 1703945, 10, 0, 1703946, 10, 0, 1703947, 10, 0, 1703948, 10, 0, 1703949, 10, 0, 1703950, 10, 0, 1703951, 10, 0, 1769472, 10, 0, 1769473, 10, 0, 1769474, 10, 0, 1769475, 10, 0, 1769476, 10, 0, 1769477, 10, 0, 1769478, 10, 0, 1769479, 10, 0, 1769480, 10, 0, 1769481, 10, 0, 1769482, 10, 0, 1769483, 10, 0, 1769484, 10, 0, 1769485, 10, 0, 1769486, 10, 0, 1769487, 10, 0, 1835008, 10, 0, 1835009, 10, 0, 1835010, 10, 0, 1835011, 10, 0, 1835012, 10, 0, 1835013, 10, 0, 1835014, 10, 0, 1835015, 10, 0, 1835016, 10, 0, 1835017, 10, 0, 1835018, 10, 0, 1835019, 10, 0, 1835020, 10, 0, 1835021, 10, 0, 1835022, 10, 0, 1835023, 10, 0, 1900544, 10, 0, 1900545, 10, 0, 1900546, 10, 0, 1900547, 10, 0, 1900548, 10, 0, 1900549, 10, 0, 1900550, 10, 0, 1900551, 10, 0, 1900552, 10, 0, 1900553, 10, 0, 1900554, 10, 0, 1900555, 10, 0, 1900556, 10, 0, 1900557, 10, 0, 1900558, 10, 0, 1900559, 10, 0, 1966080, 10, 0, 1966081, 10, 0, 1966082, 10, 0, 1966083, 10, 0, 1966084, 10, 0, 1966085, 10, 0, 1966086, 10, 0, 1966087, 10, 0, 1966088, 10, 0, 1966089, 10, 0, 1966090, 10, 0, 1966091, 10, 0, 1966092, 10, 0, 1966093, 10, 0, 1966094, 10, 0, 1966095, 10, 0, 2031616, 10, 0, 2031617, 10, 0, 2031618, 10, 0, 2031619, 10, 0, 2031620, 10, 0, 2031621, 10, 0, 2031622, 10, 0, 2031623, 10, 0, 2031624, 10, 0, 2031625, 10, 0, 2031626, 10, 0, 2031627, 10, 0, 2031628, 10, 0, 2031629, 10, 0, 2031630, 10, 0, 2031631, 10, 0, 2097152, 10, 0, 2097153, 10, 0, 2097154, 10, 0, 2097155, 10, 0, 2097156, 10, 0, 2097157, 10, 0, 2097158, 10, 0, 2097159, 10, 0, 2097160, 10, 0, 2097161, 10, 0, 2097162, 10, 0, 2097163, 10, 0, 2097164, 10, 0, 2097165, 10, 0, 2097166, 10, 0, 2097167, 10, 0, 2162688, 10, 0, 2162689, 10, 0, 2162690, 10, 0, 2162691, 10, 0, 2162692, 10, 0, 2162693, 10, 0, 2162694, 10, 0, 2162695, 10, 0, 2162696, 10, 0, 2162697, 10, 0, 2162698, 10, 0, 2162699, 10, 0, 2162700, 10, 0, 2162701, 10, 0, 2162702, 10, 0, 2162703, 10, 0, 2228224, 10, 0, 2228225, 10, 0, 2228226, 10, 0, 2228227, 10, 0, 2228228, 10, 0, 2228229, 10, 0, 2228230, 10, 0, 2228231, 10, 0, 2228232, 10, 0, 2228233, 10, 0, 2228234, 10, 0, 2228235, 10, 0, 2228236, 10, 0, 2228237, 10, 0, 2228238, 10, 0, 2228239, 10, 0, 2293760, 10, 0, 2293761, 10, 0, 2293762, 10, 0, 2293763, 10, 0, 2293764, 10, 0, 2293765, 10, 0, 2293766, 10, 0, 2293767, 10, 0, 2293768, 10, 0, 2293769, 10, 0, 2293770, 10, 0, 2293771, 10, 0, 2293772, 10, 0, 2293773, 10, 0, 2293774, 10, 0, 2293775, 10, 0, 2359296, 10, 0, 2359297, 10, 0, 2359298, 10, 0, 2359299, 10, 0, 2359300, 10, 0, 2359301, 10, 0, 2359302, 10, 0, 2359303, 10, 0, 2359304, 10, 0, 2359305, 10, 0, 2359306, 10, 0, 2359307, 10, 0, 2359308, 10, 0, 2359309, 10, 0, 2359310, 10, 0, 2359311, 10, 0 )
-
-[node name="merchant" parent="." instance=ExtResource( 3 )]
-position = Vector2( 783.576, 1575.31 )
-
-[node name="player" parent="." instance=ExtResource( 4 )]
+[node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 252.954, 1559.02 )
 
 [node name="UI" type="CanvasLayer" parent="."]
+editor/display_folded = true
 
 [node name="Interface" type="Control" parent="UI"]
 anchor_right = 1.0
@@ -37,7 +30,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.152941, 0.152941, 0.152941, 0.392157 )
 
-[node name="ExperienceBar" parent="UI/Interface" instance=ExtResource( 5 )]
+[node name="ExperienceBar" parent="UI/Interface" instance=ExtResource( 3 )]
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_top = -69.0
@@ -51,106 +44,117 @@ anchor_right = 1.0
 margin_left = -40.0
 margin_bottom = 14.0
 autowrap = true
-script = ExtResource( 6 )
+script = ExtResource( 4 )
 
-[node name="Coins" type="Node" parent="."]
+[node name="Level" type="Node" parent="."]
+
+[node name="TileMap" type="TileMap" parent="Level"]
+tile_set = ExtResource( 5 )
+format = 1
+tile_data = PoolIntArray( 1310720, 2, 0, 1310735, 2, 0, 1376256, 2, 0, 1376271, 2, 0, 1441792, 2, 0, 1441807, 2, 0, 1507328, 2, 0, 1507343, 2, 0, 1572864, 2, 0, 1572879, 2, 0, 1638400, 10, 0, 1638401, 0, 0, 1638402, 0, 0, 1638403, 0, 0, 1638404, 0, 0, 1638405, 0, 0, 1638406, 0, 0, 1638407, 0, 0, 1638408, 0, 0, 1638409, 0, 0, 1638410, 0, 0, 1638411, 0, 0, 1638412, 0, 0, 1638413, 0, 0, 1638414, 0, 0, 1638415, 10, 0, 1703936, 10, 0, 1703937, 10, 0, 1703938, 10, 0, 1703939, 10, 0, 1703940, 10, 0, 1703941, 10, 0, 1703942, 10, 0, 1703943, 10, 0, 1703944, 10, 0, 1703945, 10, 0, 1703946, 10, 0, 1703947, 10, 0, 1703948, 10, 0, 1703949, 10, 0, 1703950, 10, 0, 1703951, 10, 0, 1769472, 10, 0, 1769473, 10, 0, 1769474, 10, 0, 1769475, 10, 0, 1769476, 10, 0, 1769477, 10, 0, 1769478, 10, 0, 1769479, 10, 0, 1769480, 10, 0, 1769481, 10, 0, 1769482, 10, 0, 1769483, 10, 0, 1769484, 10, 0, 1769485, 10, 0, 1769486, 10, 0, 1769487, 10, 0, 1835008, 10, 0, 1835009, 10, 0, 1835010, 10, 0, 1835011, 10, 0, 1835012, 10, 0, 1835013, 10, 0, 1835014, 10, 0, 1835015, 10, 0, 1835016, 10, 0, 1835017, 10, 0, 1835018, 10, 0, 1835019, 10, 0, 1835020, 10, 0, 1835021, 10, 0, 1835022, 10, 0, 1835023, 10, 0, 1900544, 10, 0, 1900545, 10, 0, 1900546, 10, 0, 1900547, 10, 0, 1900548, 10, 0, 1900549, 10, 0, 1900550, 10, 0, 1900551, 10, 0, 1900552, 10, 0, 1900553, 10, 0, 1900554, 10, 0, 1900555, 10, 0, 1900556, 10, 0, 1900557, 10, 0, 1900558, 10, 0, 1900559, 10, 0, 1966080, 10, 0, 1966081, 10, 0, 1966082, 10, 0, 1966083, 10, 0, 1966084, 10, 0, 1966085, 10, 0, 1966086, 10, 0, 1966087, 10, 0, 1966088, 10, 0, 1966089, 10, 0, 1966090, 10, 0, 1966091, 10, 0, 1966092, 10, 0, 1966093, 10, 0, 1966094, 10, 0, 1966095, 10, 0, 2031616, 10, 0, 2031617, 10, 0, 2031618, 10, 0, 2031619, 10, 0, 2031620, 10, 0, 2031621, 10, 0, 2031622, 10, 0, 2031623, 10, 0, 2031624, 10, 0, 2031625, 10, 0, 2031626, 10, 0, 2031627, 10, 0, 2031628, 10, 0, 2031629, 10, 0, 2031630, 10, 0, 2031631, 10, 0, 2097152, 10, 0, 2097153, 10, 0, 2097154, 10, 0, 2097155, 10, 0, 2097156, 10, 0, 2097157, 10, 0, 2097158, 10, 0, 2097159, 10, 0, 2097160, 10, 0, 2097161, 10, 0, 2097162, 10, 0, 2097163, 10, 0, 2097164, 10, 0, 2097165, 10, 0, 2097166, 10, 0, 2097167, 10, 0, 2162688, 10, 0, 2162689, 10, 0, 2162690, 10, 0, 2162691, 10, 0, 2162692, 10, 0, 2162693, 10, 0, 2162694, 10, 0, 2162695, 10, 0, 2162696, 10, 0, 2162697, 10, 0, 2162698, 10, 0, 2162699, 10, 0, 2162700, 10, 0, 2162701, 10, 0, 2162702, 10, 0, 2162703, 10, 0, 2228224, 10, 0, 2228225, 10, 0, 2228226, 10, 0, 2228227, 10, 0, 2228228, 10, 0, 2228229, 10, 0, 2228230, 10, 0, 2228231, 10, 0, 2228232, 10, 0, 2228233, 10, 0, 2228234, 10, 0, 2228235, 10, 0, 2228236, 10, 0, 2228237, 10, 0, 2228238, 10, 0, 2228239, 10, 0, 2293760, 10, 0, 2293761, 10, 0, 2293762, 10, 0, 2293763, 10, 0, 2293764, 10, 0, 2293765, 10, 0, 2293766, 10, 0, 2293767, 10, 0, 2293768, 10, 0, 2293769, 10, 0, 2293770, 10, 0, 2293771, 10, 0, 2293772, 10, 0, 2293773, 10, 0, 2293774, 10, 0, 2293775, 10, 0, 2359296, 10, 0, 2359297, 10, 0, 2359298, 10, 0, 2359299, 10, 0, 2359300, 10, 0, 2359301, 10, 0, 2359302, 10, 0, 2359303, 10, 0, 2359304, 10, 0, 2359305, 10, 0, 2359306, 10, 0, 2359307, 10, 0, 2359308, 10, 0, 2359309, 10, 0, 2359310, 10, 0, 2359311, 10, 0 )
+
+[node name="merchant" parent="Level" instance=ExtResource( 6 )]
+position = Vector2( 783.576, 1575.31 )
+
+[node name="Enemies" type="Position2D" parent="Level"]
 editor/display_folded = true
+script = ExtResource( 7 )
+enemy = ExtResource( 8 )
 
-[node name="coin" parent="Coins" instance=ExtResource( 7 )]
-position = Vector2( 370.11, 1509.64 )
-
-[node name="coin2" parent="Coins" instance=ExtResource( 7 )]
-position = Vector2( 370.11, 1509.64 )
-
-[node name="coin3" parent="Coins" instance=ExtResource( 7 )]
-position = Vector2( 370.11, 1509.64 )
-
-[node name="coin4" parent="Coins" instance=ExtResource( 7 )]
-position = Vector2( 370.11, 1509.64 )
-
-[node name="coin5" parent="Coins" instance=ExtResource( 7 )]
-position = Vector2( 370.11, 1509.64 )
-
-[node name="coin6" parent="Coins" instance=ExtResource( 7 )]
-position = Vector2( 370.11, 1509.64 )
-
-[node name="coin7" parent="Coins" instance=ExtResource( 7 )]
-position = Vector2( 370.11, 1509.64 )
-
-[node name="coin8" parent="Coins" instance=ExtResource( 7 )]
-position = Vector2( 370.11, 1509.64 )
-
-[node name="coin9" parent="Coins" instance=ExtResource( 7 )]
-position = Vector2( 370.11, 1509.64 )
-
-[node name="coin10" parent="Coins" instance=ExtResource( 7 )]
-position = Vector2( 370.11, 1509.64 )
-
-[node name="coin11" parent="Coins" instance=ExtResource( 7 )]
-position = Vector2( 370.11, 1509.64 )
-
-[node name="coin12" parent="Coins" instance=ExtResource( 7 )]
-position = Vector2( 370.11, 1509.64 )
-
-[node name="coin13" parent="Coins" instance=ExtResource( 7 )]
-position = Vector2( 370.11, 1509.64 )
-
-[node name="coin14" parent="Coins" instance=ExtResource( 7 )]
-position = Vector2( 370.11, 1509.64 )
-
-[node name="coin15" parent="Coins" instance=ExtResource( 7 )]
-position = Vector2( 370.11, 1509.64 )
-
-[node name="coin16" parent="Coins" instance=ExtResource( 7 )]
-position = Vector2( 370.11, 1509.64 )
-
-[node name="coin17" parent="Coins" instance=ExtResource( 7 )]
-position = Vector2( 370.11, 1509.64 )
-
-[node name="coin18" parent="Coins" instance=ExtResource( 7 )]
-position = Vector2( 370.11, 1509.64 )
-
-[node name="coin19" parent="Coins" instance=ExtResource( 7 )]
-position = Vector2( 370.11, 1509.64 )
-
-[node name="coin20" parent="Coins" instance=ExtResource( 7 )]
-position = Vector2( 370.11, 1509.64 )
-
-[node name="parallax_bg" parent="." instance=ExtResource( 8 )]
-
-[node name="Enemies" type="Position2D" parent="."]
-script = ExtResource( 9 )
-enemy = ExtResource( 10 )
-
-[node name="enemy" parent="Enemies" instance=ExtResource( 10 )]
+[node name="enemy" parent="Level/Enemies" instance=ExtResource( 8 )]
 position = Vector2( 753.016, 1171.33 )
 
-[node name="enemy2" parent="Enemies" instance=ExtResource( 10 )]
+[node name="enemy2" parent="Level/Enemies" instance=ExtResource( 8 )]
 position = Vector2( 772.01, 1170.3 )
 
-[node name="enemy3" parent="Enemies" instance=ExtResource( 10 )]
+[node name="enemy3" parent="Level/Enemies" instance=ExtResource( 8 )]
 position = Vector2( 792.03, 1170.82 )
 
-[node name="enemy4" parent="Enemies" instance=ExtResource( 10 )]
+[node name="enemy4" parent="Level/Enemies" instance=ExtResource( 8 )]
 position = Vector2( 835.151, 1178.52 )
 
-[node name="enemy5" parent="Enemies" instance=ExtResource( 10 )]
+[node name="enemy5" parent="Level/Enemies" instance=ExtResource( 8 )]
 position = Vector2( 866.465, 1171.33 )
 
-[node name="enemy6" parent="Enemies" instance=ExtResource( 10 )]
+[node name="enemy6" parent="Level/Enemies" instance=ExtResource( 8 )]
 position = Vector2( 873.138, 1135.4 )
 
-[node name="enemy7" parent="Enemies" instance=ExtResource( 10 )]
+[node name="enemy7" parent="Level/Enemies" instance=ExtResource( 8 )]
 position = Vector2( 816.67, 1113.84 )
 
-[node name="enemy8" parent="Enemies" instance=ExtResource( 10 )]
+[node name="enemy8" parent="Level/Enemies" instance=ExtResource( 8 )]
 position = Vector2( 859.278, 1104.08 )
 
-[node name="enemy9" parent="Enemies" instance=ExtResource( 10 )]
+[node name="enemy9" parent="Level/Enemies" instance=ExtResource( 8 )]
 position = Vector2( 765.85, 1104.6 )
 
-[node name="enemy10" parent="Enemies" instance=ExtResource( 10 )]
+[node name="enemy10" parent="Level/Enemies" instance=ExtResource( 8 )]
 position = Vector2( 769.956, 1134.37 )
 
-[connection signal="shop_open_requested" from="merchant" to="." method="_on_merchant_shop_open_requested"]
-[connection signal="experience_gained" from="player" to="UI/Interface/ExperienceBar" method="_on_player_experience_gained"]
+[node name="ParallaxBackground" parent="Level" instance=ExtResource( 9 )]
+
+[node name="Coins" type="Node" parent="Level"]
+editor/display_folded = true
+
+[node name="coin" parent="Level/Coins" instance=ExtResource( 10 )]
+position = Vector2( 370.11, 1509.64 )
+
+[node name="coin2" parent="Level/Coins" instance=ExtResource( 10 )]
+position = Vector2( 370.11, 1509.64 )
+
+[node name="coin3" parent="Level/Coins" instance=ExtResource( 10 )]
+position = Vector2( 370.11, 1509.64 )
+
+[node name="coin4" parent="Level/Coins" instance=ExtResource( 10 )]
+position = Vector2( 370.11, 1509.64 )
+
+[node name="coin5" parent="Level/Coins" instance=ExtResource( 10 )]
+position = Vector2( 370.11, 1509.64 )
+
+[node name="coin6" parent="Level/Coins" instance=ExtResource( 10 )]
+position = Vector2( 370.11, 1509.64 )
+
+[node name="coin7" parent="Level/Coins" instance=ExtResource( 10 )]
+position = Vector2( 370.11, 1509.64 )
+
+[node name="coin8" parent="Level/Coins" instance=ExtResource( 10 )]
+position = Vector2( 370.11, 1509.64 )
+
+[node name="coin9" parent="Level/Coins" instance=ExtResource( 10 )]
+position = Vector2( 370.11, 1509.64 )
+
+[node name="coin10" parent="Level/Coins" instance=ExtResource( 10 )]
+position = Vector2( 370.11, 1509.64 )
+
+[node name="coin11" parent="Level/Coins" instance=ExtResource( 10 )]
+position = Vector2( 370.11, 1509.64 )
+
+[node name="coin12" parent="Level/Coins" instance=ExtResource( 10 )]
+position = Vector2( 370.11, 1509.64 )
+
+[node name="coin13" parent="Level/Coins" instance=ExtResource( 10 )]
+position = Vector2( 370.11, 1509.64 )
+
+[node name="coin14" parent="Level/Coins" instance=ExtResource( 10 )]
+position = Vector2( 370.11, 1509.64 )
+
+[node name="coin15" parent="Level/Coins" instance=ExtResource( 10 )]
+position = Vector2( 370.11, 1509.64 )
+
+[node name="coin16" parent="Level/Coins" instance=ExtResource( 10 )]
+position = Vector2( 370.11, 1509.64 )
+
+[node name="coin17" parent="Level/Coins" instance=ExtResource( 10 )]
+position = Vector2( 370.11, 1509.64 )
+
+[node name="coin18" parent="Level/Coins" instance=ExtResource( 10 )]
+position = Vector2( 370.11, 1509.64 )
+
+[node name="coin19" parent="Level/Coins" instance=ExtResource( 10 )]
+position = Vector2( 370.11, 1509.64 )
+
+[node name="coin20" parent="Level/Coins" instance=ExtResource( 10 )]
+position = Vector2( 370.11, 1509.64 )
+
+[connection signal="experience_gained" from="Player" to="UI/Interface/ExperienceBar" method="_on_player_experience_gained"]
+[connection signal="shop_open_requested" from="Level/merchant" to="." method="_on_merchant_shop_open_requested"]

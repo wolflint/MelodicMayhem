@@ -18,7 +18,9 @@ var anim=""
 enum States {WALKING, DIED}
 var state = States.WALKING
 
-onready var LEVEL_ROOT = get_tree().get_root().get_node("test")
+onready var GAME_ROOT = get_tree().get_root().get_node("Game")
+onready var LEVEL_ROOT = GAME_ROOT.get_node("Level")
+
 onready var detect_floor_left = $detect_floor_left
 onready var detect_wall_left = $detect_wall_left
 onready var detect_floor_right = $detect_floor_right
@@ -31,7 +33,7 @@ onready var coin = preload("res://collectibles/coin/coin.tscn")
 func _ready():
 	$anim.play("SETUP")
 #warning-ignore:return_value_discarded
-	connect("died", LEVEL_ROOT, "_on_enemy_died", [experience_to_give])
+	connect("died", GAME_ROOT, "_on_enemy_died", [experience_to_give])
 #	state = STATE_KILLED
 
 func _physics_process(delta):
