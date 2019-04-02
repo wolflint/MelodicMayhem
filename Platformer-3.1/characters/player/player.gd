@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-signal experience_gained(growth_data)
+signal experience_gained(growth_data, player)
 
 # Character stats
 export (int) var max_hp = 12
@@ -174,7 +174,7 @@ func gain_experience(amount):
 		growth_data.append([experience_required, experience_required])
 		level_up()
 	growth_data.append([experience, get_required_experience(level + 1)])
-	emit_signal("experience_gained", growth_data)
+	emit_signal("experience_gained", growth_data, self)
 
 func level_up():
 	level += 1

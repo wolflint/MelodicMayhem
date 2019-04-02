@@ -4,11 +4,11 @@ onready var ShopMenu = preload("res://interface/shop/ShopMenu.tscn")
 onready var InventoryMenu = preload("res://interface/inventory-menu/InventoryMenu.tscn")
 onready var _character = $Player
 onready var _label = $UI/Interface/Label
-onready var _bar = $UI/Interface/ExperienceBar
+onready var _bar = $UI/PlayerStats/ExperienceBar
 
 func _ready():
 	_label.update_text(_character.level, _character.experience, _character.experience_required)
-	_bar.initialize(_character.experience, _character.experience_required)
+	_bar.initialize(_character.experience, _character.experience_required, [_character])
 	### TESTING PURPOSES - REMOVE LATER###
 	_character.get_node("Purse").coins += 1000
 

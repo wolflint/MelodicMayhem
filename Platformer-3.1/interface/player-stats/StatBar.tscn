@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://interface/player-stats/bar_background.png" type="Texture" id=1]
+[ext_resource path="res://interface/player-stats/bar_fill.png" type="Texture" id=2]
+[ext_resource path="res://interface/player-stats/StatBar.gd" type="Script" id=3]
+[ext_resource path="res://interface/theme/fonts/source_code_pro_26.tres" type="DynamicFont" id=4]
+
+[node name="StatBar" type="TextureProgress"]
+margin_right = 4.0
+margin_bottom = 14.0
+value = 75.0
+texture_under = ExtResource( 1 )
+texture_progress = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Label" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 6
+custom_fonts/font = ExtResource( 4 )
+text = "STAT: 99/999"
+align = 1
+valign = 1
+
