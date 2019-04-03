@@ -303,4 +303,12 @@ max_health = 100
 
 [node name="Tween" type="Tween" parent="."]
 
+[node name="Cooldown" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="MusicRegen" type="Timer" parent="."]
+
 [connection signal="health_changed" from="Health" to="." method="_on_Health_health_changed"]
+[connection signal="timeout" from="Cooldown" to="." method="_on_Cooldown_timeout"]
+[connection signal="timeout" from="MusicRegen" to="." method="_on_MusicRegen_timeout"]

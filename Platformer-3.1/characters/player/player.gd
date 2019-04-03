@@ -3,11 +3,13 @@ extends KinematicBody2D
 signal experience_gained(growth_data, player)
 signal health_changed(health, max_health)
 signal gained_max_health()
+signal music_level_changed(current_music, max_music)
 
 # Character stats
 export (int) var max_hp = 12
 export (int) var strength = 8
-export (int) var max_music = 8
+export (int) var max_music = 50
+var current_music
 
 # Experience and leveling system
 export (int) var level = 1
@@ -53,8 +55,11 @@ var anim=""
 
 onready var sprite = $sprite
 
+var cooldown = false
+
 func _ready():
 	state = States.IDLE
+	current_music = max_music
 	connect("gained_max_health", $Health, "_on_Player_gained_max_health")
 
 func _input(event):
@@ -114,15 +119,24 @@ func _horizontal_movement():
 
 func _shoot():
 	# Shooting
-	if Input.is_action_just_pressed("shoot"):
-		if current_weapon:
-			var bullet = preload("note.tscn").instance()
-			bullet.position = $sprite/bullet_shoot.global_position #use node for shoot position
-			bullet.linear_velocity = Vector2(sprite.scale.x * BULLET_VELOCITY, 0)
-			bullet.add_collision_exception_with(self) # don't want player to collide with bullet
-			get_parent().add_child(bullet) #don't want bullet to move with me, so add it as child of parent
-			$sound_shoot.play()
-			shoot_time = 0
+	if Input.is_action_pressed("shoot"):
+		$MusicRegen.stop()
+		if current_music != 0:
+			if current_weapon and !cooldown:
+				current_music -= 1
+				emit_signal("music_level_changed", current_music, max_music)
+				var bullet = preload("note.tscn").instance()
+				bullet.position = $sprite/bullet_shoot.global_position #use node for shoot position
+				bullet.linear_velocity = Vector2(sprite.scale.x * BULLET_VELOCITY, 0)
+				bullet.add_collision_exception_with(self) # don't want player to collide with bullet
+				get_parent().add_child(bullet) #don't want bullet to move with me, so add it as child of parent
+				$Cooldown.start()
+				cooldown = true
+				$sound_shoot.play()
+				shoot_time = 0
+	elif not Input.is_action_just_pressed("shoot"):
+		if $MusicRegen.is_stopped():
+			$MusicRegen.start()
 
 func _animate_sprite(new_anim = "idle"):
 	### ANIMATION ###
@@ -193,8 +207,20 @@ func level_up():
 			emit_signal("health_changed", $Health.health, $Health.max_health)
 		'strength', 'max_music':
 			set(random_stat, get(random_stat) + randi() % 4)
+		'max_music':
+			emit_signal("music_level_changed", current_music, max_music)
+
 
 func _on_Health_health_changed(new_health):
 	if new_health <= 0:
 		pass
 	emit_signal("health_changed", [new_health, $Health.max_health], self)
+
+
+func _on_Cooldown_timeout():
+	cooldown = false
+
+
+func _on_MusicRegen_timeout():
+	current_music = min(current_music + 1, max_music)
+	emit_signal("music_level_changed", current_music, max_music)

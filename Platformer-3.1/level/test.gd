@@ -6,11 +6,13 @@ onready var _character = $Player
 onready var _label = $UI/Interface/Label
 onready var _exp_bar = $UI/PlayerStats/ExperienceBar
 onready var _hp_bar = $UI/PlayerStats/HealthBar
+onready var _music_bar = $UI/PlayerStats/MusicBar
 
 func _ready():
 	_label.update_text(_character.level, _character.experience, _character.experience_required)
 	_exp_bar.initialize(_character.experience, _character.experience_required, [_character])
 	_hp_bar.initialize(_character.get_node("Health").health, _character.get_node("Health").max_health)
+	_music_bar.initialize(_character.current_music, _character.max_music)
 	### TESTING PURPOSES - REMOVE LATER###
 	_character.get_node("Purse").coins += 1000
 

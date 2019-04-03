@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://interface/player-stats/StatBar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://interface/player-stats/MusicBar.gd" type="Script" id=2]
+
+[node name="MusicBar" index="0" instance=ExtResource( 1 )]
+tint_progress = Color( 0.305882, 0.588235, 0.988235, 1 )
+script = ExtResource( 2 )
+
