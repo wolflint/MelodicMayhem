@@ -10,7 +10,7 @@ export(float) var experience_to_give = 50.0
 const GRAVITY_VEC = Vector2(0, 900)
 const FLOOR_NORMAL = Vector2(0, -1)
 
-const WALK_SPEED = 70
+const WALK_SPEED = 140
 
 var linear_velocity = Vector2()
 var direction = -1
