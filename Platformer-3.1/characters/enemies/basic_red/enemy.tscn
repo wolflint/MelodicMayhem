@@ -94,6 +94,18 @@ tracks/6/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
+tracks/7/type = "value"
+tracks/7/path = NodePath("Hitbox:collision_mask")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
 
 [sub_resource type="Animation" id=2]
 length = 2.0
@@ -207,6 +219,18 @@ tracks/8/keys = {
 "update": 1,
 "values": [ 1 ]
 }
+tracks/9/type = "value"
+tracks/9/path = NodePath("Hitbox:collision_mask")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
 
 [sub_resource type="Animation" id=3]
 length = 6.75
@@ -316,10 +340,10 @@ shape = SubResource( 6 )
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 4
-collision_mask = 8
+collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox"]
-polygon = PoolVector2Array( -26, 3, -8, -16, 10, -16, 22, -6, 26, 14, -24, 14 )
+polygon = PoolVector2Array( -28, 2, -10, -18, 10, -18, 24, -8, 30, 18, -28, 18 )
 
 [node name="detect_floor_left" type="RayCast2D" parent="."]
 position = Vector2( -33.2868, -9.34363 )
