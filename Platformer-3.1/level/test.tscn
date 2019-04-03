@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://level/test.gd" type="Script" id=1]
 [ext_resource path="res://characters/player/player.tscn" type="PackedScene" id=2]
@@ -8,10 +8,9 @@
 [ext_resource path="res://interface/player-stats/ExperienceBar.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/tileset.tres" type="TileSet" id=7]
 [ext_resource path="res://characters/merchant/merchant.tscn" type="PackedScene" id=8]
-[ext_resource path="res://level/Enemies.gd" type="Script" id=9]
-[ext_resource path="res://characters/enemies/basic_red/enemy.tscn" type="PackedScene" id=10]
-[ext_resource path="res://environment/parallax_bg.tscn" type="PackedScene" id=11]
-[ext_resource path="res://collectibles/coin/coin.tscn" type="PackedScene" id=12]
+[ext_resource path="res://environment/parallax_bg.tscn" type="PackedScene" id=9]
+[ext_resource path="res://collectibles/coin/coin.tscn" type="PackedScene" id=10]
+[ext_resource path="res://characters/enemies/EnemySpawner.tscn" type="PackedScene" id=11]
 
 [node name="Game" type="Node"]
 script = ExtResource( 1 )
@@ -75,77 +74,73 @@ tile_data = PoolIntArray( 1310720, 2, 0, 1310735, 2, 0, 1376256, 2, 0, 1376271, 
 [node name="merchant" parent="Level" instance=ExtResource( 8 )]
 position = Vector2( 783.576, 1575.31 )
 
-[node name="Enemies" type="Position2D" parent="Level"]
-script = ExtResource( 9 )
-enemy = ExtResource( 10 )
-
-[node name="enemy" parent="Level/Enemies" instance=ExtResource( 10 )]
-position = Vector2( 753.016, 1171.33 )
-
-[node name="ParallaxBackground" parent="Level" instance=ExtResource( 11 )]
+[node name="ParallaxBackground" parent="Level" instance=ExtResource( 9 )]
 
 [node name="Coins" type="Node" parent="Level"]
 editor/display_folded = true
 
-[node name="coin" parent="Level/Coins" instance=ExtResource( 12 )]
+[node name="coin" parent="Level/Coins" instance=ExtResource( 10 )]
 position = Vector2( 370.11, 1509.64 )
 
-[node name="coin2" parent="Level/Coins" instance=ExtResource( 12 )]
+[node name="coin2" parent="Level/Coins" instance=ExtResource( 10 )]
 position = Vector2( 370.11, 1509.64 )
 
-[node name="coin3" parent="Level/Coins" instance=ExtResource( 12 )]
+[node name="coin3" parent="Level/Coins" instance=ExtResource( 10 )]
 position = Vector2( 370.11, 1509.64 )
 
-[node name="coin4" parent="Level/Coins" instance=ExtResource( 12 )]
+[node name="coin4" parent="Level/Coins" instance=ExtResource( 10 )]
 position = Vector2( 370.11, 1509.64 )
 
-[node name="coin5" parent="Level/Coins" instance=ExtResource( 12 )]
+[node name="coin5" parent="Level/Coins" instance=ExtResource( 10 )]
 position = Vector2( 370.11, 1509.64 )
 
-[node name="coin6" parent="Level/Coins" instance=ExtResource( 12 )]
+[node name="coin6" parent="Level/Coins" instance=ExtResource( 10 )]
 position = Vector2( 370.11, 1509.64 )
 
-[node name="coin7" parent="Level/Coins" instance=ExtResource( 12 )]
+[node name="coin7" parent="Level/Coins" instance=ExtResource( 10 )]
 position = Vector2( 370.11, 1509.64 )
 
-[node name="coin8" parent="Level/Coins" instance=ExtResource( 12 )]
+[node name="coin8" parent="Level/Coins" instance=ExtResource( 10 )]
 position = Vector2( 370.11, 1509.64 )
 
-[node name="coin9" parent="Level/Coins" instance=ExtResource( 12 )]
+[node name="coin9" parent="Level/Coins" instance=ExtResource( 10 )]
 position = Vector2( 370.11, 1509.64 )
 
-[node name="coin10" parent="Level/Coins" instance=ExtResource( 12 )]
+[node name="coin10" parent="Level/Coins" instance=ExtResource( 10 )]
 position = Vector2( 370.11, 1509.64 )
 
-[node name="coin11" parent="Level/Coins" instance=ExtResource( 12 )]
+[node name="coin11" parent="Level/Coins" instance=ExtResource( 10 )]
 position = Vector2( 370.11, 1509.64 )
 
-[node name="coin12" parent="Level/Coins" instance=ExtResource( 12 )]
+[node name="coin12" parent="Level/Coins" instance=ExtResource( 10 )]
 position = Vector2( 370.11, 1509.64 )
 
-[node name="coin13" parent="Level/Coins" instance=ExtResource( 12 )]
+[node name="coin13" parent="Level/Coins" instance=ExtResource( 10 )]
 position = Vector2( 370.11, 1509.64 )
 
-[node name="coin14" parent="Level/Coins" instance=ExtResource( 12 )]
+[node name="coin14" parent="Level/Coins" instance=ExtResource( 10 )]
 position = Vector2( 370.11, 1509.64 )
 
-[node name="coin15" parent="Level/Coins" instance=ExtResource( 12 )]
+[node name="coin15" parent="Level/Coins" instance=ExtResource( 10 )]
 position = Vector2( 370.11, 1509.64 )
 
-[node name="coin16" parent="Level/Coins" instance=ExtResource( 12 )]
+[node name="coin16" parent="Level/Coins" instance=ExtResource( 10 )]
 position = Vector2( 370.11, 1509.64 )
 
-[node name="coin17" parent="Level/Coins" instance=ExtResource( 12 )]
+[node name="coin17" parent="Level/Coins" instance=ExtResource( 10 )]
 position = Vector2( 370.11, 1509.64 )
 
-[node name="coin18" parent="Level/Coins" instance=ExtResource( 12 )]
+[node name="coin18" parent="Level/Coins" instance=ExtResource( 10 )]
 position = Vector2( 370.11, 1509.64 )
 
-[node name="coin19" parent="Level/Coins" instance=ExtResource( 12 )]
+[node name="coin19" parent="Level/Coins" instance=ExtResource( 10 )]
 position = Vector2( 370.11, 1509.64 )
 
-[node name="coin20" parent="Level/Coins" instance=ExtResource( 12 )]
+[node name="coin20" parent="Level/Coins" instance=ExtResource( 10 )]
 position = Vector2( 370.11, 1509.64 )
+
+[node name="EnemySpawner" parent="Level" instance=ExtResource( 11 )]
+position = Vector2( 338.567, 1492.48 )
 
 [connection signal="experience_gained" from="Player" to="UI/PlayerStats/ExperienceBar" method="_on_Player_experience_gained"]
 [connection signal="health_changed" from="Player" to="UI/PlayerStats/HealthBar" method="_on_Player_health_changed"]

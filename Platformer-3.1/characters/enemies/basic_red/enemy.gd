@@ -22,6 +22,7 @@ var state = States.WALKING
 onready var GAME_ROOT = get_tree().get_root().get_node("Game")
 onready var LEVEL_ROOT = GAME_ROOT.get_node("Level")
 onready var hp = $Health
+onready var hitbox = $Hitbox/CollisionPolygon2D
 onready var detect_floor_left = $detect_floor_left
 onready var detect_wall_left = $detect_wall_left
 onready var detect_floor_right = $detect_floor_right
@@ -89,6 +90,7 @@ func _take_projectile_damage(projectile):
 	if state != States.DIED:
 		hp.take_damage(projectile.strength)
 	if hp.health <= 0:
+		hitbox.set_deferred("disabled", true)
 #		print("died")
 		set_deferred("state", States.DIED)
 		call_deferred("drop_coin")

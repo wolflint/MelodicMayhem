@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://characters/enemies/EnemySpawner.gd" type="Script" id=1]
+[ext_resource path="res://characters/enemies/basic_red/enemy.tscn" type="PackedScene" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 279.727, 111.121 )
+
+[node name="EnemySpawner" type="Area2D"]
+collision_mask = 2
+script = ExtResource( 1 )
+enemy = ExtResource( 2 )
+
+[node name="SpawnTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="." to="." method="_on_EnemySpawner_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_EnemySpawner_body_exited"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]

@@ -241,7 +241,9 @@ shape = SubResource( 11 )
 visible = false
 position = Vector2( 0, -1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" groups=[
+"player",
+]]
 position = Vector2( -7, 9 )
 shape = SubResource( 12 )
 
