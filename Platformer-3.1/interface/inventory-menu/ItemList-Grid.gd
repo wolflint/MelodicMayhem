@@ -12,7 +12,7 @@ func _on_ItemButton_tree_exited(button):
 	if not(get_child_count() > 0):
 		return
 	var to_focus_path = button.focus_neighbour_left if button.get_index() > 0 else button.focus_neighbour_right
-	button.get_node(to_focus_path).grab_focus()
+	button.get_node(to_focus_path).call_deferred("grab_focus")
 	update_focus_neighbours(button)
 
 func update_focus_neighbours(ignore=null):
