@@ -4,7 +4,10 @@
 [ext_resource path="res://characters/player/note_particle.png" type="Texture" id=2]
 [ext_resource path="res://characters/player/note_projectile.png" type="Texture" id=3]
 
-[node name="note" index="0" instance=ExtResource( 1 )]
+[node name="note" groups=[
+"projectile",
+] instance=ExtResource( 1 )]
+mass = 0.5
 
 [node name="Particles2D" parent="." index="0"]
 lifetime = 1.0

@@ -7,7 +7,7 @@ signal gained_max_health()
 # Character stats
 export (int) var max_hp = 12
 export (int) var strength = 8
-export (int) var music = 8
+export (int) var max_music = 8
 
 # Experience and leveling system
 export (int) var level = 1
@@ -51,7 +51,6 @@ onready var current_weapon = $weapon.weapon_type
 
 var anim=""
 
-#cache the sprite here for fast access (we will set scale to flip it often)
 onready var sprite = $sprite
 
 func _ready():
@@ -60,10 +59,12 @@ func _ready():
 
 func _input(event):
 	# Jumping
-	if jump_count < MAX_JUMP_COUNT and Input.is_action_just_pressed("jump"):
+	if jump_count < MAX_JUMP_COUNT and event.is_action_pressed("jump"):
 		linear_vel.y = -JUMP_SPEED
 		$sound_jump.play()
 		jump_count += 1
+	if event.is_action_pressed("test_button"):
+		_stagger()
 
 func _physics_process(delta):
 	#increment counters
@@ -156,8 +157,9 @@ func _animate_sprite(new_anim = "idle"):
 		$anim.play(anim)
 
 func _stagger():
-	$Tween.interpolate_property(self, 'position', position, position + knockback * -knockback_direction, STAGGER_DURATION, Tween.TRANS_QUAD, Tween.EASE_OUT)
-	$Tween.start()
+#	$Tween.interpolate_property(self, 'position', position, position + knockback * -knockback_direction, STAGGER_DURATION, Tween.TRANS_QUAD, Tween.EASE_OUT)
+#	$Tween.start()
+	pass
 
 func take_damage(damager, amount):
 	if self.is_a_parent_of(damager):
@@ -183,18 +185,16 @@ func level_up():
 	level += 1
 	experience_required = get_required_experience(level + 1)
 	randomize()
-	var stats = ['max_hp', 'strength', 'music']
+	var stats = ['max_hp', 'strength', 'max_music']
 	var random_stat = stats[randi() % stats.size()]
 	match random_stat:
 		'max_hp':
 			emit_signal("gained_max_health")
 			emit_signal("health_changed", $Health.health, $Health.max_health)
-		'strength', 'music':
+		'strength', 'max_music':
 			set(random_stat, get(random_stat) + randi() % 4)
-
 
 func _on_Health_health_changed(new_health):
 	if new_health <= 0:
 		pass
 	emit_signal("health_changed", [new_health, $Health.max_health], self)
-	

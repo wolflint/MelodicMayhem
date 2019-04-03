@@ -76,39 +76,11 @@ tile_data = PoolIntArray( 1310720, 2, 0, 1310735, 2, 0, 1376256, 2, 0, 1376271, 
 position = Vector2( 783.576, 1575.31 )
 
 [node name="Enemies" type="Position2D" parent="Level"]
-editor/display_folded = true
 script = ExtResource( 9 )
 enemy = ExtResource( 10 )
 
 [node name="enemy" parent="Level/Enemies" instance=ExtResource( 10 )]
 position = Vector2( 753.016, 1171.33 )
-
-[node name="enemy2" parent="Level/Enemies" instance=ExtResource( 10 )]
-position = Vector2( 772.01, 1170.3 )
-
-[node name="enemy3" parent="Level/Enemies" instance=ExtResource( 10 )]
-position = Vector2( 792.03, 1170.82 )
-
-[node name="enemy4" parent="Level/Enemies" instance=ExtResource( 10 )]
-position = Vector2( 835.151, 1178.52 )
-
-[node name="enemy5" parent="Level/Enemies" instance=ExtResource( 10 )]
-position = Vector2( 866.465, 1171.33 )
-
-[node name="enemy6" parent="Level/Enemies" instance=ExtResource( 10 )]
-position = Vector2( 873.138, 1135.4 )
-
-[node name="enemy7" parent="Level/Enemies" instance=ExtResource( 10 )]
-position = Vector2( 816.67, 1113.84 )
-
-[node name="enemy8" parent="Level/Enemies" instance=ExtResource( 10 )]
-position = Vector2( 859.278, 1104.08 )
-
-[node name="enemy9" parent="Level/Enemies" instance=ExtResource( 10 )]
-position = Vector2( 765.85, 1104.6 )
-
-[node name="enemy10" parent="Level/Enemies" instance=ExtResource( 10 )]
-position = Vector2( 769.956, 1134.37 )
 
 [node name="ParallaxBackground" parent="Level" instance=ExtResource( 11 )]
 

@@ -6,6 +6,7 @@ signal died(experience_to_give)
 #warning-ignore:unused_class_variable
 export(float) var experience_to_give = 50.0
 
+
 const GRAVITY_VEC = Vector2(0, 900)
 const FLOOR_NORMAL = Vector2(0, -1)
 
@@ -20,7 +21,7 @@ var state = States.WALKING
 
 onready var GAME_ROOT = get_tree().get_root().get_node("Game")
 onready var LEVEL_ROOT = GAME_ROOT.get_node("Level")
-
+onready var hp = $Health
 onready var detect_floor_left = $detect_floor_left
 onready var detect_wall_left = $detect_wall_left
 onready var detect_floor_right = $detect_floor_right
@@ -67,12 +68,6 @@ func _physics_process(delta):
 		anim = new_anim
 		$anim.play(anim)
 
-func hit_by_bullet():
-	if state != States.DIED:
-		set_deferred("state", States.DIED)
-		call_deferred("drop_coin")
-		emit_signal("died")
-
 func drop_coin():
 	var new_coin = coin.instance()
 	new_coin.set_deferred("position", position)
@@ -84,3 +79,17 @@ func check_collisions():
 #				print(body.get_name())
 				if body.get_name() == "player":
 					body.take_damage(self, 1)
+
+func _on_Hitbox_body_entered(body):
+	if body.is_in_group("projectiles"):
+		_take_projectile_damage(body)
+
+
+func _take_projectile_damage(projectile):
+	if state != States.DIED:
+		hp.take_damage(projectile.strength)
+	if hp.health <= 0:
+#		print("died")
+		set_deferred("state", States.DIED)
+		call_deferred("drop_coin")
+		emit_signal("died")
