@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://inventory/items/HealingItem.tscn" type="PackedScene" id=1]
+[ext_resource path="res://inventory/items/red_potion_small.png" type="Texture" id=2]
+
+[node name="HealthPotion" index="0" instance=ExtResource( 1 )]
+icon = ExtResource( 2 )
+display_name = "Health Potion"
+description = "A health potion will restore 25 health points."
+price = 50
+healing_value = 25
+

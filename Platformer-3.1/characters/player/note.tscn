@@ -4,7 +4,7 @@
 [ext_resource path="res://characters/player/note_particle.png" type="Texture" id=2]
 [ext_resource path="res://characters/player/note_projectile.png" type="Texture" id=3]
 
-[node name="note" groups=[
+[node name="note" index="0" groups=[
 "projectile",
 ] instance=ExtResource( 1 )]
 mass = 0.5

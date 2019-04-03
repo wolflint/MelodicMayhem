@@ -69,7 +69,7 @@ func _input(event):
 		$sound_jump.play()
 		jump_count += 1
 	if event.is_action_pressed("test_button"):
-		_stagger()
+		$Health.take_damage(10)
 
 func _physics_process(delta):
 	#increment counters
@@ -214,7 +214,7 @@ func level_up():
 func _on_Health_health_changed(new_health):
 	if new_health <= 0:
 		pass
-	emit_signal("health_changed", [new_health, $Health.max_health], self)
+	emit_signal("health_changed", new_health, $Health.max_health)
 
 
 func _on_Cooldown_timeout():

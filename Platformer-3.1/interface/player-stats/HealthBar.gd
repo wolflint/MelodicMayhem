@@ -23,3 +23,4 @@ func _update_label(current, maximum):
 
 func _on_Player_health_changed(health, max_health):
 	_update_label(health, max_health)
+	yield(animate_value(health), "completed")

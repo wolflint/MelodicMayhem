@@ -1,17 +1,16 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://inventory/ItemDatabase.gd" type="Script" id=1]
-[ext_resource path="res://inventory/items/TestItem1.tscn" type="PackedScene" id=2]
-[ext_resource path="res://inventory/items/TestItem2.tscn" type="PackedScene" id=3]
-[ext_resource path="res://inventory/items/TestItem3.tscn" type="PackedScene" id=4]
+[ext_resource path="res://inventory/items/Food.tscn" type="PackedScene" id=2]
+[ext_resource path="res://inventory/items/HealthPotion.tscn" type="PackedScene" id=3]
+[ext_resource path="res://inventory/items/HealthPotionLarge.tscn" type="PackedScene" id=4]
 
 [node name="ItemDatabase" type="Node"]
 script = ExtResource( 1 )
 
-[node name="TestItem1" parent="." instance=ExtResource( 2 )]
-display_name = "t3st Item 1"
+[node name="Food" parent="." instance=ExtResource( 2 )]
 
-[node name="TestItem2" parent="." instance=ExtResource( 3 )]
+[node name="HealthPotion" parent="." instance=ExtResource( 3 )]
 
-[node name="TestItem3" parent="." instance=ExtResource( 4 )]
+[node name="HealthPotionLarge" parent="." instance=ExtResource( 4 )]
 

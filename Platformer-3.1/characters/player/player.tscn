@@ -10,7 +10,7 @@
 [ext_resource path="res://assets/osb_fire.png" type="Texture" id=8]
 [ext_resource path="res://characters/player/weapon.gd" type="Script" id=9]
 [ext_resource path="res://inventory/Inventory.tscn" type="PackedScene" id=10]
-[ext_resource path="res://inventory/items/TestItem1.tscn" type="PackedScene" id=11]
+[ext_resource path="res://inventory/items/Food.tscn" type="PackedScene" id=11]
 [ext_resource path="res://shop/Purse.tscn" type="PackedScene" id=12]
 [ext_resource path="res://characters/Health.tscn" type="PackedScene" id=13]
 
@@ -292,9 +292,9 @@ script = ExtResource( 9 )
 weapon_type = "not null"
 
 [node name="Inventory" parent="." instance=ExtResource( 10 )]
-editor/display_folded = true
 
-[node name="TestItem1" parent="Inventory" instance=ExtResource( 11 )]
+[node name="Food" parent="Inventory" instance=ExtResource( 11 )]
+amount = 10
 
 [node name="Purse" parent="." instance=ExtResource( 12 )]
 

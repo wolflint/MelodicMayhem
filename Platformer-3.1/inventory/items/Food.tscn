@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://inventory/items/HealingItem.tscn" type="PackedScene" id=1]
+
+[node name="Food" index="0" instance=ExtResource( 1 )]
+display_name = "Food"
+description = "Eating food restores 5 health points."
+

@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://inventory/items/Item.tscn" type="PackedScene" id=1]
+[ext_resource path="res://inventory/items/HealingItem.gd" type="Script" id=2]
+[ext_resource path="res://inventory/items/food.png" type="Texture" id=3]
+
+[node name="HealingItem" index="0" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+icon = ExtResource( 3 )
+display_name = "HealingItem"
+description = "Heals 5HP"
+price = 10
+
