@@ -82,14 +82,13 @@ func check_collisions():
 
 func _on_Hitbox_body_entered(body):
 	if body.is_in_group("projectiles"):
-		_take_projectile_damage(body)
-	if $Health.health < $Health.max_health:
+		_take_damage(body.strength)
+	if hp.health < hp.max_health:
 		$HookableHealthBar.set("visible", true)
 
-
-func _take_projectile_damage(projectile):
+func _take_damage(amount):
 	if state != States.DIED:
-		hp.take_damage(projectile.strength)
+		hp.take_damage(amount)
 	if hp.health <= 0:
 		hitbox.set_deferred("disabled", true)
 		set_deferred("state", States.DIED)
