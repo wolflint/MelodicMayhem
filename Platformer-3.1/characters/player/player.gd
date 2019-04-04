@@ -126,6 +126,7 @@ func _shoot():
 				current_music -= 1
 				emit_signal("music_level_changed", current_music, max_music)
 				var bullet = preload("note.tscn").instance()
+				bullet.set("strength", strength)
 				bullet.position = $sprite/bullet_shoot.global_position #use node for shoot position
 				bullet.linear_velocity = Vector2(sprite.scale.x * BULLET_VELOCITY, 0)
 				bullet.add_collision_exception_with(self) # don't want player to collide with bullet
@@ -222,5 +223,7 @@ func _on_Cooldown_timeout():
 
 
 func _on_MusicRegen_timeout():
+	if current_music == max_music:
+		return
 	current_music = min(current_music + 1, max_music)
 	emit_signal("music_level_changed", current_music, max_music)

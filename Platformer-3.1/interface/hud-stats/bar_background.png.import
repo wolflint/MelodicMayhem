@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/exp_fill.png-83c66e00b1184b518da19f57fdb0cadb.stex"
+path="res://.import/bar_background.png-aef44a406534a2f355e7fe2f343ec9db.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://interface/player-stats/exp_fill.png"
-dest_files=[ "res://.import/exp_fill.png-83c66e00b1184b518da19f57fdb0cadb.stex" ]
+source_file="res://interface/hud-stats/bar_background.png"
+dest_files=[ "res://.import/bar_background.png-aef44a406534a2f355e7fe2f343ec9db.stex" ]
 
 [params]
 

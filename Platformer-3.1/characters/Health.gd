@@ -8,14 +8,11 @@ export(int) var max_health = 1
 var status = null
 enum STATUSES { NONE, INVINCIBLE }
 
-
 func _ready():
 	health = max_health
 
-
 func _change_status(new_status):
 	status = new_status
-
 
 func take_damage(amount):
 	if status == STATUSES.INVINCIBLE:
@@ -23,15 +20,11 @@ func take_damage(amount):
 	health -= amount
 	health = max(0, health)
 	emit_signal("health_changed", health)
-#	print("%s got hit and took %s damage. Health: %s/%s" % [get_name(), amount, health, max_health])
-
 
 func heal(amount):
 	health += amount
 	health = min(health, max_health)
-	print(health)
 	emit_signal("health_changed", health)
-#	print("%s got healed by %s points. Health: %s/%s" % [get_name(), amount, health, max_health])
 
 func _on_Player_gained_max_health():
 	randomize()

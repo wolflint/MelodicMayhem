@@ -1,11 +1,11 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://level/test.gd" type="Script" id=1]
 [ext_resource path="res://interface/leveling-system/ExperienceBar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://level/Label.gd" type="Script" id=3]
-[ext_resource path="res://interface/player-stats/HealthBar.tscn" type="PackedScene" id=4]
-[ext_resource path="res://interface/player-stats/MusicBar.tscn" type="PackedScene" id=5]
-[ext_resource path="res://interface/player-stats/ExperienceBar.tscn" type="PackedScene" id=6]
+[ext_resource path="res://interface/hud-stats/HealthBar.tscn" type="PackedScene" id=4]
+[ext_resource path="res://interface/hud-stats/MusicBar.tscn" type="PackedScene" id=5]
+[ext_resource path="res://interface/hud-stats/ExperienceBar.tscn" type="PackedScene" id=6]
 [ext_resource path="res://characters/merchant/merchant.tscn" type="PackedScene" id=7]
 [ext_resource path="res://environment/parallax_bg.tscn" type="PackedScene" id=8]
 [ext_resource path="res://characters/enemies/EnemySpawner.tscn" type="PackedScene" id=9]
@@ -13,8 +13,7 @@
 [ext_resource path="res://environment/moving_platform.tscn" type="PackedScene" id=11]
 [ext_resource path="res://environment/one_way_platform.tscn" type="PackedScene" id=12]
 [ext_resource path="res://collectibles/coin/coin.tscn" type="PackedScene" id=13]
-[ext_resource path="res://collectibles/coin/coin.gd" type="Script" id=14]
-[ext_resource path="res://characters/player/player.tscn" type="PackedScene" id=15]
+[ext_resource path="res://characters/player/player.tscn" type="PackedScene" id=14]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 331.338
@@ -83,7 +82,7 @@ position = Vector2( 1047.01, 1061.86 )
 [node name="ParallaxBackground" parent="Level" instance=ExtResource( 8 )]
 
 [node name="EnemySpawner" parent="Level" instance=ExtResource( 9 )]
-position = Vector2( 1123.63, 759.06 )
+position = Vector2( 1804.01, 755.544 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/EnemySpawner"]
 shape = SubResource( 1 )
@@ -166,304 +165,136 @@ position = Vector2( 1039.29, 409.746 )
 [node name="Coins" type="Node" parent="Level"]
 editor/display_folded = true
 
-[node name="coin" type="Area2D" parent="Level/Coins" instance=ExtResource( 13 )]
+[node name="coin" parent="Level/Coins" instance=ExtResource( 13 )]
 position = Vector2( 672, 1179 )
-collision_layer = 16
-collision_mask = 2
-script = ExtResource( 14 )
 
-[node name="coin 2" type="Area2D" parent="Level/Coins" instance=ExtResource( 13 )]
+[node name="coin 2" parent="Level/Coins" instance=ExtResource( 13 )]
 position = Vector2( 704, 1179 )
-collision_layer = 16
-collision_mask = 2
-script = ExtResource( 14 )
 
-[node name="coin 3" type="Area2D" parent="Level/Coins" instance=ExtResource( 13 )]
+[node name="coin 3" parent="Level/Coins" instance=ExtResource( 13 )]
 position = Vector2( 736, 1179 )
-collision_layer = 16
-collision_mask = 2
-script = ExtResource( 14 )
 
-[node name="coin 4" type="Area2D" parent="Level/Coins" instance=ExtResource( 13 )]
+[node name="coin 4" parent="Level/Coins" instance=ExtResource( 13 )]
 position = Vector2( 1120, 992 )
-collision_layer = 16
-collision_mask = 2
-script = ExtResource( 14 )
 
-[node name="coin 5" type="Area2D" parent="Level/Coins" instance=ExtResource( 13 )]
+[node name="coin 5" parent="Level/Coins" instance=ExtResource( 13 )]
 position = Vector2( 1152, 992 )
-collision_layer = 16
-collision_mask = 2
-script = ExtResource( 14 )
 
-[node name="coin 6" type="Area2D" parent="Level/Coins" instance=ExtResource( 13 )]
+[node name="coin 6" parent="Level/Coins" instance=ExtResource( 13 )]
 position = Vector2( 1184, 992 )
-collision_layer = 16
-collision_mask = 2
-script = ExtResource( 14 )
 
-[node name="coin 7" type="Area2D" parent="Level/Coins" instance=ExtResource( 13 )]
+[node name="coin 7" parent="Level/Coins" instance=ExtResource( 13 )]
 position = Vector2( 1216, 992 )
-collision_layer = 16
-collision_mask = 2
-script = ExtResource( 14 )
 
-[node name="coin 8" type="Area2D" parent="Level/Coins" instance=ExtResource( 13 )]
+[node name="coin 8" parent="Level/Coins" instance=ExtResource( 13 )]
 position = Vector2( 1248, 992 )
-collision_layer = 16
-collision_mask = 2
-script = ExtResource( 14 )
 
-[node name="coin 9" type="Area2D" parent="Level/Coins" instance=ExtResource( 13 )]
+[node name="coin 9" parent="Level/Coins" instance=ExtResource( 13 )]
 position = Vector2( 1568, 864 )
-collision_layer = 16
-collision_mask = 2
-script = ExtResource( 14 )
 
-[node name="coin 10" type="Area2D" parent="Level/Coins" instance=ExtResource( 13 )]
+[node name="coin 10" parent="Level/Coins" instance=ExtResource( 13 )]
 position = Vector2( 1632, 864 )
-collision_layer = 16
-collision_mask = 2
-script = ExtResource( 14 )
 
-[node name="coin 11" type="Area2D" parent="Level/Coins" instance=ExtResource( 13 )]
+[node name="coin 11" parent="Level/Coins" instance=ExtResource( 13 )]
 position = Vector2( 1169.44, 677.369 )
-collision_layer = 16
-collision_mask = 2
-script = ExtResource( 14 )
 
-[node name="coin 12" type="Area2D" parent="Level/Coins" instance=ExtResource( 13 )]
+[node name="coin 12" parent="Level/Coins" instance=ExtResource( 13 )]
 position = Vector2( 1233.44, 677.369 )
-collision_layer = 16
-collision_mask = 2
-script = ExtResource( 14 )
 
-[node name="coin 13" type="Area2D" parent="Level/Coins" instance=ExtResource( 13 )]
+[node name="coin 13" parent="Level/Coins" instance=ExtResource( 13 )]
 position = Vector2( 924.453, 566.264 )
-collision_layer = 16
-collision_mask = 2
-script = ExtResource( 14 )
 
-[node name="coin 14" type="Area2D" parent="Level/Coins" instance=ExtResource( 13 )]
+[node name="coin 14" parent="Level/Coins" instance=ExtResource( 13 )]
 position = Vector2( 988.453, 566.264 )
-collision_layer = 16
-collision_mask = 2
-script = ExtResource( 14 )
 
-[node name="coin 15" type="Area2D" parent="Level/Coins" instance=ExtResource( 13 )]
+[node name="coin 15" parent="Level/Coins" instance=ExtResource( 13 )]
 position = Vector2( 983.872, 336.653 )
-collision_layer = 16
-collision_mask = 2
-script = ExtResource( 14 )
 
-[node name="coin 16" type="Area2D" parent="Level/Coins" instance=ExtResource( 13 )]
+[node name="coin 16" parent="Level/Coins" instance=ExtResource( 13 )]
 position = Vector2( 1047.87, 336.653 )
-collision_layer = 16
-collision_mask = 2
-script = ExtResource( 14 )
 
-[node name="coin 17" type="Area2D" parent="Level/Coins" instance=ExtResource( 13 )]
+[node name="coin 17" parent="Level/Coins" instance=ExtResource( 13 )]
 position = Vector2( 1111.87, 336.653 )
-collision_layer = 16
-collision_mask = 2
-script = ExtResource( 14 )
 
-[node name="coin 18" type="Area2D" parent="Level/Coins" instance=ExtResource( 13 )]
+[node name="coin 18" parent="Level/Coins" instance=ExtResource( 13 )]
 position = Vector2( 1111.87, 272.653 )
-collision_layer = 16
-collision_mask = 2
-script = ExtResource( 14 )
 
-[node name="coin 19" type="Area2D" parent="Level/Coins" instance=ExtResource( 13 )]
+[node name="coin 19" parent="Level/Coins" instance=ExtResource( 13 )]
 position = Vector2( 1047.87, 272.653 )
-collision_layer = 16
-collision_mask = 2
-script = ExtResource( 14 )
 
-[node name="coin 20" type="Area2D" parent="Level/Coins" instance=ExtResource( 13 )]
+[node name="coin 20" parent="Level/Coins" instance=ExtResource( 13 )]
 position = Vector2( 983.872, 272.653 )
-collision_layer = 16
-collision_mask = 2
-script = ExtResource( 14 )
 
-[node name="coin 21" type="Area2D" parent="Level/Coins" instance=ExtResource( 13 )]
+[node name="coin 21" parent="Level/Coins" instance=ExtResource( 13 )]
 position = Vector2( 3726.65, 1102.79 )
-collision_layer = 16
-collision_mask = 2
-script = ExtResource( 14 )
 
-[node name="coin 22" type="Area2D" parent="Level/Coins" instance=ExtResource( 13 )]
+[node name="coin 22" parent="Level/Coins" instance=ExtResource( 13 )]
 position = Vector2( 89.5989, 481.217 )
-collision_layer = 16
-collision_mask = 2
-script = ExtResource( 14 )
 
-[node name="coin 23" type="Area2D" parent="Level/Coins" instance=ExtResource( 13 )]
+[node name="coin 23" parent="Level/Coins" instance=ExtResource( 13 )]
 position = Vector2( 3735.94, 1095.49 )
-collision_layer = 16
-collision_mask = 2
-script = ExtResource( 14 )
 
-[node name="coin 24" type="Area2D" parent="Level/Coins" instance=ExtResource( 13 )]
+[node name="coin 24" parent="Level/Coins" instance=ExtResource( 13 )]
 position = Vector2( 3743.9, 1084.22 )
-collision_layer = 16
-collision_mask = 2
-script = ExtResource( 14 )
 
-[node name="coin 25" type="Area2D" parent="Level/Coins" instance=ExtResource( 13 )]
+[node name="coin 25" parent="Level/Coins" instance=ExtResource( 13 )]
 position = Vector2( 3745.23, 1072.28 )
-collision_layer = 16
-collision_mask = 2
-script = ExtResource( 14 )
 
-[node name="coin 26" type="Area2D" parent="Level/Coins" instance=ExtResource( 13 )]
+[node name="coin 26" parent="Level/Coins" instance=ExtResource( 13 )]
 position = Vector2( 3733.95, 1063.65 )
-collision_layer = 16
-collision_mask = 2
-script = ExtResource( 14 )
 
-[node name="coin 27" type="Area2D" parent="Level/Coins" instance=ExtResource( 13 )]
+[node name="coin 27" parent="Level/Coins" instance=ExtResource( 13 )]
 position = Vector2( 3725.99, 1072.94 )
-collision_layer = 16
-collision_mask = 2
-script = ExtResource( 14 )
 
-[node name="coin 28" type="Area2D" parent="Level/Coins" instance=ExtResource( 13 )]
+[node name="coin 28" parent="Level/Coins" instance=ExtResource( 13 )]
 position = Vector2( 88.272, 448.71 )
-collision_layer = 16
-collision_mask = 2
-script = ExtResource( 14 )
 
-[node name="coin 29" type="Area2D" parent="Level/Coins" instance=ExtResource( 13 )]
+[node name="coin 29" parent="Level/Coins" instance=ExtResource( 13 )]
 position = Vector2( 79.6476, 457.334 )
-collision_layer = 16
-collision_mask = 2
-script = ExtResource( 14 )
 
-[node name="coin 30" type="Area2D" parent="Level/Coins" instance=ExtResource( 13 )]
+[node name="coin 30" parent="Level/Coins" instance=ExtResource( 13 )]
 position = Vector2( 82.9647, 468.612 )
-collision_layer = 16
-collision_mask = 2
-script = ExtResource( 14 )
 
-[node name="coin 31" type="Area2D" parent="Level/Coins" instance=ExtResource( 13 )]
+[node name="coin 31" parent="Level/Coins" instance=ExtResource( 13 )]
 position = Vector2( 2159.07, 1356.49 )
-collision_layer = 16
-collision_mask = 2
-script = ExtResource( 14 )
 
-[node name="coin 31 2" type="Area2D" parent="Level/Coins" instance=ExtResource( 13 )]
+[node name="coin 31 2" parent="Level/Coins" instance=ExtResource( 13 )]
 position = Vector2( 2223.07, 1356.49 )
-collision_layer = 16
-collision_mask = 2
-script = ExtResource( 14 )
 
-[node name="coin 31 3" type="Area2D" parent="Level/Coins" instance=ExtResource( 13 )]
+[node name="coin 31 3" parent="Level/Coins" instance=ExtResource( 13 )]
 position = Vector2( 2287.07, 1356.49 )
-collision_layer = 16
-collision_mask = 2
-script = ExtResource( 14 )
 
-[node name="coin 31 4" type="Area2D" parent="Level/Coins" instance=ExtResource( 13 )]
+[node name="coin 31 4" parent="Level/Coins" instance=ExtResource( 13 )]
 position = Vector2( 2287.07, 1292.49 )
-collision_layer = 16
-collision_mask = 2
-script = ExtResource( 14 )
 
-[node name="coin 31 5" type="Area2D" parent="Level/Coins" instance=ExtResource( 13 )]
+[node name="coin 31 5" parent="Level/Coins" instance=ExtResource( 13 )]
 position = Vector2( 2223.07, 1292.49 )
-collision_layer = 16
-collision_mask = 2
-script = ExtResource( 14 )
 
-[node name="coin 31 6" type="Area2D" parent="Level/Coins" instance=ExtResource( 13 )]
+[node name="coin 31 6" parent="Level/Coins" instance=ExtResource( 13 )]
 position = Vector2( 2159.07, 1292.49 )
-collision_layer = 16
-collision_mask = 2
-script = ExtResource( 14 )
 
-[node name="coin 32" type="Area2D" parent="Level/Coins" instance=ExtResource( 13 )]
+[node name="coin 32" parent="Level/Coins" instance=ExtResource( 13 )]
 position = Vector2( 4172.75, 605.058 )
-collision_layer = 16
-collision_mask = 2
-script = ExtResource( 14 )
 
-[node name="coin 31 7" type="Area2D" parent="Level/Coins" instance=ExtResource( 13 )]
+[node name="coin 31 7" parent="Level/Coins" instance=ExtResource( 13 )]
 position = Vector2( 4236.75, 605.058 )
-collision_layer = 16
-collision_mask = 2
-script = ExtResource( 14 )
 
-[node name="coin 31 7 2" type="Area2D" parent="Level/Coins" instance=ExtResource( 13 )]
+[node name="coin 31 7 2" parent="Level/Coins" instance=ExtResource( 13 )]
 position = Vector2( 4300.75, 605.058 )
-collision_layer = 16
-collision_mask = 2
-script = ExtResource( 14 )
 
-[node name="coin 31 7 3" type="Area2D" parent="Level/Coins" instance=ExtResource( 13 )]
+[node name="coin 31 7 3" parent="Level/Coins" instance=ExtResource( 13 )]
 position = Vector2( 4300.75, 541.058 )
-collision_layer = 16
-collision_mask = 2
-script = ExtResource( 14 )
 
-[node name="coin 31 7 4" type="Area2D" parent="Level/Coins" instance=ExtResource( 13 )]
+[node name="coin 31 7 4" parent="Level/Coins" instance=ExtResource( 13 )]
 position = Vector2( 4236.75, 541.058 )
-collision_layer = 16
-collision_mask = 2
-script = ExtResource( 14 )
 
-[node name="coin 31 7 5" type="Area2D" parent="Level/Coins" instance=ExtResource( 13 )]
+[node name="coin 31 7 5" parent="Level/Coins" instance=ExtResource( 13 )]
 position = Vector2( 4172.75, 541.058 )
-collision_layer = 16
-collision_mask = 2
-script = ExtResource( 14 )
 
-[node name="Player" parent="." instance=ExtResource( 15 )]
+[node name="Player" parent="." instance=ExtResource( 14 )]
 position = Vector2( 104.692, 470.041 )
 
 [connection signal="shop_open_requested" from="Level/merchant" to="." method="_on_merchant_shop_open_requested"]
-[connection signal="body_entered" from="Level/Coins/coin" to="Level/Coins/coin" method="_on_coin_body_enter"]
-[connection signal="body_entered" from="Level/Coins/coin 2" to="Level/Coins/coin 2" method="_on_coin_body_enter"]
-[connection signal="body_entered" from="Level/Coins/coin 3" to="Level/Coins/coin 3" method="_on_coin_body_enter"]
-[connection signal="body_entered" from="Level/Coins/coin 4" to="Level/Coins/coin 4" method="_on_coin_body_enter"]
-[connection signal="body_entered" from="Level/Coins/coin 5" to="Level/Coins/coin 5" method="_on_coin_body_enter"]
-[connection signal="body_entered" from="Level/Coins/coin 6" to="Level/Coins/coin 6" method="_on_coin_body_enter"]
-[connection signal="body_entered" from="Level/Coins/coin 7" to="Level/Coins/coin 7" method="_on_coin_body_enter"]
-[connection signal="body_entered" from="Level/Coins/coin 8" to="Level/Coins/coin 8" method="_on_coin_body_enter"]
-[connection signal="body_entered" from="Level/Coins/coin 9" to="Level/Coins/coin 9" method="_on_coin_body_enter"]
-[connection signal="body_entered" from="Level/Coins/coin 10" to="Level/Coins/coin 10" method="_on_coin_body_enter"]
-[connection signal="body_entered" from="Level/Coins/coin 11" to="Level/Coins/coin 11" method="_on_coin_body_enter"]
-[connection signal="body_entered" from="Level/Coins/coin 12" to="Level/Coins/coin 12" method="_on_coin_body_enter"]
-[connection signal="body_entered" from="Level/Coins/coin 13" to="Level/Coins/coin 13" method="_on_coin_body_enter"]
-[connection signal="body_entered" from="Level/Coins/coin 14" to="Level/Coins/coin 14" method="_on_coin_body_enter"]
-[connection signal="body_entered" from="Level/Coins/coin 15" to="Level/Coins/coin 15" method="_on_coin_body_enter"]
-[connection signal="body_entered" from="Level/Coins/coin 16" to="Level/Coins/coin 16" method="_on_coin_body_enter"]
-[connection signal="body_entered" from="Level/Coins/coin 17" to="Level/Coins/coin 17" method="_on_coin_body_enter"]
-[connection signal="body_entered" from="Level/Coins/coin 18" to="Level/Coins/coin 18" method="_on_coin_body_enter"]
-[connection signal="body_entered" from="Level/Coins/coin 19" to="Level/Coins/coin 19" method="_on_coin_body_enter"]
-[connection signal="body_entered" from="Level/Coins/coin 20" to="Level/Coins/coin 20" method="_on_coin_body_enter"]
-[connection signal="body_entered" from="Level/Coins/coin 21" to="Level/Coins/coin 21" method="_on_coin_body_enter"]
-[connection signal="body_entered" from="Level/Coins/coin 22" to="Level/Coins/coin 22" method="_on_coin_body_enter"]
-[connection signal="body_entered" from="Level/Coins/coin 23" to="Level/Coins/coin 23" method="_on_coin_body_enter"]
-[connection signal="body_entered" from="Level/Coins/coin 24" to="Level/Coins/coin 24" method="_on_coin_body_enter"]
-[connection signal="body_entered" from="Level/Coins/coin 25" to="Level/Coins/coin 25" method="_on_coin_body_enter"]
-[connection signal="body_entered" from="Level/Coins/coin 26" to="Level/Coins/coin 26" method="_on_coin_body_enter"]
-[connection signal="body_entered" from="Level/Coins/coin 27" to="Level/Coins/coin 27" method="_on_coin_body_enter"]
-[connection signal="body_entered" from="Level/Coins/coin 28" to="Level/Coins/coin 28" method="_on_coin_body_enter"]
-[connection signal="body_entered" from="Level/Coins/coin 29" to="Level/Coins/coin 29" method="_on_coin_body_enter"]
-[connection signal="body_entered" from="Level/Coins/coin 30" to="Level/Coins/coin 30" method="_on_coin_body_enter"]
-[connection signal="body_entered" from="Level/Coins/coin 31" to="Level/Coins/coin 31" method="_on_coin_body_enter"]
-[connection signal="body_entered" from="Level/Coins/coin 31 2" to="Level/Coins/coin 31 2" method="_on_coin_body_enter"]
-[connection signal="body_entered" from="Level/Coins/coin 31 3" to="Level/Coins/coin 31 3" method="_on_coin_body_enter"]
-[connection signal="body_entered" from="Level/Coins/coin 31 4" to="Level/Coins/coin 31 4" method="_on_coin_body_enter"]
-[connection signal="body_entered" from="Level/Coins/coin 31 5" to="Level/Coins/coin 31 5" method="_on_coin_body_enter"]
-[connection signal="body_entered" from="Level/Coins/coin 31 6" to="Level/Coins/coin 31 6" method="_on_coin_body_enter"]
-[connection signal="body_entered" from="Level/Coins/coin 32" to="Level/Coins/coin 32" method="_on_coin_body_enter"]
-[connection signal="body_entered" from="Level/Coins/coin 31 7" to="Level/Coins/coin 31 7" method="_on_coin_body_enter"]
-[connection signal="body_entered" from="Level/Coins/coin 31 7 2" to="Level/Coins/coin 31 7 2" method="_on_coin_body_enter"]
-[connection signal="body_entered" from="Level/Coins/coin 31 7 3" to="Level/Coins/coin 31 7 3" method="_on_coin_body_enter"]
-[connection signal="body_entered" from="Level/Coins/coin 31 7 4" to="Level/Coins/coin 31 7 4" method="_on_coin_body_enter"]
-[connection signal="body_entered" from="Level/Coins/coin 31 7 5" to="Level/Coins/coin 31 7 5" method="_on_coin_body_enter"]
 [connection signal="experience_gained" from="Player" to="UI/PlayerStats/ExperienceBar" method="_on_Player_experience_gained"]
 [connection signal="health_changed" from="Player" to="UI/PlayerStats/HealthBar" method="_on_Player_health_changed"]
 [connection signal="music_level_changed" from="Player" to="UI/PlayerStats/MusicBar" method="_on_Player_music_level_changed"]

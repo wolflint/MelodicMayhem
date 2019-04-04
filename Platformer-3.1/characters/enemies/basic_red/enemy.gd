@@ -34,9 +34,8 @@ onready var coin = preload("res://collectibles/coin/coin.tscn")
 
 func _ready():
 	$anim.play("SETUP")
-#warning-ignore:return_value_discarded
 	connect("died", GAME_ROOT, "_on_enemy_died", [experience_to_give])
-#	state = STATE_KILLED
+	$HookableHealthBar.initialize($Health.health, $Health.max_health, [])
 
 func _physics_process(delta):
 	var new_anim = "idle"
@@ -61,7 +60,7 @@ func _physics_process(delta):
 		new_anim = "walk"
 	else:
 		linear_velocity += GRAVITY_VEC * delta
-		linear_velocity.x = -direction * (WALK_SPEED / 2)		
+		linear_velocity.x = -direction * (float(WALK_SPEED) / 2)		
 		linear_velocity = move_and_slide(linear_velocity, FLOOR_NORMAL)
 		sprite.scale.x = -direction
 		new_anim = "explode"
@@ -78,13 +77,14 @@ func drop_coin():
 func check_collisions():
 	if get_slide_count() > 0:
 				var body = get_slide_collision(0).collider
-#				print(body.get_name())
 				if body.get_name() == "player":
 					body.take_damage(self, 1)
 
 func _on_Hitbox_body_entered(body):
 	if body.is_in_group("projectiles"):
 		_take_projectile_damage(body)
+	if $Health.health < $Health.max_health:
+		$HookableHealthBar.set("visible", true)
 
 
 func _take_projectile_damage(projectile):
@@ -92,7 +92,6 @@ func _take_projectile_damage(projectile):
 		hp.take_damage(projectile.strength)
 	if hp.health <= 0:
 		hitbox.set_deferred("disabled", true)
-#		print("died")
 		set_deferred("state", States.DIED)
 		call_deferred("drop_coin")
 		emit_signal("died")
