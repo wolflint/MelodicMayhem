@@ -6,6 +6,9 @@ const FLOOR_NORMAL = Vector2(0, -1)
 const WALK_SPEED = 140.0
 #### CONSTANTS FROM THE DEMO ENEMY ####
 
+#ENEMY STATS
+export (float) var strength = 50.0 
+
 enum States { IDLE, ROAM, RETURN, SPOT, FOLLOW, STAGGER, ATTACK, ATTACK_COOLDOWN, DIE, DEAD }
 var state = null
 
@@ -65,6 +68,10 @@ func _change_state(new_state):
 	state = new_state
 
 func _physics_process(delta):
+	if (target_position.x - position.x) < 0:
+		$sprite.scale.x = -1
+	else:
+		$sprite.scale.x = 1
 	var current_state = state
 	match current_state:
 		States.IDLE:
