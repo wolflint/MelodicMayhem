@@ -175,15 +175,16 @@ func _stagger():
 	$Hitbox/CollisionShape2D.disabled = true
 	# DO STAGGER HERE
 	$Stagger.start()
+	linear_vel.y = float(-JUMP_SPEED * 0.75) 
 	yield($Stagger, "timeout")
 	$Hitbox/CollisionShape2D.disabled = false
 	
 
-func take_damage(damager, amount):
-	if self.is_a_parent_of(damager):
-		return
-	knockback_direction = (damager.global_position - global_position).normalized()
-	$Health.take_damage(amount)
+#func take_damage(damager, amount):
+#	if self.is_a_parent_of(damager):
+#		return
+#	knockback_direction = (damager.global_position - global_position).normalized()
+#	$Health.take_damage(amount)
 
 func get_required_experience(amount):
 	return round(pow(level, 1.8) + level * 4)
