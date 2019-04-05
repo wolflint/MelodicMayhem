@@ -187,11 +187,11 @@ tracks/0/keys = {
 "values": [ 10, 11, 12, 13, 14, 5 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=11]
-height = 44.4787
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 10, 24 )
 
 [sub_resource type="RectangleShape2D" id=12]
-extents = Vector2( 13, 20 )
+extents = Vector2( 14, 25 )
 
 [node name="Player" type="KinematicBody2D" groups=[
 "player",
@@ -205,7 +205,7 @@ modulate = Color( 0.412109, 0.611725, 0.824219, 1 )
 texture = ExtResource( 2 )
 vframes = 2
 hframes = 16
-frame = 22
+frame = 2
 
 [node name="smoke" type="Node2D" parent="sprite"]
 position = Vector2( 20.7312, 3.21187 )
@@ -233,18 +233,16 @@ limit_left = 0
 limit_top = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( 0.291992, -0.835023 )
+position = Vector2( 0, 4 )
 shape = SubResource( 11 )
 
 [node name="Hitbox" type="Area2D" parent="."]
-visible = false
 position = Vector2( 0, -1 )
+collision_layer = 2
+collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" groups=[
-"player",
-]]
-position = Vector2( -7, 9 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2( 0, 3 )
 shape = SubResource( 12 )
 
 [node name="sound_jump" type="AudioStreamPlayer2D" parent="."]

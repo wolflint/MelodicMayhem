@@ -2,9 +2,9 @@ extends KinematicBody2D
 
 signal died(experience_to_give)
 
-# Experience
-#warning-ignore:unused_class_variable
+# ENEMY STATS
 export(float) var experience_to_give = 50.0
+export(int) var strength = 1
 
 
 const GRAVITY_VEC = Vector2(0, 900)

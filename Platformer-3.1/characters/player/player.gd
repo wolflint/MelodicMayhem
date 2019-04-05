@@ -72,6 +72,7 @@ func _input(event):
 		$Health.take_damage(10)
 
 func _physics_process(delta):
+	_check_collisions()
 	#increment counters
 
 	onair_time += delta
@@ -170,6 +171,10 @@ func _animate_sprite(new_anim = "idle"):
 	if new_anim != anim:
 		anim = new_anim
 		$anim.play(anim)
+
+func _check_collisions():
+	for body in $Hitbox.get_overlapping_bodies():
+		$Health.take_damage(body.strength)
 
 func _stagger():
 #	$Tween.interpolate_property(self, 'position', position, position + knockback * -knockback_direction, STAGGER_DURATION, Tween.TRANS_QUAD, Tween.EASE_OUT)

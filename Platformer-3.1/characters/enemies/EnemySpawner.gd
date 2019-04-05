@@ -13,7 +13,7 @@ func _process(delta):
 
 func _on_SpawnTimer_timeout():
 	var new_enemy = enemy.instance()
-	if get_child_count() < max_spawn_amount:
+	if get_child_count() - 1 < max_spawn_amount:
 		add_child(new_enemy)
 	if player_in_spawn_area:
 		$SpawnTimer.start()
