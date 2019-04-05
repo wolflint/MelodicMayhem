@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://level/test.gd" type="Script" id=1]
+[ext_resource path="res://level/Game.gd" type="Script" id=1]
 [ext_resource path="res://interface/leveling-system/ExperienceBar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://level/Label.gd" type="Script" id=3]
 [ext_resource path="res://interface/hud-stats/HealthBar.tscn" type="PackedScene" id=4]
@@ -15,6 +15,7 @@
 [ext_resource path="res://characters/enemies/EnemySpawner.tscn" type="PackedScene" id=13]
 [ext_resource path="res://characters/enemies/basic_red/enemy.tscn" type="PackedScene" id=14]
 [ext_resource path="res://characters/player/player.tscn" type="PackedScene" id=15]
+
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 331.338

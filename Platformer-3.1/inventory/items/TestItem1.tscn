@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=2]
-
-[ext_resource path="res://inventory/items/Item.tscn" type="PackedScene" id=1]
-
-[node name="TestItem1" index="0" instance=ExtResource( 1 )]
-display_name = "Test Item 1"
-description = "test item 1"
-

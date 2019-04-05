@@ -67,6 +67,10 @@ func _physics_process(delta):
 	if anim != new_anim:
 		anim = new_anim
 		$anim.play(anim)
+		if anim == "explode":
+			yield($anim, "animation_finished")
+			queue_free()
+		
 
 func drop_coin():
 	print(position)
@@ -84,15 +88,11 @@ func check_collisions():
 
 func _on_Hitbox_body_entered(body):
 	if body.is_in_group("projectiles"):
-		_take_damage(body.strength)
-	if hp.health < hp.max_health:
-		$HookableHealthBar.set("visible", true)
-
-func _take_damage(amount):
-	if state != States.DIED:
-		hp.take_damage(amount)
+		hp.take_damage(body.strength)
 	if hp.health <= 0:
 		hitbox.set_deferred("disabled", true)
 		set_deferred("state", States.DIED)
 		call_deferred("drop_coin")
 		emit_signal("died")
+	if hp.health < hp.max_health:
+		$HookableHealthBar.set("visible", true)
