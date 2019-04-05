@@ -205,7 +205,7 @@ modulate = Color( 0.412109, 0.611725, 0.824219, 1 )
 texture = ExtResource( 2 )
 vframes = 2
 hframes = 16
-frame = 2
+frame = 4
 
 [node name="smoke" type="Node2D" parent="sprite"]
 position = Vector2( 20.7312, 3.21187 )
@@ -307,6 +307,9 @@ one_shot = true
 
 [node name="MusicRegen" type="Timer" parent="."]
 wait_time = 0.25
+
+[node name="Stagger" type="Timer" parent="."]
+wait_time = 2.0
 
 [connection signal="health_changed" from="Health" to="." method="_on_Health_health_changed"]
 [connection signal="timeout" from="Cooldown" to="." method="_on_Cooldown_timeout"]

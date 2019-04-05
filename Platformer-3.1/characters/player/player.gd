@@ -103,12 +103,6 @@ func _physics_process(delta):
 	_animate_sprite()
 
 func _horizontal_movement():
-#	var target_speed = 0
-#	target_speed = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))
-#
-#	target_speed *= WALK_SPEED
-#	linear_vel.x = lerp(linear_vel.x, target_speed, 0.1)
-# Horizontal Movement
 	var target_speed = 0
 	if Input.is_action_pressed("move_left"):
 		target_speed += -1
@@ -175,11 +169,15 @@ func _animate_sprite(new_anim = "idle"):
 func _check_collisions():
 	for body in $Hitbox.get_overlapping_bodies():
 		$Health.take_damage(body.strength)
+		_stagger()
 
 func _stagger():
-#	$Tween.interpolate_property(self, 'position', position, position + knockback * -knockback_direction, STAGGER_DURATION, Tween.TRANS_QUAD, Tween.EASE_OUT)
-#	$Tween.start()
-	pass
+	$Hitbox/CollisionShape2D.disabled = true
+	# DO STAGGER HERE
+	$Stagger.start()
+	yield($Stagger, "timeout")
+	$Hitbox/CollisionShape2D.disabled = false
+	
 
 func take_damage(damager, amount):
 	if self.is_a_parent_of(damager):
