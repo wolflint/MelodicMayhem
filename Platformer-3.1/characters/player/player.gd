@@ -5,6 +5,10 @@ signal health_changed(health, max_health)
 signal gained_max_health()
 signal music_level_changed(current_music, max_music)
 
+# FOR SPOTTER
+signal position_changed
+signal died
+
 # Character stats
 export (int) var max_hp = 12
 export (int) var strength = 8
@@ -101,6 +105,7 @@ func _physics_process(delta):
 	_shoot()
 
 	_animate_sprite()
+	emit_signal('position_changed', position)
 
 func _horizontal_movement():
 	var target_speed = 0
@@ -219,7 +224,7 @@ func level_up():
 
 func _on_Health_health_changed(new_health):
 	if new_health <= 0:
-		pass
+		emit_signal('died')
 	emit_signal("health_changed", new_health, $Health.max_health)
 
 

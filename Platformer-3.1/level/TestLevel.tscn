@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://level/Game.gd" type="Script" id=1]
 [ext_resource path="res://interface/leveling-system/ExperienceBar.tscn" type="PackedScene" id=2]
@@ -11,7 +11,8 @@
 [ext_resource path="res://environment/parallax_bg.tscn" type="PackedScene" id=9]
 [ext_resource path="res://characters/enemies/EnemySpawner.tscn" type="PackedScene" id=10]
 [ext_resource path="res://characters/enemies/basic_red/enemy.tscn" type="PackedScene" id=11]
-[ext_resource path="res://characters/player/player.tscn" type="PackedScene" id=12]
+[ext_resource path="res://characters/enemies/spotter/Spotter.tscn" type="PackedScene" id=12]
+[ext_resource path="res://characters/player/player.tscn" type="PackedScene" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 218, 116 )
@@ -99,7 +100,10 @@ shape = SubResource( 1 )
 [node name="enemy" parent="Level/Enemies" instance=ExtResource( 11 )]
 position = Vector2( 1072, 748 )
 
-[node name="Player" parent="." instance=ExtResource( 12 )]
+[node name="Spotter" parent="Level/Enemies" instance=ExtResource( 12 )]
+position = Vector2( 658, 742 )
+
+[node name="Player" parent="." instance=ExtResource( 13 )]
 position = Vector2( 104.692, 740 )
 
 [connection signal="shop_open_requested" from="Level/merchant" to="." method="_on_merchant_shop_open_requested"]
