@@ -23,7 +23,6 @@ func _update_label(current, maximum):
 
 
 func _on_Player_music_level_changed(current_music, max_music):
-	print("%s/%s" % [current_music, max_music])
 	set("max_value", max_music)
 	yield(animate_value(current_music), "completed")
 	_update_label(current_music, max_music)

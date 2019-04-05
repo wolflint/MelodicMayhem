@@ -20,7 +20,6 @@ enum States {WALKING, DIED}
 var state = States.WALKING
 
 onready var GAME_ROOT = get_tree().get_root().get_node("Game")
-onready var LEVEL_ROOT = GAME_ROOT.get_node("Level")
 onready var hp = $Health
 onready var hitbox = $Hitbox/CollisionPolygon2D
 onready var detect_floor_left = $detect_floor_left
@@ -30,7 +29,7 @@ onready var detect_wall_right = $detect_wall_right
 onready var sprite = $sprite
 #warning-ignore:unused_class_variable
 onready var player = preload("res://characters/player/player.tscn")
-onready var coin = preload("res://collectibles/coin/coin.tscn")
+export (PackedScene) var coin
 
 func _ready():
 	$anim.play("SETUP")
@@ -70,9 +69,12 @@ func _physics_process(delta):
 		$anim.play(anim)
 
 func drop_coin():
+	print(position)
 	var new_coin = coin.instance()
 	new_coin.set("position", position)
-	LEVEL_ROOT.get_node("Coins").add_child(new_coin)
+	print("new_coin:")
+	print(new_coin.position)
+	get_parent().add_child(new_coin)
 
 func check_collisions():
 	if get_slide_count() > 0:

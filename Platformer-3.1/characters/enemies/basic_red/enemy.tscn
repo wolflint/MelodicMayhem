@@ -1,12 +1,13 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://characters/enemies/basic_red/enemy.gd" type="Script" id=1]
-[ext_resource path="res://characters/enemies/basic_red/enemy.png" type="Texture" id=2]
-[ext_resource path="res://characters/player/bullet.png" type="Texture" id=3]
-[ext_resource path="res://assets/sound_hit.wav" type="AudioStream" id=4]
-[ext_resource path="res://assets/sound_explode.wav" type="AudioStream" id=5]
-[ext_resource path="res://interface/hud-stats/HookableHealthBar.tscn" type="PackedScene" id=6]
-[ext_resource path="res://characters/Health.tscn" type="PackedScene" id=7]
+[ext_resource path="res://collectibles/coin/coin.tscn" type="PackedScene" id=2]
+[ext_resource path="res://characters/enemies/basic_red/enemy.png" type="Texture" id=3]
+[ext_resource path="res://characters/player/bullet.png" type="Texture" id=4]
+[ext_resource path="res://assets/sound_hit.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/sound_explode.wav" type="AudioStream" id=6]
+[ext_resource path="res://interface/hud-stats/HookableHealthBar.tscn" type="PackedScene" id=7]
+[ext_resource path="res://characters/Health.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "SETUP"
@@ -326,6 +327,7 @@ anim_speed = 1.0
 [node name="enemy" type="KinematicBody2D"]
 collision_layer = 4
 script = ExtResource( 1 )
+coin = ExtResource( 2 )
 
 [node name="enabler" type="VisibilityEnabler2D" parent="."]
 position = Vector2( 16.2569, 11.0034 )
@@ -340,7 +342,7 @@ anims/walk = SubResource( 4 )
 
 [node name="sprite" type="Sprite" parent="."]
 material = SubResource( 5 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 flip_h = true
 hframes = 8
 
@@ -389,20 +391,20 @@ speed_scale = 1.2
 explosiveness = 0.1
 draw_order = 215832976
 process_material = SubResource( 8 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
 [node name="sound_hit" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 4 )
-
-[node name="sound_explode" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
 
-[node name="HookableHealthBar" parent="." instance=ExtResource( 6 )]
+[node name="sound_explode" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+
+[node name="HookableHealthBar" parent="." instance=ExtResource( 7 )]
 visible = false
 margin_top = -22.8176
 margin_bottom = -22.8176
 
-[node name="Health" parent="." instance=ExtResource( 7 )]
+[node name="Health" parent="." instance=ExtResource( 8 )]
 max_health = 100
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]
