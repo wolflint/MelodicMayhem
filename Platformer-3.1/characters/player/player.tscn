@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://characters/player/player.gd" type="Script" id=1]
 [ext_resource path="res://assets/robot_demo.png" type="Texture" id=2]
@@ -84,6 +84,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 16, 17, 18, 16, 19, 20, 19, 16 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=5]
 length = 0.5
@@ -152,6 +164,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 0 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=9]
 length = 1.25
@@ -168,6 +192,22 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 5, 6, 7, 8, 9, 5 ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "stagger"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5 ),
+"transitions": PoolRealArray( 0.615573, 0.517633, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -206,7 +246,7 @@ modulate = Color( 0.412109, 0.611725, 0.824219, 1 )
 texture = ExtResource( 2 )
 vframes = 2
 hframes = 16
-frame = 4
+frame = 16
 
 [node name="smoke" type="Node2D" parent="sprite"]
 position = Vector2( 20.7312, 3.21187 )
@@ -225,6 +265,7 @@ anims/jumping = SubResource( 6 )
 anims/jumping_weapon = SubResource( 7 )
 anims/run = SubResource( 8 )
 anims/run_weapon = SubResource( 9 )
+anims/stagger = SubResource( 14 )
 anims/standing_weapon_ready = SubResource( 10 )
 
 [node name="camera" type="Camera2D" parent="."]

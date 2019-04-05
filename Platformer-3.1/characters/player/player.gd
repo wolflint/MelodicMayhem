@@ -175,6 +175,7 @@ func _stagger():
 	$Hitbox/CollisionShape2D.disabled = true
 	# DO STAGGER HERE
 	$Stagger.start()
+	$anim.play("stagger")
 	linear_vel.y = float(-JUMP_SPEED * 0.75) 
 	yield($Stagger, "timeout")
 	$Hitbox/CollisionShape2D.disabled = false
