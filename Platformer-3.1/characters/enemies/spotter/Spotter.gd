@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 #### CONSTANTS FROM THE DEMO ENEMY ####
+const GRAVITY_VEC = Vector2(0, 900)
 const GRAVITY = 900.0
 const FLOOR_NORMAL = Vector2(0, -1)
 const WALK_SPEED = 140.0
@@ -26,6 +27,8 @@ const FOLLOW_RANGE = 300.0
 var start_position = Vector2()
 const ARRIVE_DISTANCE = 10.0
 const SLOW_RADIUS = 150.0
+
+var direction = -1
 
 func _ready():
 	var target = get_node('/root/Game/Player')

@@ -105,7 +105,7 @@ func _physics_process(delta):
 	_shoot()
 
 	_animate_sprite()
-	emit_signal('position_changed', position)
+	emit_signal('position_changed', global_position)
 
 func _horizontal_movement():
 	var target_speed = 0
