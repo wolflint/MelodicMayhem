@@ -2,11 +2,14 @@ extends Node
 
 onready var ShopMenu = preload("res://interface/shop/ShopMenu.tscn")
 onready var InventoryMenu = preload("res://interface/inventory-menu/InventoryMenu.tscn")
-onready var _character = $Player
+onready var _character = get_node("Player")
 onready var _label = $UI/Interface/Label
 onready var _exp_bar = $UI/PlayerStats/ExperienceBar
 onready var _hp_bar = $UI/PlayerStats/HealthBar
 onready var _music_bar = $UI/PlayerStats/MusicBar
+export (PackedScene) var level
+var current_level
+var save_id = 1
 
 func _ready():
 	_label.update_text(_character.level, _character.experience, _character.experience_required)
@@ -15,10 +18,27 @@ func _ready():
 	_music_bar.initialize(_character.current_music, _character.max_music)
 	### TESTING PURPOSES - REMOVE LATER###
 	_character.get_node("Purse").coins += 1000
+	current_level = level.instance()
+	add_child(current_level)
 
 func _input(event):
 	if event.is_action_pressed("open_inventory"):
 		open_inventory()
+	if event.is_action_pressed("quick_save"):
+		$SaveAndLoad.save_game(save_id)
+		print("It should have saved")
+	if event.is_action_pressed("quick_load"):
+		current_level.queue_free()
+		current_level = level.instance()
+		add_child(current_level)
+		$SaveAndLoad.load_game(save_id)
+		_character = get_node("Player")
+		_label.update_text(_character.level, _character.experience, _character.experience_required)
+		_exp_bar.initialize(_character.experience, _character.experience_required, [_character])
+		_hp_bar.initialize(_character.get_node("Health").health, _character.get_node("Health").max_health)
+		_music_bar.initialize(_character.current_music, _character.max_music)
+		
+	
 
 func open_inventory():
 	if not _character.has_node("Inventory"):

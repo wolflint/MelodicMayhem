@@ -15,6 +15,8 @@ export (int) var strength = 8
 export (int) var max_music = 50
 var current_music
 
+var coins
+
 # Experience and leveling system
 export (int) var level = 1
 
@@ -237,3 +239,20 @@ func _on_MusicRegen_timeout():
 		return
 	current_music = min(current_music + 1, max_music)
 	emit_signal("music_level_changed", current_music, max_music)
+
+### SAVE SYSTEM ###
+func get_save_data():
+	return {
+		"filename": filename,
+		"parent": get_parent().get_path(),
+		"properties": {
+			"max_health": $Health.max_health,
+			"coins": $Purse.coins,
+			"strength": strength,
+			"max_music": max_music,
+			"level": level,
+			"experience": experience,
+			"experience_total": experience_total,
+			"position": position,
+		}
+	}

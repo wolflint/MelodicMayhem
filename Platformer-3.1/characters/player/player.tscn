@@ -194,7 +194,7 @@ tracks/0/keys = {
 "values": [ 5, 6, 7, 8, 9, 5 ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=10]
 resource_name = "stagger"
 length = 0.5
 tracks/0/type = "value"
@@ -210,7 +210,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=11]
 length = 1.25
 loop = true
 step = 0.25
@@ -227,14 +227,15 @@ tracks/0/keys = {
 "values": [ 10, 11, 12, 13, 14, 5 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=13]
+[sub_resource type="CapsuleShape2D" id=12]
 radius = 12.0
 height = 28.0
 
-[sub_resource type="RectangleShape2D" id=12]
+[sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 14, 28 )
 
 [node name="Player" type="KinematicBody2D" groups=[
+"save",
 "player",
 ]]
 collision_layer = 2
@@ -265,8 +266,8 @@ anims/jumping = SubResource( 6 )
 anims/jumping_weapon = SubResource( 7 )
 anims/run = SubResource( 8 )
 anims/run_weapon = SubResource( 9 )
-anims/stagger = SubResource( 14 )
-anims/standing_weapon_ready = SubResource( 10 )
+anims/stagger = SubResource( 10 )
+anims/standing_weapon_ready = SubResource( 11 )
 
 [node name="camera" type="Camera2D" parent="."]
 current = true
@@ -276,7 +277,7 @@ limit_top = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 4 )
-shape = SubResource( 13 )
+shape = SubResource( 12 )
 
 [node name="Hitbox" type="Area2D" parent="."]
 position = Vector2( 0, -1 )
@@ -285,7 +286,7 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2( 0, 3 )
-shape = SubResource( 12 )
+shape = SubResource( 13 )
 
 [node name="sound_jump" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )

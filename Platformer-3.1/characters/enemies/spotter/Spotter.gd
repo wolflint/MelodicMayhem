@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 #### CONSTANTS FROM THE DEMO ENEMY ####
-const GRAVITY_VEC = Vector2(0, 900)
+#const GRAVITY_VEC = Vector2(0, 900)
 const GRAVITY = 900.0
 const FLOOR_NORMAL = Vector2(0, -1)
 const WALK_SPEED = 140.0
@@ -69,7 +69,7 @@ func _change_state(new_state):
 
 func _physics_process(delta):
 	var current_gravity = GRAVITY * delta
-	velocity += GRAVITY_VEC * delta
+	velocity.y += GRAVITY * delta
 
 	var current_state = state
 	match current_state:
