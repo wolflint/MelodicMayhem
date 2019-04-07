@@ -5,6 +5,10 @@ export (PackedScene) var enemy
 var player_in_spawn_area = false
 var timer_running = false
 
+func _ready():
+	connect("body_entered", self, "_on_EnemySpawner_body_entered")
+	connect("body_exited", self, "_on_EnemySpawner_body_exited")
+
 func _process(delta):
 	for body in get_overlapping_bodies():
 		if body.is_in_group("player"):

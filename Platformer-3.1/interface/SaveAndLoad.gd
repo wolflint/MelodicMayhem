@@ -26,7 +26,7 @@ func save_game(id):
 	file.open(path, File.WRITE)
 	file.store_string(to_json(save_data))
 	file.close()
-	
+	emit_signal("game_saved")
 	
 func load_game(id):
 	var path = get_save_file_path(id)
@@ -39,7 +39,7 @@ func load_game(id):
 	file.close()
 	
 	for node in get_tree().get_nodes_in_group("save"):
-		node.queue_free()
+		node.free()
 	
 	for node_data in save_data['data']:
 		var node = load(node_data['filename']).instance()

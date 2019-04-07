@@ -1,47 +1,18 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://level/Game.gd" type="Script" id=1]
 [ext_resource path="res://level/TestLevel.tscn" type="PackedScene" id=2]
-[ext_resource path="res://interface/leveling-system/ExperienceBar.tscn" type="PackedScene" id=3]
-[ext_resource path="res://level/Label.gd" type="Script" id=4]
-[ext_resource path="res://interface/hud-stats/HealthBar.tscn" type="PackedScene" id=5]
-[ext_resource path="res://interface/hud-stats/MusicBar.tscn" type="PackedScene" id=6]
-[ext_resource path="res://interface/hud-stats/ExperienceBar.tscn" type="PackedScene" id=7]
-[ext_resource path="res://characters/player/player.tscn" type="PackedScene" id=8]
-[ext_resource path="res://interface/SaveAndLoad.tscn" type="PackedScene" id=9]
+[ext_resource path="res://interface/hud-stats/HealthBar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://interface/hud-stats/MusicBar.tscn" type="PackedScene" id=4]
+[ext_resource path="res://interface/hud-stats/ExperienceBar.tscn" type="PackedScene" id=5]
+[ext_resource path="res://characters/player/player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://interface/SaveAndLoad.tscn" type="PackedScene" id=7]
 
 [node name="Game" type="Node"]
 script = ExtResource( 1 )
 level = ExtResource( 2 )
 
 [node name="UI" type="CanvasLayer" parent="."]
-
-[node name="Interface" type="Control" parent="UI"]
-editor/display_folded = true
-visible = false
-margin_right = 1280.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 0, 100 )
-
-[node name="ColorRect" type="ColorRect" parent="UI/Interface"]
-margin_right = 1280.0
-margin_bottom = 100.0
-color = Color( 0.152941, 0.152941, 0.152941, 0.392157 )
-
-[node name="ExperienceBar" parent="UI/Interface" instance=ExtResource( 3 )]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_top = -69.0
-margin_bottom = 0.0
-rect_scale = Vector2( 0.5, 0.5 )
-
-[node name="Label" type="Label" parent="UI/Interface"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -40.0
-margin_bottom = 14.0
-autowrap = true
-script = ExtResource( 4 )
 
 [node name="PlayerStats" type="VBoxContainer" parent="UI"]
 editor/display_folded = true
@@ -52,27 +23,25 @@ margin_bottom = 40.0
 rect_scale = Vector2( 0.5, 0.5 )
 custom_constants/separation = 8
 
-[node name="HealthBar" parent="UI/PlayerStats" instance=ExtResource( 5 )]
+[node name="HealthBar" parent="UI/PlayerStats" instance=ExtResource( 3 )]
 pause_mode = 2
 margin_right = 600.0
 margin_bottom = 48.0
 
-[node name="MusicBar" parent="UI/PlayerStats" instance=ExtResource( 6 )]
+[node name="MusicBar" parent="UI/PlayerStats" instance=ExtResource( 4 )]
 margin_top = 56.0
 margin_right = 600.0
 margin_bottom = 104.0
 
-[node name="ExperienceBar" parent="UI/PlayerStats" instance=ExtResource( 7 )]
+[node name="ExperienceBar" parent="UI/PlayerStats" instance=ExtResource( 5 )]
 margin_top = 112.0
 margin_right = 600.0
 margin_bottom = 160.0
 
-[node name="TestLevel" parent="." instance=ExtResource( 2 )]
-
-[node name="Player" parent="." instance=ExtResource( 8 )]
+[node name="Player" parent="." instance=ExtResource( 6 )]
 position = Vector2( 104.692, 740 )
 
-[node name="SaveAndLoad" parent="." instance=ExtResource( 9 )]
+[node name="SaveAndLoad" parent="." instance=ExtResource( 7 )]
 
 [connection signal="experience_gained" from="Player" to="UI/PlayerStats/ExperienceBar" method="_on_Player_experience_gained"]
 [connection signal="health_changed" from="Player" to="UI/PlayerStats/HealthBar" method="_on_Player_health_changed"]

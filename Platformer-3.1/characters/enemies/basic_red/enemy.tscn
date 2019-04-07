@@ -274,9 +274,14 @@ scale = 4.0
 color = Color( 0.929688, 0.488931, 0.0617371, 1 )
 anim_speed = 1.0
 
-[node name="enemy" type="KinematicBody2D"]
+[node name="enemy" type="KinematicBody2D" groups=[
+"enemies",
+]]
 collision_layer = 4
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 coin = ExtResource( 2 )
 
 [node name="enabler" type="VisibilityEnabler2D" parent="."]
