@@ -43,19 +43,20 @@ func _ready():
 		_change_state(States.IDLE)
 	else:
 		_change_state(States.FALL)
-func follow(target_position, max_speed, gravity):
+
+func follow(target_position, max_speed):
 	var desired_x = (target_position - position).normalized()
 	desired_x = float(desired_x.x) * max_speed
-	var desired_velocity = Vector2( desired_x, gravity)
+	var desired_velocity = Vector2( desired_x, 0)
 	var steering = (desired_velocity - velocity) / MASS
 	velocity += steering
 	return position.distance_to(target_position)
 
-func arrive_to(target_position, slow_radius, max_speed, gravity):
+func arrive_to(target_position, slow_radius, max_speed):
 	var distance_to_target = position.distance_to(target_position)
 	var desired_x = (target_position - position).normalized()
 	desired_x = float(desired_x.x) * max_speed
-	var desired_velocity = Vector2( desired_x, gravity)
+	var desired_velocity = Vector2( desired_x, 0)
 	if distance_to_target < slow_radius:
 		desired_velocity *= (distance_to_target / slow_radius) * .75 + .25
 
@@ -68,6 +69,7 @@ func _change_state(new_state):
 
 func _physics_process(delta):
 	var current_gravity = GRAVITY * delta
+	velocity += GRAVITY_VEC * delta
 	if (target_position.x - position.x) < 0:
 		$sprite.scale.x = -1
 	else:
@@ -76,7 +78,6 @@ func _physics_process(delta):
 	match current_state:
 		States.IDLE:
 			$anim.play("idle")
-			velocity = Vector2(0, current_gravity)
 			move_and_slide(velocity, FLOOR_NORMAL)
 			var distance_to_target = position.distance_to(target_position)
 			if distance_to_target < FOLLOW_RANGE:
@@ -85,7 +86,7 @@ func _physics_process(delta):
 				_change_state(States.FOLLOW)
 		States.FOLLOW:
 			$anim.play("walk")
-			var distance_to_target = follow(target_position, max_follow_speed, current_gravity)
+			var distance_to_target = follow(target_position, max_follow_speed)
 			move_and_slide(velocity, FLOOR_NORMAL)
 			if get_slide_count() > 0:
 				var collision_info = get_slide_collision(0)
@@ -99,9 +100,9 @@ func _physics_process(delta):
 				$sprite.scale.x = -1
 			else:
 				$sprite.scale.x = 1
-			var distance_to_target = arrive_to(start_position, SLOW_RADIUS, max_roam_speed, current_gravity)
+			var distance_to_target = arrive_to(start_position, SLOW_RADIUS, max_roam_speed)
 			move_and_slide(velocity, FLOOR_NORMAL)
-			print(distance_to_target < ARRIVE_DISTANCE)
+#			print(distance_to_target < ARRIVE_DISTANCE)
 			if distance_to_target < ARRIVE_DISTANCE:
 				_change_state(States.IDLE)
 			elif position.distance_to(target_position) < FOLLOW_RANGE:
@@ -117,7 +118,6 @@ func _physics_process(delta):
 					start_position = position
 				_change_state(States.IDLE)
 
-
 func _on_target_position_changed(new_position):
 	target_position = new_position
 
@@ -125,4 +125,3 @@ func _on_target_died():
 	_change_state(States.RETURN)
 	has_target = false
 	target_position = Vector2()
-
