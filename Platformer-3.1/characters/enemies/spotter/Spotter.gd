@@ -48,7 +48,7 @@ func follow(target_position, max_speed):
 	var desired_x = (target_position - position).normalized()
 	desired_x = float(desired_x.x) * max_speed
 	var desired_velocity = Vector2( desired_x, 0)
-	var steering = (desired_velocity - velocity) / MASS
+	var steering = (desired_velocity - Vector2(velocity.x, 0)) / MASS
 	velocity += steering
 	return position.distance_to(target_position)
 
@@ -60,7 +60,7 @@ func arrive_to(target_position, slow_radius, max_speed):
 	if distance_to_target < slow_radius:
 		desired_velocity *= (distance_to_target / slow_radius) * .75 + .25
 
-	var steering = (desired_velocity - velocity) / MASS
+	var steering = (desired_velocity - Vector2(velocity.x, 0)) / MASS
 	velocity += steering
 	return distance_to_target
 
@@ -117,6 +117,7 @@ func _physics_process(delta):
 				if not start_position:
 					start_position = position
 				_change_state(States.IDLE)
+	print(velocity)
 
 func _on_target_position_changed(new_position):
 	target_position = new_position
