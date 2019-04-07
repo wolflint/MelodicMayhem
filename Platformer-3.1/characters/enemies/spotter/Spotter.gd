@@ -70,10 +70,7 @@ func _change_state(new_state):
 func _physics_process(delta):
 	var current_gravity = GRAVITY * delta
 	velocity += GRAVITY_VEC * delta
-	if (target_position.x - position.x) < 0:
-		$sprite.scale.x = -1
-	else:
-		$sprite.scale.x = 1
+
 	var current_state = state
 	match current_state:
 		States.IDLE:
@@ -85,6 +82,7 @@ func _physics_process(delta):
 					return
 				_change_state(States.FOLLOW)
 		States.FOLLOW:
+			_update_look_direction(target_position)
 			$anim.play("walk")
 			var distance_to_target = follow(target_position, max_follow_speed)
 			move_and_slide(velocity, FLOOR_NORMAL)
@@ -95,6 +93,7 @@ func _physics_process(delta):
 				if distance_to_target > FOLLOW_RANGE:
 					_change_state(States.RETURN)
 		States.RETURN:
+			_update_look_direction(start_position)			
 			$anim.play("walk")			
 			if (start_position.x - position.x) < 0:
 				$sprite.scale.x = -1
@@ -102,7 +101,6 @@ func _physics_process(delta):
 				$sprite.scale.x = 1
 			var distance_to_target = arrive_to(start_position, SLOW_RADIUS, max_roam_speed)
 			move_and_slide(velocity, FLOOR_NORMAL)
-#			print(distance_to_target < ARRIVE_DISTANCE)
 			if distance_to_target < ARRIVE_DISTANCE:
 				_change_state(States.IDLE)
 			elif position.distance_to(target_position) < FOLLOW_RANGE:
@@ -117,7 +115,12 @@ func _physics_process(delta):
 				if not start_position:
 					start_position = position
 				_change_state(States.IDLE)
-	print(velocity)
+
+func _update_look_direction(target):
+	if (target.x - position.x) < 0:
+		$sprite.scale.x = -1
+	else:
+		$sprite.scale.x = 1
 
 func _on_target_position_changed(new_position):
 	target_position = new_position
