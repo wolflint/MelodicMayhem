@@ -1,18 +1,17 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/tileset.tres" type="TileSet" id=1]
-[ext_resource path="res://characters/merchant/merchant.tscn" type="PackedScene" id=2]
+[ext_resource path="res://level/PlayerSpawningPoint.tscn" type="PackedScene" id=2]
 [ext_resource path="res://environment/parallax_bg.tscn" type="PackedScene" id=3]
-[ext_resource path="res://characters/enemies/EnemySpawner.tscn" type="PackedScene" id=4]
-[ext_resource path="res://characters/enemies/basic_red/enemy.tscn" type="PackedScene" id=5]
-[ext_resource path="res://characters/enemies/spotter/Spotter.tscn" type="PackedScene" id=6]
+[ext_resource path="res://characters/merchant/merchant.tscn" type="PackedScene" id=4]
+[ext_resource path="res://characters/enemies/EnemySpawner.tscn" type="PackedScene" id=5]
+[ext_resource path="res://characters/enemies/basic_red/enemy.tscn" type="PackedScene" id=6]
+[ext_resource path="res://characters/enemies/spotter/Spotter.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 218, 116 )
 
-[node name="Level" type="Node"]
-
-[node name="TileMap" type="TileMap" parent="."]
+[node name="TileMap" type="TileMap"]
 tile_set = ExtResource( 1 )
 cell_quadrant_size = 8
 format = 1
@@ -21,23 +20,28 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="merchant" parent="." instance=ExtResource( 2 )]
-position = Vector2( 828, 746.132 )
+[node name="PlayerSpawningPoint" parent="." instance=ExtResource( 2 )]
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 3 )]
 
-[node name="Enemies" type="Node" parent="."]
+[node name="NPCs" type="Node" parent="."]
 
-[node name="EnemySpawner" parent="Enemies" instance=ExtResource( 4 )]
+[node name="Merchant" parent="NPCs" instance=ExtResource( 4 )]
+position = Vector2( 828, 746.132 )
+
+[node name="Enemies" type="Node" parent="."]
+editor/display_folded = true
+
+[node name="EnemySpawner" parent="Enemies" instance=ExtResource( 5 )]
 position = Vector2( 1510, 658 )
 max_spawn_amount = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/EnemySpawner"]
 shape = SubResource( 1 )
 
-[node name="enemy" parent="Enemies" instance=ExtResource( 5 )]
+[node name="enemy" parent="Enemies" instance=ExtResource( 6 )]
 position = Vector2( 1072, 748 )
 
-[node name="Spotter" parent="Enemies" instance=ExtResource( 6 )]
+[node name="Spotter" parent="Enemies" instance=ExtResource( 7 )]
 position = Vector2( 658, 742 )
 
