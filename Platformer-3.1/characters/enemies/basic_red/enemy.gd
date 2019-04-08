@@ -59,7 +59,7 @@ func _physics_process(delta):
 		new_anim = "walk"
 	else:
 		linear_velocity += GRAVITY_VEC * delta
-		linear_velocity.x = -direction * (float(WALK_SPEED) / 2)		
+		linear_velocity.x = -direction * (float(WALK_SPEED) / 2)
 		linear_velocity = move_and_slide(linear_velocity, FLOOR_NORMAL)
 		sprite.scale.x = -direction
 		new_anim = "explode"
@@ -70,14 +70,11 @@ func _physics_process(delta):
 		if anim == "explode":
 			yield($anim, "animation_finished")
 			queue_free()
-		
+
 
 func drop_coin():
-	print(position)
 	var new_coin = coin.instance()
 	new_coin.set("position", position)
-	print("new_coin:")
-	print(new_coin.position)
 	get_parent().add_child(new_coin)
 
 func check_collisions():

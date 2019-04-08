@@ -16,18 +16,18 @@ func save_game(id):
 		assert node_data["filename"] != ""
 		assert node_data["parent"] != ""
 		save_data['data'].append(node_data)
-	
+
 	var directory = Directory.new()
 	if not directory.dir_exists(SAVE_DIRECTORY):
 		directory.make_dir_recursive(SAVE_DIRECTORY)
-	
+
 	var path = get_save_file_path(id)
 	var file = File.new()
 	file.open(path, File.WRITE)
 	file.store_string(to_json(save_data))
 	file.close()
 	emit_signal("game_saved")
-	
+
 func load_game(id):
 	var path = get_save_file_path(id)
 	var file = File.new()
@@ -37,10 +37,10 @@ func load_game(id):
 	file.open(path, File.READ)
 	var save_data = parse_json(file.get_as_text())
 	file.close()
-	
+
 	for node in get_tree().get_nodes_in_group("save"):
 		node.free()
-	
+
 	for node_data in save_data['data']:
 		var node = load(node_data['filename']).instance()
 		get_node(node_data['parent']).add_child(node)

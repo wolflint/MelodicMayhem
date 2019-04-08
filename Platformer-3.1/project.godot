@@ -127,6 +127,7 @@ quick_load={
 2d_physics/layer_4="Projectiles"
 2d_physics/layer_5="Collectibles"
 2d_physics/layer_6="NPC"
+2d_physics/layer_7="Doors"
 
 [physics]
 

@@ -21,9 +21,6 @@ func _ready():
 	_initialize_player_stats_ui(level.player)
 	print(level.map.get_filename())
 
-#	current_level = level.instance()
-#	add_child(current_level)
-
 func _initialize_player_stats_ui(player):
 	_exp_bar.initialize(player.experience, player.experience_required, [player])
 	_hp_bar.initialize(player.get_node("Health").health, player.get_node("Health").max_health, [player])
@@ -46,7 +43,6 @@ func change_level(scene_path):
 #	yield(transition, "transition_finished")
 	get_tree().paused = false
 
-
 func _input(event):
 	if event.is_action_pressed("open_inventory"):
 		open_inventory()
@@ -56,8 +52,9 @@ func _input(event):
 	if event.is_action_pressed("quick_load"):
 		change_level(level.map.get_filename())
 		$SaveAndLoad.load_game(save_id)
+		level.reset_player_position()
+		assert level.player.is_in_group("player")
 		_initialize_player_stats_ui(level.player)
-
 
 func open_inventory():
 	if not $Level/Player.has_node("Inventory"):
@@ -88,4 +85,3 @@ func _on_merchant_shop_open_requested(shop, user):
 
 func _on_enemy_died(experience_to_give):
 	$Level/Player.gain_experience(34)
-#	_label.update_text(_character.level, _character.experience, _character.experience_required)

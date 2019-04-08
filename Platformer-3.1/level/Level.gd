@@ -15,12 +15,13 @@ func initialize():
 
 func change_level(scene_path):
 	if map:
-		map.free()
+		map.queue_free()
 	map = load(scene_path).instance()
 	add_child(map)
 	move_child(map, 0)
 
 	var spawn = map.get_node("PlayerSpawningPoint")
+	assert player
 	player.global_position = spawn.global_position
 
 func get_doors():
@@ -39,6 +40,10 @@ func get_merchants():
 		merchants.append(merchant)
 	return merchants
 
-func _on_player_out_of_bounds():
+func reset_player_position():
 	var spawn = map.get_node("PlayerSpawningPoint")
 	player.global_position = spawn.global_position
+
+
+func _on_player_out_of_bounds():
+	reset_player_position()
