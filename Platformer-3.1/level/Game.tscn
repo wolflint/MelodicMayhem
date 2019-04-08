@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://level/Game.gd" type="Script" id=1]
 [ext_resource path="res://level/TestLevel.tscn" type="PackedScene" id=2]
@@ -7,8 +7,7 @@
 [ext_resource path="res://interface/hud-stats/HealthBar.tscn" type="PackedScene" id=5]
 [ext_resource path="res://interface/hud-stats/MusicBar.tscn" type="PackedScene" id=6]
 [ext_resource path="res://interface/hud-stats/ExperienceBar.tscn" type="PackedScene" id=7]
-[ext_resource path="res://characters/player/player.tscn" type="PackedScene" id=8]
-[ext_resource path="res://interface/SaveAndLoad.tscn" type="PackedScene" id=9]
+[ext_resource path="res://interface/SaveAndLoad.tscn" type="PackedScene" id=8]
 
 [node name="Game" type="Node"]
 pause_mode = 2
@@ -51,11 +50,5 @@ margin_top = 112.0
 margin_right = 600.0
 margin_bottom = 160.0
 
-[node name="Player" parent="." instance=ExtResource( 8 )]
-position = Vector2( 104.692, 740 )
+[node name="SaveAndLoad" parent="." instance=ExtResource( 8 )]
 
-[node name="SaveAndLoad" parent="." instance=ExtResource( 9 )]
-
-[connection signal="experience_gained" from="Player" to="UI/PlayerStats/ExperienceBar" method="_on_Player_experience_gained"]
-[connection signal="health_changed" from="Player" to="UI/PlayerStats/HealthBar" method="_on_Player_health_changed"]
-[connection signal="music_level_changed" from="Player" to="UI/PlayerStats/MusicBar" method="_on_Player_music_level_changed"]

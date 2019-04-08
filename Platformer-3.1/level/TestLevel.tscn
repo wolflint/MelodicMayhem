@@ -11,7 +11,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 218, 116 )
 
-[node name="TileMap" type="TileMap"]
+[node name="TestLevel" type="TileMap"]
 tile_set = ExtResource( 1 )
 cell_quadrant_size = 8
 format = 1
@@ -21,6 +21,7 @@ __meta__ = {
 }
 
 [node name="PlayerSpawningPoint" parent="." instance=ExtResource( 2 )]
+position = Vector2( 156, 678 )
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 3 )]
 

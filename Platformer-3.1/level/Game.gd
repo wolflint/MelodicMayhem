@@ -2,7 +2,7 @@ extends Node
 
 onready var ShopMenu = preload("res://interface/shop/ShopMenu.tscn")
 onready var InventoryMenu = preload("res://interface/inventory-menu/InventoryMenu.tscn")
-onready var _character = get_node("Player")
+onready var _character = get_node("/root/Level/Player")
 #onready var _label = $UI/Interface/Label
 onready var _exp_bar = $UI/PlayerStats/ExperienceBar
 onready var _hp_bar = $UI/PlayerStats/HealthBar
