@@ -4,6 +4,7 @@ signal experience_gained(growth_data, player)
 signal health_changed(health, max_health)
 signal gained_max_health()
 signal music_level_changed(current_music, max_music)
+signal player_out_of_bounds
 
 # FOR SPOTTER
 signal position_changed
@@ -104,7 +105,7 @@ func _physics_process(delta):
 		self.global_position += Vector2(0,1)
 
 	_shoot()
-
+	_check_world_height_limit()
 	_animate_sprite()
 	emit_signal('position_changed', global_position)
 
@@ -222,6 +223,9 @@ func level_up():
 		'max_music':
 			emit_signal("music_level_changed", current_music, max_music)
 
+func _check_world_height_limit():
+	if position.y < -2000 or position.y > 2000:
+		emit_signal("player_out_of_bounds")
 
 func _on_Health_health_changed(new_health):
 	if new_health <= 0:

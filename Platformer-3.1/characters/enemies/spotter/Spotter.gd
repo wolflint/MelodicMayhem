@@ -30,7 +30,7 @@ const SLOW_RADIUS = 150.0
 
 var direction = -1
 
-func _ready():
+func initialize():
 	var target = get_node('/root/Game/Level').player
 	if not target:
 		print("No target, the monster won't follow or attack")
@@ -68,6 +68,8 @@ func _change_state(new_state):
 	state = new_state
 
 func _physics_process(delta):
+	if not has_target:
+		initialize()
 	var current_gravity = GRAVITY * delta
 	velocity.y += GRAVITY * delta
 

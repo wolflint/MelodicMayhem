@@ -10,7 +10,6 @@ func _ready():
 
 func _on_body_entered(body):
 	if not body.is_in_group("player"):
-		print(body.name + " is not in group player")
 		return
 	print(body.name)
 	emit_signal("player_entered", map_path)

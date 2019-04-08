@@ -17,9 +17,10 @@ var save_id = 1
 
 func _ready():
 	level.initialize()
-	for door in level.get_doors():
-		door.connect("player_entered", self, "_on_Door_player_entered")
+	_connect_signals()
 	_initialize_player_stats_ui(level.player)
+	print(level.map.get_filename())
+
 #	current_level = level.instance()
 #	add_child(current_level)
 
@@ -28,15 +29,19 @@ func _initialize_player_stats_ui(player):
 	_hp_bar.initialize(player.get_node("Health").health, player.get_node("Health").max_health, [player])
 	_music_bar.initialize(player.current_music, player.max_music, [player])
 
+func _connect_signals():
+	for door in level.get_doors():
+		door.connect("player_entered", self, "_on_Door_player_entered")
+	for merchant in level.get_merchants():
+		merchant.connect("shop_open_requested", self, "_on_merchant_shop_open_requested")
+
 func change_level(scene_path):
 	# Pause level processing during level change
 	get_tree().paused = true
 #	transition.fade_to_color()
 #	yield(transition, "transition_finished")
-
 	level.change_level(scene_path)
-	for door in level.get_doors():
-		door.connect("player_entered", self, "_on_Door_player_entered")
+	_connect_signals()
 #	transition.fade_from_color()
 #	yield(transition, "transition_finished")
 	get_tree().paused = false
@@ -49,7 +54,7 @@ func _input(event):
 		$SaveAndLoad.save_game(save_id)
 		print("It should have saved")
 	if event.is_action_pressed("quick_load"):
-		change_level("res://level/TestLevel.tscn")
+		change_level(level.map.get_filename())
 		$SaveAndLoad.load_game(save_id)
 		_initialize_player_stats_ui(level.player)
 
