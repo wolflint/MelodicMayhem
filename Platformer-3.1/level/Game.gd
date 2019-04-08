@@ -1,10 +1,17 @@
 extends Node
 
+# LEVEL
+onready var level = $Level
+#onready var transition = $UI/Transition
+
+# SHOP AND INVENTORY
 onready var ShopMenu = preload("res://interface/shop/ShopMenu.tscn")
 onready var InventoryMenu = preload("res://interface/inventory-menu/InventoryMenu.tscn")
 
-onready var level = $Level
-#onready var transition = $UI/Transition
+# PLAYER STATS UI
+onready var _exp_bar = $UI/PlayerStats/ExperienceBar
+onready var _hp_bar = $UI/PlayerStats/HealthBar
+onready var _music_bar = $UI/PlayerStats/MusicBar
 
 var save_id = 1
 
@@ -12,8 +19,14 @@ func _ready():
 	level.initialize()
 	for door in level.get_doors():
 		door.connect("player_entered", self, "_on_Door_player_entered")
+	_initialize_player_stats_ui(level.player)
 #	current_level = level.instance()
 #	add_child(current_level)
+
+func _initialize_player_stats_ui(player):
+	_exp_bar.initialize(player.experience, player.experience_required, [player])
+	_hp_bar.initialize(player.get_node("Health").health, player.get_node("Health").max_health, [player])
+	_music_bar.initialize(player.current_music, player.max_music, [player])
 
 func change_level(scene_path):
 	# Pause level processing during level change
@@ -38,6 +51,8 @@ func _input(event):
 	if event.is_action_pressed("quick_load"):
 		change_level("res://level/TestLevel.tscn")
 		$SaveAndLoad.load_game(save_id)
+		_initialize_player_stats_ui(level.player)
+
 
 func open_inventory():
 	if not $Level/Player.has_node("Inventory"):

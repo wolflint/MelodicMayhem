@@ -1,7 +1,8 @@
 extends "StatBar.gd"
-var _player
 
-func initialize(current, maximum, args = []):
+func initialize(current, maximum, args = [player]):
+	var player = args[0]
+	player.connect("music_level_changed", self, "_on_Player_music_level_changed")
 	.initialize(current, maximum)
 	_update_label(current, maximum)
 
