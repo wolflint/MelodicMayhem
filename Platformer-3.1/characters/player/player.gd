@@ -13,7 +13,7 @@ signal died
 export (int) var max_hp = 12
 export (int) var strength = 8
 export (int) var max_music = 50
-var current_music
+var current_music = max_music
 
 var coins
 
@@ -65,7 +65,6 @@ var cooldown = false
 
 func _ready():
 	state = States.IDLE
-	current_music = max_music
 	connect("gained_max_health", $Health, "_on_Player_gained_max_health")
 
 func _input(event):
@@ -183,10 +182,10 @@ func _stagger():
 	# DO STAGGER HERE
 	$Stagger.start()
 	$anim.play("stagger")
-	linear_vel.y = float(-JUMP_SPEED * 0.75) 
+	linear_vel.y = float(-JUMP_SPEED * 0.75)
 	yield($Stagger, "timeout")
 	$Hitbox/CollisionShape2D.disabled = false
-	
+
 
 #func take_damage(damager, amount):
 #	if self.is_a_parent_of(damager):

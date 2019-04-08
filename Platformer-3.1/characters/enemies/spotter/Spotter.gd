@@ -8,7 +8,7 @@ const WALK_SPEED = 140.0
 #### CONSTANTS FROM THE DEMO ENEMY ####
 
 #ENEMY STATS
-export (float) var strength = 50.0 
+export (float) var strength = 50.0
 
 enum States { IDLE, ROAM, FALL, RETURN, SPOT, FOLLOW, STAGGER, ATTACK, ATTACK_COOLDOWN, DIE, DEAD }
 var state = null
@@ -31,7 +31,7 @@ const SLOW_RADIUS = 150.0
 var direction = -1
 
 func _ready():
-	var target = get_node('/root/Game/Player')
+	var target = get_node('/root/Game/Level').player
 	if not target:
 		print("No target, the monster won't follow or attack")
 		_change_state(States.IDLE)
@@ -93,8 +93,8 @@ func _physics_process(delta):
 				if distance_to_target > FOLLOW_RANGE:
 					_change_state(States.RETURN)
 		States.RETURN:
-			_update_look_direction(start_position)			
-			$anim.play("walk")			
+			_update_look_direction(start_position)
+			$anim.play("walk")
 			if (start_position.x - position.x) < 0:
 				$sprite.scale.x = -1
 			else:
