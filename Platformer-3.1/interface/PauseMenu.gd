@@ -13,6 +13,7 @@ func _ready():
 func initialize():
 	for button in buttons:
 		button.connect("pressed", self, ("_on_" + button.name + "_pressed"))
+	_save_slot_popup.initialize()
 
 func open():
 	emit_signal("open")
@@ -31,9 +32,25 @@ func _input(event):
 
 func _on_Save_pressed():
 	print("Save")
+	var focus_owner = get_focus_owner()
+	var save_slot = yield(_save_slot_popup.open(), "completed")
+	if save_slot == 0:
+		focus_owner.grab_focus()
+	else:
+		get_node("/root/Game").save_game(save_slot)
+		close()
 
 func _on_Load_pressed():
 	print("Load")
+	var focus_owner = get_focus_owner()
+	var save_slot = yield(_save_slot_popup.open(), "completed")
+	if save_slot == 0:
+		focus_owner.grab_focus()
+	else:
+		get_node("/root/Game").initialize_level()
+		get_node("/root/Game").load_game(save_slot)
+		close()
+
 
 func _on_QuitToMenu_pressed():
 	get_node("/root/Game").quit_to_main_menu()

@@ -13,6 +13,7 @@ func _ready():
 func initialize():
 	for button in buttons:
 		button.connect("pressed", self, ("_on_" + button.name + "_pressed"))
+	_save_slot_popup.initialize()
 
 func open():
 	buttons[1].grab_focus()
@@ -34,13 +35,13 @@ func _on_NewGame_pressed():
 
 func _on_LoadGame_pressed():
 	var focus_owner = get_focus_owner()
-	_save_slot_popup.initialize()
 	var save_slot = yield(_save_slot_popup.open(), "completed")
 	if save_slot == 0:
 		focus_owner.grab_focus()
-	get_parent().initialize_level()
-	get_parent().load_game(save_slot)
-	close()
+	else:
+		get_parent().initialize_level()
+		get_parent().load_game(save_slot)
+		close()
 
 
 func _on_Options_pressed():
