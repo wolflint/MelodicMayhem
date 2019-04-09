@@ -13,6 +13,11 @@ func initialize():
 	change_level(LEVEL_START)
 	add_child(player)
 
+func _unhandled_input(event):
+	if event.is_action_pressed("pause_game"):
+		get_parent().pause()
+		get_tree().set_input_as_handled()
+
 func change_level(scene_path):
 	if map:
 #		remove_child(map)

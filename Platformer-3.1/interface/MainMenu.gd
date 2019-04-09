@@ -11,13 +11,11 @@ func _ready():
 	set_process_input(false)
 
 func initialize():
-	open()
 	for button in buttons:
-		if button == buttons[1]:
-			button.grab_focus()
 		button.connect("pressed", self, ("_on_" + button.name + "_pressed"))
 
 func open():
+	buttons[1].grab_focus()
 	emit_signal("open")
 	set_process_input(true)
 	show()

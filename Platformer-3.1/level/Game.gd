@@ -2,6 +2,7 @@ extends Node
 
 # LEVEL
 onready var main_menu = $MainMenu
+onready var pause_menu = $UI/PauseMenu
 onready var level = $Level
 
 # SAVE
@@ -22,6 +23,7 @@ var save_id = 1
 
 func _ready():
 	main_menu.initialize()
+	main_menu.open()
 	_save_slot_popup.initialize()
 
 
@@ -78,6 +80,19 @@ func _input(event):
 		get_tree().paused = true
 		load_game(yield(_save_slot_popup.open(), "completed"))
 
+func pause():
+	get_tree().paused = true
+	pause_menu.open()
+	yield(pause_menu, "closed")
+	get_tree().paused = false
+
+func quit_to_main_menu():
+	print("QuitToMain")
+	level.player.queue_free()
+	level.map.queue_free()
+	level.map = null
+	_player_stats.hide()
+	main_menu.open()
 
 func open_inventory():
 	if not $Level/Player.has_node("Inventory"):
