@@ -3,6 +3,9 @@ extends Node
 # LEVEL
 onready var main_menu = $MainMenu
 onready var level = $Level
+
+# SAVE
+onready var _saves_popup = $SavesPopup
 #onready var transition = $UI/Transition
 
 # SHOP AND INVENTORY
@@ -70,7 +73,7 @@ func open_inventory():
 	get_tree().paused = false
 
 func _on_Door_player_entered(target_map):
-	change_level(target_map)
+	call_deferred("change_level", target_map)
 
 func _on_merchant_shop_open_requested(shop, user):
 	if not user.has_node("Inventory"):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://level/Game.gd" type="Script" id=1]
 [ext_resource path="res://assets/music.ogg" type="AudioStream" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://vfx/TransitionColor.tscn" type="PackedScene" id=7]
 [ext_resource path="res://interface/SaveAndLoad.tscn" type="PackedScene" id=8]
 [ext_resource path="res://interface/MainMenu.tscn" type="PackedScene" id=9]
+[ext_resource path="res://save/SavesPopup.tscn" type="PackedScene" id=10]
 
 [node name="Game" type="Node"]
 pause_mode = 2
@@ -56,4 +57,6 @@ margin_bottom = 160.0
 [node name="SaveAndLoad" parent="." instance=ExtResource( 8 )]
 
 [node name="MainMenu" parent="." instance=ExtResource( 9 )]
+
+[node name="SavesPopup" parent="." instance=ExtResource( 10 )]
 

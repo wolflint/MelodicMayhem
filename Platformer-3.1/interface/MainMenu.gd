@@ -36,7 +36,7 @@ func _on_NewGame_pressed():
 
 func _on_LoadGame_pressed():
 	var focus_owner = get_focus_owner()
-	_save_slot_popup.initialize(["menu"])
+	_save_slot_popup.initialize()
 	var save_slot = yield(_save_slot_popup.open(), "completed")
 	print(save_slot)
 	focus_owner.grab_focus()

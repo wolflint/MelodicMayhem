@@ -6,8 +6,7 @@ var save_id
 onready var amount_popup = self
 onready var save_slots = $SaveSlots.get_children()
 
-func initialize(args = [menu]):
-	var menu = args[0]
+func initialize(args = []):
 	for slot in save_slots:
 		if slot == save_slots[0]:
 			slot.grab_focus()
