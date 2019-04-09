@@ -1,1 +1,1 @@
-{"data":[{"filename":"res://characters/player/player.tscn","parent":"/root/Game/Level","properties":{"coins":0,"experience":18,"experience_total":34,"level":3,"max_health":100,"max_music":50,"position":"(156.000336, 745.999756)","strength":11}}],"version":"0.0.1"}
+{"data":[{"filename":"res://characters/player/player.tscn","parent":"/root/Game/Level","properties":{"coins":1280,"experience":35,"experience_total":136,"level":6,"max_health":101,"max_music":56,"position":"(1145.852173, 701.045105)","strength":8}}],"version":"0.0.1"}
