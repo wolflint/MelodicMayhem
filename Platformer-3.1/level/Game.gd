@@ -5,7 +5,7 @@ onready var main_menu = $MainMenu
 onready var level = $Level
 
 # SAVE
-onready var _saves_popup = $SavesPopup
+onready var _save_slot_popup = $UI/SavesPopup
 #onready var transition = $UI/Transition
 
 # SHOP AND INVENTORY
@@ -22,6 +22,8 @@ var save_id = 1
 
 func _ready():
 	main_menu.initialize()
+	_save_slot_popup.initialize()
+
 
 func initialize_level():
 	level.initialize()
@@ -47,18 +49,37 @@ func change_level(scene_path):
 	_connect_signals()
 	get_tree().paused = false
 
+func save_game():
+	get_tree().paused = true
+	var save_slot = yield(_save_slot_popup.open(), "completed")
+	if save_slot == 0:
+		get_tree().paused = false
+		return
+	$SaveAndLoad.save_game(save_slot)
+	get_tree().paused = false
+	print("It should have saved")
+
+func load_game():
+	get_tree().paused = true
+	var save_slot = yield(_save_slot_popup.open(), "completed")
+	if save_slot == 0:
+		get_tree().paused = false
+		return
+	change_level(level.map.get_filename())
+	$SaveAndLoad.load_game(save_slot)
+	get_tree().paused = false
+	level.reset_player_position()
+	assert level.player.is_in_group("player")
+	_initialize_player_stats_ui(level.player)
+
 func _input(event):
 	if event.is_action_pressed("open_inventory"):
 		open_inventory()
 	if event.is_action_pressed("quick_save"):
-		$SaveAndLoad.save_game(save_id)
-		print("It should have saved")
+		save_game()
 	if event.is_action_pressed("quick_load"):
-		change_level(level.map.get_filename())
-		$SaveAndLoad.load_game(save_id)
-		level.reset_player_position()
-		assert level.player.is_in_group("player")
-		_initialize_player_stats_ui(level.player)
+		load_game()
+
 
 func open_inventory():
 	if not $Level/Player.has_node("Inventory"):

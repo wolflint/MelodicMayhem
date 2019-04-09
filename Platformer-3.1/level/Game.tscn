@@ -7,9 +7,9 @@
 [ext_resource path="res://interface/hud-stats/MusicBar.tscn" type="PackedScene" id=5]
 [ext_resource path="res://interface/hud-stats/ExperienceBar.tscn" type="PackedScene" id=6]
 [ext_resource path="res://vfx/TransitionColor.tscn" type="PackedScene" id=7]
-[ext_resource path="res://interface/SaveAndLoad.tscn" type="PackedScene" id=8]
-[ext_resource path="res://interface/MainMenu.tscn" type="PackedScene" id=9]
-[ext_resource path="res://save/SavesPopup.tscn" type="PackedScene" id=10]
+[ext_resource path="res://save/SavesPopup.tscn" type="PackedScene" id=8]
+[ext_resource path="res://interface/SaveAndLoad.tscn" type="PackedScene" id=9]
+[ext_resource path="res://interface/MainMenu.tscn" type="PackedScene" id=10]
 
 [node name="Game" type="Node"]
 pause_mode = 2
@@ -54,9 +54,11 @@ margin_bottom = 160.0
 
 [node name="TransitionColor" parent="UI" instance=ExtResource( 7 )]
 
-[node name="SaveAndLoad" parent="." instance=ExtResource( 8 )]
+[node name="SavesPopup" parent="UI" instance=ExtResource( 8 )]
+margin_right = 500.0
+margin_bottom = 400.0
 
-[node name="MainMenu" parent="." instance=ExtResource( 9 )]
+[node name="SaveAndLoad" parent="." instance=ExtResource( 9 )]
 
-[node name="SavesPopup" parent="." instance=ExtResource( 10 )]
+[node name="MainMenu" parent="." instance=ExtResource( 10 )]
 

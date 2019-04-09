@@ -1,0 +1,1 @@
+{"data":[{"filename":"res://characters/player/player.tscn","parent":"/root/Game/Level","properties":{"coins":0,"experience":19,"experience_total":68,"level":5,"max_health":103,"max_music":50,"position":"(255.949692, 745.99939)","strength":9}}],"version":"0.0.1"}

@@ -8,14 +8,13 @@ onready var save_slots = $SaveSlots.get_children()
 
 func initialize(args = []):
 	for slot in save_slots:
-		if slot == save_slots[0]:
-			slot.grab_focus()
 		slot.connect("pressed", self, ("_on_" + slot.name + "_pressed"))
 
 
 func open():
 	amount_popup.popup_centered()
 	.open()
+	save_slots[0].grab_focus()
 	var save_id = yield(self, "save_slot_selected")
 	close()
 	return save_id
