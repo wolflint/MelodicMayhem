@@ -22,7 +22,7 @@ margin_right = -2.0
 margin_bottom = -2.0
 
 [node name="Title" type="Label" parent="VBoxContainer"]
-margin_right = 300.0
+margin_right = 296.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 0, 60 )
 text = "Amount"
@@ -31,7 +31,7 @@ valign = 1
 
 [node name="Slider" type="Control" parent="VBoxContainer"]
 margin_top = 76.0
-margin_right = 300.0
+margin_right = 296.0
 margin_bottom = 216.0
 rect_min_size = Vector2( 0, 140 )
 
@@ -57,9 +57,9 @@ value = 6.0
 script = ExtResource( 4 )
 
 [node name="OkButton" type="Button" parent="VBoxContainer"]
-margin_left = 20.0
+margin_left = 18.0
 margin_top = 232.0
-margin_right = 280.0
+margin_right = 278.0
 margin_bottom = 272.0
 rect_min_size = Vector2( 260, 40 )
 size_flags_horizontal = 4

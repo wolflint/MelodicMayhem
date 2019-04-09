@@ -13,7 +13,7 @@ func initialize(args = [shop, buyer, items]):
 	var shop = args[0]
 	var buyer = args[1]
 	var items = args[2]
-	
+
 	for item in items:
 		var price = shop.get_buy_value(item) if ACTION == "buy_from" else item.price
 		var item_button = _items_list.add_item_button(item, price)
@@ -38,7 +38,7 @@ func open():
 	if _items_list.get_child_count() > 0:
 		if _items_list.get_child(0).get_child_count() > 0:
 			_items_list.get_child(0).get_child(0).grab_focus()
-	
+
 
 func close():
 	.close()
