@@ -38,8 +38,12 @@ func _on_LoadGame_pressed():
 	var focus_owner = get_focus_owner()
 	_save_slot_popup.initialize()
 	var save_slot = yield(_save_slot_popup.open(), "completed")
-	print(save_slot)
-	focus_owner.grab_focus()
+	if save_slot == 0:
+		focus_owner.grab_focus()
+	get_parent().initialize_level()
+	get_parent().load_game(save_slot)
+	close()
+
 
 func _on_Options_pressed():
 	print("Options")

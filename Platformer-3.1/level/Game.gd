@@ -49,9 +49,7 @@ func change_level(scene_path):
 	_connect_signals()
 	get_tree().paused = false
 
-func save_game():
-	get_tree().paused = true
-	var save_slot = yield(_save_slot_popup.open(), "completed")
+func save_game(save_slot):
 	if save_slot == 0:
 		get_tree().paused = false
 		return
@@ -59,9 +57,7 @@ func save_game():
 	get_tree().paused = false
 	print("It should have saved")
 
-func load_game():
-	get_tree().paused = true
-	var save_slot = yield(_save_slot_popup.open(), "completed")
+func load_game(save_slot):
 	if save_slot == 0:
 		get_tree().paused = false
 		return
@@ -76,9 +72,11 @@ func _input(event):
 	if event.is_action_pressed("open_inventory"):
 		open_inventory()
 	if event.is_action_pressed("quick_save"):
-		save_game()
+		get_tree().paused = true
+		save_game(yield(_save_slot_popup.open(), "completed"))
 	if event.is_action_pressed("quick_load"):
-		load_game()
+		get_tree().paused = true
+		load_game(yield(_save_slot_popup.open(), "completed"))
 
 
 func open_inventory():
