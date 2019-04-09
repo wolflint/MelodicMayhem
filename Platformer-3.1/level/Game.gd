@@ -1,6 +1,7 @@
 extends Node
 
 # LEVEL
+onready var main_menu = $MainMenu
 onready var level = $Level
 #onready var transition = $UI/Transition
 
@@ -9,6 +10,7 @@ onready var ShopMenu = preload("res://interface/shop/ShopMenu.tscn")
 onready var InventoryMenu = preload("res://interface/inventory-menu/InventoryMenu.tscn")
 
 # PLAYER STATS UI
+onready var _player_stats = $UI/PlayerStats
 onready var _exp_bar = $UI/PlayerStats/ExperienceBar
 onready var _hp_bar = $UI/PlayerStats/HealthBar
 onready var _music_bar = $UI/PlayerStats/MusicBar
@@ -16,7 +18,11 @@ onready var _music_bar = $UI/PlayerStats/MusicBar
 var save_id = 1
 
 func _ready():
+	main_menu.initialize()
+
+func initialize_level():
 	level.initialize()
+	_player_stats.show()
 	_connect_signals()
 	_initialize_player_stats_ui(level.player)
 	print(level.map.get_filename())
@@ -33,14 +39,9 @@ func _connect_signals():
 		merchant.connect("shop_open_requested", self, "_on_merchant_shop_open_requested")
 
 func change_level(scene_path):
-	# Pause level processing during level change
 	get_tree().paused = true
-#	transition.fade_to_color()
-#	yield(transition, "transition_finished")
 	level.change_level(scene_path)
 	_connect_signals()
-#	transition.fade_from_color()
-#	yield(transition, "transition_finished")
 	get_tree().paused = false
 
 func _input(event):

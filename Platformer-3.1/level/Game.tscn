@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://level/Game.gd" type="Script" id=1]
 [ext_resource path="res://assets/music.ogg" type="AudioStream" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://interface/hud-stats/ExperienceBar.tscn" type="PackedScene" id=6]
 [ext_resource path="res://vfx/TransitionColor.tscn" type="PackedScene" id=7]
 [ext_resource path="res://interface/SaveAndLoad.tscn" type="PackedScene" id=8]
+[ext_resource path="res://interface/MainMenu.tscn" type="PackedScene" id=9]
 
 [node name="Game" type="Node"]
 pause_mode = 2
@@ -27,6 +28,7 @@ script = ExtResource( 3 )
 [node name="PlayerStats" type="VBoxContainer" parent="UI"]
 pause_mode = 1
 editor/display_folded = true
+visible = false
 margin_left = 16.0
 margin_top = 16.0
 margin_right = 40.0
@@ -52,4 +54,6 @@ margin_bottom = 160.0
 [node name="TransitionColor" parent="UI" instance=ExtResource( 7 )]
 
 [node name="SaveAndLoad" parent="." instance=ExtResource( 8 )]
+
+[node name="MainMenu" parent="." instance=ExtResource( 9 )]
 
