@@ -52,4 +52,4 @@ func _on_Controls_pressed():
 	print("Controls")
 
 func _on_Quit_pressed():
-	print("Quit")
+	get_tree().quit()
