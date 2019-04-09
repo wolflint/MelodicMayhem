@@ -3,7 +3,7 @@ extends Node
 signal game_saved()
 signal game_loaded()
 
-const SAVE_DIRECTORY = "res://save/"
+const SAVE_DIRECTORY = "user://save/"
 const SAVE_FILE_EXT = ".game"
 
 func save_game(id):
