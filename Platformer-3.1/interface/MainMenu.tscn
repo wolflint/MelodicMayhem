@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://interface/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://interface/theme/fonts/SourceCodePro-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://interface/theme/fonts/source_code_pro_26.tres" type="DynamicFont" id=3]
+[ext_resource path="res://save/SavesPopup.tscn" type="PackedScene" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 70
@@ -77,6 +78,8 @@ size_flags_horizontal = 3
 size_flags_vertical = 4
 custom_fonts/font = ExtResource( 3 )
 text = "Load Game"
+
+[node name="SavesPopup" parent="MarginContainer/VBoxContainer/Buttons/LoadGame" instance=ExtResource( 4 )]
 
 [node name="Options" type="Button" parent="MarginContainer/VBoxContainer/Buttons"]
 margin_left = 498.0
