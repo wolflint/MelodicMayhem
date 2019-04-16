@@ -23,11 +23,6 @@ func initialize(args = [inventory, character]):
 	inventory.connect("item_added", self, "create_item_button")
 	connect("item_use_requested", inventory, "use")
 
-	emit_signal("open")
-	set_process_input(true)
-	print("input process = true")
-	show()
-
 func close():
 	.close()
 	print("close")

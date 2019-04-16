@@ -12,6 +12,7 @@ onready var _save_slot_popup = $UI/SavesPopup
 # SHOP AND INVENTORY
 onready var ShopMenu = preload("res://interface/shop/ShopMenu.tscn")
 onready var InventoryMenu = preload("res://interface/inventory-menu/InventoryMenu.tscn")
+var inventory_opened = false
 
 # PLAYER STATS UI
 onready var _player_stats = $UI/PlayerStats
@@ -71,7 +72,8 @@ func load_game(save_slot):
 	_initialize_player_stats_ui(level.player)
 
 func _input(event):
-	if event.is_action_pressed("open_inventory"):
+	if event.is_action_pressed("open_inventory") and not inventory_opened:
+		inventory_opened = true
 		open_inventory()
 	if event.is_action_pressed("quick_save"):
 		get_tree().paused = true
@@ -101,9 +103,11 @@ func open_inventory():
 	var inventory_menu = InventoryMenu.instance()
 	$UI.add_child(inventory_menu)
 	inventory_menu.initialize([inventory, $Level/Player])
+	inventory_menu.open()
 
 	get_tree().paused = true
 	yield(inventory_menu, "closed")
+	inventory_opened = false
 	get_tree().paused = false
 
 func _on_Door_player_entered(target_map):
