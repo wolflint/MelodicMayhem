@@ -1,6 +1,6 @@
 extends Node
 
-export(String, FILE, "*.tscn") var LEVEL_START = "res://level/TestLevel.tscn"
+export(String, FILE, "*.tscn") var LEVEL_START = "res://level/Level1.tscn"
 export(PackedScene) var Player = preload("res://characters/player/player.tscn")
 
 var map

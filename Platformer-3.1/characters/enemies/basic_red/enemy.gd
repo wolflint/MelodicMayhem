@@ -1,10 +1,16 @@
 extends KinematicBody2D
 
-signal died(experience_to_give)
+signal died(points)
+
+# GAME LAYOUT
+onready var GAME = get_tree().get_root().get_node("Game")
+onready var LEVEL = GAME.get_node("Level")
+onready var MAP = LEVEL.get_node("Map")
 
 # ENEMY STATS
-export(float) var experience_to_give = 50.0
-export(int) var strength = 1
+export(int) var exp_worth = 50
+export(int) var score_worth = 100
+export(int) var strength = 5
 
 
 const GRAVITY_VEC = Vector2(0, 900)
@@ -19,7 +25,6 @@ var anim=""
 enum States {WALKING, DIED}
 var state = States.WALKING
 
-onready var GAME_ROOT = get_tree().get_root().get_node("Game")
 onready var hp = $Health
 onready var hitbox = $Hitbox/CollisionPolygon2D
 onready var detect_floor_left = $detect_floor_left
@@ -27,13 +32,14 @@ onready var detect_wall_left = $detect_wall_left
 onready var detect_floor_right = $detect_floor_right
 onready var detect_wall_right = $detect_wall_right
 onready var sprite = $sprite
-#warning-ignore:unused_class_variable
+
 onready var player = preload("res://characters/player/player.tscn")
 export (PackedScene) var coin
 
 func _ready():
 	$anim.play("SETUP")
-	connect("died", GAME_ROOT, "_on_enemy_died", [experience_to_give])
+	connect("died", GAME, "_on_enemy_died", [exp_worth])
+	connect("died", MAP, "_on_enemy_died", [score_worth])
 	$HookableHealthBar.initialize($Health.health, $Health.max_health, [])
 
 func _physics_process(delta):
