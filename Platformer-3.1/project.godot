@@ -24,6 +24,7 @@ config/Version="0.0.1"
 [autoload]
 
 ItemDatabase="*res://inventory/ItemDatabase.tscn"
+HighScoreSystem="*res://save/HighScoreSystem.tscn"
 
 [debug]
 

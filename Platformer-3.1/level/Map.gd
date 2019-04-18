@@ -16,8 +16,6 @@ var score = 0
 func _ready():
 	connect("score_changed", GAME, "_on_Map_score_changed", [score])
 	connect("personal_best_changed", GAME, "_on_Map_personal_best_changed", [personal_best])
-	print(highscores)
-	print(highscores.get('map name', "Doesn't exist").items())
 
 #func _update_highscore(new_score):
 #	if new_score > highscore:
@@ -26,11 +24,11 @@ func _ready():
 #		personal_best = new_score
 #		emit_signal("personal_best_changed", personal_best)
 #
-#func _on_enemy_died(score_worth):
-#	score += score_worth
-#	emit_signal("score_changed", score)
+func _on_enemy_died(score_worth):
+	score += score_worth
+	emit_signal("score_changed", score)
 #	_update_highscore(score)
-#	print(score)
+	print(score)
 #
 #### HIGHSCORE SYSTEM ###
 #func get_score_data():

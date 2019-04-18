@@ -14,6 +14,7 @@ func add_highscore(map_name, player : String, score : int):
 			return "Name is already taken"
 	
 	highscores[map_name] = {player : score}
+	print(highscores)
 
 func get_highscore(map_name, player_name):
 	if not map_name in highscores:
