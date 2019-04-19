@@ -1,5 +1,12 @@
 extends Node
 
+# HIGH SCORE
+func _on_Map_score_changed():
+	pass
+
+func _on_Map_personal_best_changed():
+	pass
+
 # LEVEL
 onready var main_menu = $MainMenu
 onready var pause_menu = $UI/PauseMenu

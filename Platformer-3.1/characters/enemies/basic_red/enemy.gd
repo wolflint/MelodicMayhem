@@ -5,7 +5,7 @@ signal died(points)
 # GAME LAYOUT
 onready var GAME = get_tree().get_root().get_node("Game")
 onready var LEVEL = GAME.get_node("Level")
-onready var MAP = LEVEL.get_node("Map")
+onready var MAP = LEVEL.get_child(0)
 
 # ENEMY STATS
 export(int) var exp_worth = 50
