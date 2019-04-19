@@ -1,10 +1,13 @@
 extends Node
 
+signal score_changed(new_score)
+
 export(String, FILE, "*.tscn") var LEVEL_START = "res://level/Level1.tscn"
 export(PackedScene) var Player = preload("res://characters/player/player.tscn")
 
 var map
 var player
+var score = 0
 
 func initialize():
 	player = Player.instance()
@@ -27,6 +30,8 @@ func change_level(scene_path):
 	move_child(map, 0)
 
 	var spawn = map.get_node("PlayerSpawningPoint")
+	score = 0
+	emit_signal("score_changed", score)	
 	assert player
 	player.global_position = spawn.global_position
 
@@ -53,3 +58,9 @@ func reset_player_position():
 
 func _on_player_out_of_bounds():
 	reset_player_position()
+
+func _on_enemy_died(points):
+	score += points
+	HighScoreSystem.add_highscore(map.MAP_NAME, player.PLAYER_NAME, score)
+	emit_signal("score_changed", score)
+	print(HighScoreSystem.highscores)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://level/Game.gd" type="Script" id=1]
 [ext_resource path="res://assets/music.ogg" type="AudioStream" id=2]
@@ -6,11 +6,12 @@
 [ext_resource path="res://interface/hud-stats/HealthBar.tscn" type="PackedScene" id=4]
 [ext_resource path="res://interface/hud-stats/MusicBar.tscn" type="PackedScene" id=5]
 [ext_resource path="res://interface/hud-stats/ExperienceBar.tscn" type="PackedScene" id=6]
-[ext_resource path="res://vfx/TransitionColor.tscn" type="PackedScene" id=7]
-[ext_resource path="res://save/SavesPopup.tscn" type="PackedScene" id=8]
-[ext_resource path="res://interface/PauseMenu.tscn" type="PackedScene" id=9]
-[ext_resource path="res://interface/SaveAndLoad.tscn" type="PackedScene" id=10]
-[ext_resource path="res://interface/MainMenu.tscn" type="PackedScene" id=11]
+[ext_resource path="res://interface/theme/fonts/source_code_pro_26.tres" type="DynamicFont" id=7]
+[ext_resource path="res://vfx/TransitionColor.tscn" type="PackedScene" id=8]
+[ext_resource path="res://save/SavesPopup.tscn" type="PackedScene" id=9]
+[ext_resource path="res://interface/PauseMenu.tscn" type="PackedScene" id=10]
+[ext_resource path="res://interface/SaveAndLoad.tscn" type="PackedScene" id=11]
+[ext_resource path="res://interface/MainMenu.tscn" type="PackedScene" id=12]
 
 [node name="Game" type="Node"]
 pause_mode = 2
@@ -29,7 +30,6 @@ script = ExtResource( 3 )
 
 [node name="PlayerStats" type="VBoxContainer" parent="UI"]
 pause_mode = 1
-editor/display_folded = true
 visible = false
 margin_left = 16.0
 margin_top = 16.0
@@ -53,15 +53,25 @@ margin_top = 112.0
 margin_right = 600.0
 margin_bottom = 160.0
 
-[node name="TransitionColor" parent="UI" instance=ExtResource( 7 )]
+[node name="Score" type="Label" parent="UI/PlayerStats"]
+margin_top = 168.0
+margin_right = 600.0
+margin_bottom = 202.0
+custom_fonts/font = ExtResource( 7 )
+text = "Score : 000"
+align = 1
+valign = 1
 
-[node name="SavesPopup" parent="UI" instance=ExtResource( 8 )]
+[node name="TransitionColor" parent="UI" instance=ExtResource( 8 )]
+
+[node name="SavesPopup" parent="UI" instance=ExtResource( 9 )]
 margin_right = 500.0
 margin_bottom = 400.0
 
-[node name="PauseMenu" parent="UI" instance=ExtResource( 9 )]
+[node name="PauseMenu" parent="UI" instance=ExtResource( 10 )]
 
-[node name="SaveAndLoad" parent="." instance=ExtResource( 10 )]
+[node name="SaveAndLoad" parent="." instance=ExtResource( 11 )]
 
-[node name="MainMenu" parent="." instance=ExtResource( 11 )]
+[node name="MainMenu" parent="." instance=ExtResource( 12 )]
 
+[connection signal="score_changed" from="Level" to="." method="_on_Level_score_changed"]

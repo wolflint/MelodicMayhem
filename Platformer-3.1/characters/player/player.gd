@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+export (String) var PLAYER_NAME = "Gilbert"
+
 signal experience_gained(growth_data, player)
 signal health_changed(health, max_health)
 signal gained_max_health()

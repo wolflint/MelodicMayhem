@@ -26,6 +26,7 @@ onready var _player_stats = $UI/PlayerStats
 onready var _exp_bar = $UI/PlayerStats/ExperienceBar
 onready var _hp_bar = $UI/PlayerStats/HealthBar
 onready var _music_bar = $UI/PlayerStats/MusicBar
+onready var _score_label = $UI/PlayerStats/Score
 
 var save_id = 1
 
@@ -134,3 +135,6 @@ func _on_merchant_shop_open_requested(shop, user):
 
 func _on_enemy_died(experience_to_give):
 	$Level/Player.gain_experience(34)
+
+func _on_Level_score_changed(new_score):
+	_score_label.text = str(new_score)

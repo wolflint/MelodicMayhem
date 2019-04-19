@@ -2,19 +2,23 @@ extends Node
 
 var highscores = {}
 
-func _ready():
-	add_highscore('map1', 'marcin', 100)
-	print(add_highscore('map1', 'marcin', 110))
-	
-	print(get_highscore('map1', 'marcin'))
+#func _ready():
+#	add_highscore('map1', 'marcin', 100)
+#	highscores['map1']['player'] = 700
+#	add_highscore('map1', 'marcin', 50)
+#	print(highscores)
 
 func add_highscore(map_name, player : String, score : int):
-	if map_name in highscores.keys():
-		if player in highscores[map_name].keys():
-			return "Name is already taken"
-	
-	highscores[map_name] = {player : score}
-	print(highscores)
+	if not map_name in highscores.keys():
+		highscores[map_name] = {player : score}
+		return
+	elif not player in highscores[map_name].keys():
+		highscores[map_name][player] = score
+		return
+	elif highscores[map_name][player] < score:
+		highscores[map_name][player] = score
+	else:
+		print("Last highscore was higher")
 
 func get_highscore(map_name, player_name):
 	if not map_name in highscores:

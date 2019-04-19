@@ -14,7 +14,7 @@ func _ready():
 
 func _on_body_entered(body):
 #	HighScoreSystem.add_highscore(MAP.name, 'player', MAP.score)
-	HighScoreSystem.add_highscore(body.get_parent().get_child(0).MAP_NAME, body.name, body.get_parent().get_child(0).score)
+#	HighScoreSystem.add_highscore(body.get_parent().get_child(0).MAP_NAME, body.name, body.get_parent().get_child(0).score)
 	if not body.is_in_group("player"):
 		return
 	print(body.name)
