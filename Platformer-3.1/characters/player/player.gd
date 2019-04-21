@@ -70,12 +70,6 @@ onready var sprite = $sprite
 var cooldown = false
 
 func _ready():
-	if PLAYER_NAME == "DefaultName":
-		get_tree().paused = true
-		$NameInput.popup_centered()
-		yield($NameInput, "name_changed")
-		$NameInput.queue_free()
-		get_tree().paused = false
 	state = States.IDLE
 	connect("gained_max_health", $Health, "_on_Player_gained_max_health")
 	connect("opened_inventory", GAME, "_on_player_opened_inventory")
@@ -122,6 +116,14 @@ func _physics_process(delta):
 	_check_world_height_limit()
 	_animate_sprite()
 	emit_signal('position_changed', global_position)
+
+func change_name():
+	if PLAYER_NAME == "DefaultName":
+		get_tree().paused = true
+		$NameInput.popup_centered()
+		yield($NameInput, "name_changed")
+		$NameInput.queue_free()
+		get_tree().paused = false
 
 func _horizontal_movement():
 	var target_speed = 0
@@ -263,6 +265,7 @@ func get_save_data():
 		"filename": filename,
 		"parent": get_parent().get_path(),
 		"properties": {
+			"PLAYER_NAME": PLAYER_NAME,
 			"max_health": $Health.max_health,
 			"coins": $Purse.coins,
 			"strength": strength,
