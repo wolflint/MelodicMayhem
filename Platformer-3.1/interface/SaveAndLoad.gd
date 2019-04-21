@@ -7,6 +7,7 @@ const SAVE_DIRECTORY = "res://save/"
 const SAVE_FILE_EXT = ".game"
 
 func save_game(id):
+	HighScoreSystem.save_scores()
 	var save_data = {
 		"version": ProjectSettings.get_setting("application/config/Version"),
 		"data": [],
@@ -29,6 +30,7 @@ func save_game(id):
 	emit_signal("game_saved")
 
 func load_game(id):
+	HighScoreSystem.load_scores()
 	var path = get_save_file_path(id)
 	var file = File.new()
 	if not file.file_exists(path):
