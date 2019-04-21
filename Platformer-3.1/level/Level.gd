@@ -2,7 +2,7 @@ extends Node
 
 signal score_changed(new_score)
 
-export(String, FILE, "*.tscn") var LEVEL_START = "res://level/Level1.tscn"
+export(String, FILE, "*.tscn") var LEVEL_START = "res://level/maps/Home.tscn"
 export(PackedScene) var Player = preload("res://characters/player/player.tscn")
 
 var map

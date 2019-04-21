@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/tileset.tres" type="TileSet" id=1]
-[ext_resource path="res://level/Map.gd" type="Script" id=2]
+[ext_resource path="res://level/maps/Map.gd" type="Script" id=2]
 [ext_resource path="res://environment/parallax_bg.tscn" type="PackedScene" id=3]
 [ext_resource path="res://environment/moving_platform.tscn" type="PackedScene" id=4]
 [ext_resource path="res://environment/one_way_platform.tscn" type="PackedScene" id=5]
@@ -11,6 +11,7 @@
 [ext_resource path="res://characters/enemies/EnemySpawner.tscn" type="PackedScene" id=9]
 [ext_resource path="res://collectibles/coin/coin.tscn" type="PackedScene" id=10]
 [ext_resource path="res://level/PlayerSpawningPoint.tscn" type="PackedScene" id=11]
+
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 331.338
