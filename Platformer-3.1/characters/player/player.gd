@@ -9,6 +9,8 @@ signal music_level_changed(current_music, max_music)
 signal player_out_of_bounds
 signal opened_inventory
 
+onready var NameInput = preload("res://interface/NameInput.tscn")
+
 # FOR SPOTTER
 signal position_changed
 signal died
@@ -118,9 +120,11 @@ func _physics_process(delta):
 func change_name():
 	if PLAYER_NAME == "DefaultName":
 		get_tree().paused = true
-		$NameInput.popup_centered()
-		yield($NameInput, "name_changed")
-		$NameInput.queue_free()
+		var name_input = NameInput.instance()
+		add_child(name_input)
+		name_input.popup_centered()
+		yield(name_input, "name_changed")
+		name_input.queue_free()
 		get_tree().paused = false
 
 func _horizontal_movement():

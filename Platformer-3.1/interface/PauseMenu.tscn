@@ -26,33 +26,41 @@ custom_constants/separation = 24
 alignment = 1
 
 [node name="Save" type="Button" parent="MarginContainer/Buttons"]
-margin_top = 164.0
+margin_top = 112.0
 margin_right = 500.0
-margin_bottom = 244.0
+margin_bottom = 192.0
 rect_min_size = Vector2( 500, 80 )
 custom_fonts/font = ExtResource( 2 )
 text = "Save"
 
 [node name="Load" type="Button" parent="MarginContainer/Buttons"]
-margin_top = 268.0
+margin_top = 216.0
 margin_right = 500.0
-margin_bottom = 348.0
+margin_bottom = 296.0
 rect_min_size = Vector2( 500, 80 )
 custom_fonts/font = ExtResource( 2 )
 text = "Load"
 
-[node name="QuitToMenu" type="Button" parent="MarginContainer/Buttons"]
-margin_top = 372.0
+[node name="HighScores" type="Button" parent="MarginContainer/Buttons"]
+margin_top = 320.0
 margin_right = 500.0
-margin_bottom = 452.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 500, 80 )
+custom_fonts/font = ExtResource( 2 )
+text = "View High Scores"
+
+[node name="QuitToMenu" type="Button" parent="MarginContainer/Buttons"]
+margin_top = 424.0
+margin_right = 500.0
+margin_bottom = 504.0
 rect_min_size = Vector2( 500, 80 )
 custom_fonts/font = ExtResource( 2 )
 text = "Quit to Main Menu"
 
 [node name="QuitToDesktop" type="Button" parent="MarginContainer/Buttons"]
-margin_top = 476.0
+margin_top = 528.0
 margin_right = 500.0
-margin_bottom = 556.0
+margin_bottom = 608.0
 rect_min_size = Vector2( 500, 80 )
 custom_fonts/font = ExtResource( 2 )
 text = "Quit to Desktop"

@@ -31,6 +31,7 @@ func _on_Continue_pressed():
 
 func _on_NewGame_pressed():
 	get_parent().initialize_level()
+	get_parent().get_node("Level").player.change_name()
 	close()
 
 func _on_LoadGame_pressed():

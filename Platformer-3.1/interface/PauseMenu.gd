@@ -2,9 +2,11 @@ extends Panel
 
 signal open()
 signal closed()
+signal requested_highscores
 
 onready var buttons = $MarginContainer/Buttons.get_children()
 onready var _save_slot_popup = $SavesPopup
+onready var HighScoreMenu = preload("res://interface/HighscoreMenu.tscn")
 
 func _ready():
 	initialize()
@@ -51,6 +53,11 @@ func _on_Load_pressed():
 		get_node("/root/Game").load_game(save_slot)
 		close()
 
+func _on_HighScores_pressed():
+	var highscore_menu = HighScoreMenu.instance()
+	add_child(highscore_menu)
+	highscore_menu.initialize()
+	highscore_menu.open()
 
 func _on_QuitToMenu_pressed():
 	get_node("/root/Game").quit_to_main_menu()

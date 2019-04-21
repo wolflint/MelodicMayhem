@@ -15,7 +15,6 @@ func initialize():
 	player.get_node("Purse").coins += 1000
 	change_level(LEVEL_START)
 	add_child(player)
-	player.change_name()
 
 func _unhandled_input(event):
 	if event.is_action_pressed("pause_game"):
