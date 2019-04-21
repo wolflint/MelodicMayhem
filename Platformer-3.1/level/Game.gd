@@ -80,9 +80,6 @@ func load_game(save_slot):
 	_initialize_player_stats_ui(level.player)
 
 func _input(event):
-	if event.is_action_pressed("open_inventory") and not inventory_opened:
-		inventory_opened = true
-		open_inventory()
 	if event.is_action_pressed("quick_save"):
 		get_tree().paused = true
 		save_game(yield(_save_slot_popup.open(), "completed"))
@@ -117,6 +114,11 @@ func open_inventory():
 	yield(inventory_menu, "closed")
 	inventory_opened = false
 	get_tree().paused = false
+
+func _on_player_opened_inventory():
+	if not inventory_opened:
+		inventory_opened = true
+		open_inventory()
 
 func _on_Door_player_entered(target_map):
 	call_deferred("change_level", target_map)

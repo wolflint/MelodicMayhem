@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://characters/player/player.gd" type="Script" id=1]
 [ext_resource path="res://assets/robot_demo.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://inventory/items/Food.tscn" type="PackedScene" id=11]
 [ext_resource path="res://shop/Purse.tscn" type="PackedScene" id=12]
 [ext_resource path="res://characters/Health.tscn" type="PackedScene" id=13]
+[ext_resource path="res://interface/NameInput.tscn" type="PackedScene" id=14]
 
 [sub_resource type="Animation" id=1]
 resource_name = "crouch"
@@ -355,6 +356,8 @@ wait_time = 0.25
 
 [node name="Stagger" type="Timer" parent="."]
 wait_time = 0.5
+
+[node name="NameInput" parent="." instance=ExtResource( 14 )]
 
 [connection signal="health_changed" from="Health" to="." method="_on_Health_health_changed"]
 [connection signal="timeout" from="Cooldown" to="." method="_on_Cooldown_timeout"]

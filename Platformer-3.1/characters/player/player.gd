@@ -1,12 +1,13 @@
 extends KinematicBody2D
 
-export (String) var PLAYER_NAME = "Gilbert"
+export (String) var PLAYER_NAME = "DefaultName"
 
 signal experience_gained(growth_data, player)
 signal health_changed(health, max_health)
 signal gained_max_health()
 signal music_level_changed(current_music, max_music)
 signal player_out_of_bounds
+signal opened_inventory
 
 # FOR SPOTTER
 signal position_changed
@@ -34,6 +35,8 @@ enum States {
 	JUMP,
 }
 var state
+
+onready var GAME = get_tree().get_root().get_node("Game")
 
 # Gameplay constants
 const GRAVITY_VEC = Vector2(0, 1000)
@@ -67,8 +70,15 @@ onready var sprite = $sprite
 var cooldown = false
 
 func _ready():
+	if PLAYER_NAME == "DefaultName":
+		get_tree().paused = true
+		$NameInput.popup_centered()
+		yield($NameInput, "name_changed")
+		$NameInput.queue_free()
+		get_tree().paused = false
 	state = States.IDLE
 	connect("gained_max_health", $Health, "_on_Player_gained_max_health")
+	connect("opened_inventory", GAME, "_on_player_opened_inventory")
 
 func _input(event):
 	# Jumping
@@ -78,6 +88,8 @@ func _input(event):
 		jump_count += 1
 	if event.is_action_pressed("test_button"):
 		$Health.take_damage(10)
+	if event.is_action_pressed("open_inventory"):
+		emit_signal("opened_inventory")
 
 func _physics_process(delta):
 	_check_collisions()
