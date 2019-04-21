@@ -21,6 +21,8 @@ onready var ShopMenu = preload("res://interface/shop/ShopMenu.tscn")
 onready var InventoryMenu = preload("res://interface/inventory-menu/InventoryMenu.tscn")
 var inventory_opened = false
 
+onready var HighScoreMenu = preload("res://interface/HighscoreMenu.tscn")
+
 # PLAYER STATS UI
 onready var _player_stats = $UI/PlayerStats
 onready var _exp_bar = $UI/PlayerStats/ExperienceBar
@@ -86,6 +88,11 @@ func _input(event):
 	if event.is_action_pressed("quick_load"):
 		get_tree().paused = true
 		load_game(yield(_save_slot_popup.open(), "completed"))
+	if event.is_action_pressed("test_button"):
+		var highscore_menu = HighScoreMenu.instance()
+		$UI.add_child(highscore_menu)
+		highscore_menu.initialize()
+		highscore_menu.open()
 
 func pause():
 	get_tree().paused = true

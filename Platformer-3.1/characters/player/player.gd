@@ -80,8 +80,6 @@ func _input(event):
 		linear_vel.y = -JUMP_SPEED
 		$sound_jump.play()
 		jump_count += 1
-	if event.is_action_pressed("test_button"):
-		$Health.take_damage(10)
 	if event.is_action_pressed("open_inventory"):
 		emit_signal("opened_inventory")
 

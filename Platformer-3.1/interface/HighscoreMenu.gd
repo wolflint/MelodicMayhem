@@ -1,6 +1,6 @@
-extends Control
+extends "res://interface/Menu.gd"
 
-onready var text_box = $Panel/VBoxContainer/TextEdit
+var highscore_text = ""
 
 func _ready():
 	HighScoreSystem.add_highscore("map_name", "player", 100)
@@ -20,10 +20,8 @@ func _ready():
 	HighScoreSystem.add_highscore("map_name", "player15", 100)
 	HighScoreSystem.add_highscore("map_name2", "player", 100)
 	HighScoreSystem.add_highscore("map_name2", "player2", 100)
-	initialize()
 
-func initialize():
-	var highscore_text = ""
+func initialize(args = []):
 	for level in HighScoreSystem.highscores.keys():
 		if level == "Names":
 			continue
@@ -32,4 +30,12 @@ func initialize():
 			highscore_text += str(key) + ": " + str(HighScoreSystem.highscores[level][key]) + "\n"
 		highscore_text += "\n\n"
 	print(highscore_text)
-	text_box.text = highscore_text
+
+func open():
+	.open()
+	get_tree().paused = true
+	$Panel/VBoxContainer/TextEdit.set("text", highscore_text)
+
+func close():
+	get_tree().paused = false
+	.close()
