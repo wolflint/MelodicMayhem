@@ -1,1 +1,1 @@
-{"data":[{"filename":"res://characters/player/player.tscn","parent":"/root/Game/Level","properties":{"coins":1900,"experience":27,"experience_total":238,"level":8,"max_health":101,"max_music":56,"position":"(1531.468994, 617.999756)","strength":12}}],"version":"0.0.1"}
+{"data":[{"filename":"res://characters/player/player.tscn","parent":"/root/Game/Level","properties":{"PLAYER_NAME":"Rob","coins":1000,"experience":18,"experience_total":34,"level":3,"max_health":100,"max_music":50,"position":"(222.641571, 745.999756)","strength":8}}],"version":"0.0.1"}
