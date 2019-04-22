@@ -48,10 +48,6 @@ func _physics_process(delta):
 	if state == States.WALKING:
 		linear_velocity += GRAVITY_VEC * delta
 		linear_velocity.x = direction * WALK_SPEED
-#		var collider = move_and_collide(linear_velocity)
-#		if collider != null:
-#			if collider == player:
-#				collider.get_node("Health").take_damage(1)
 		linear_velocity = move_and_slide(linear_velocity, FLOOR_NORMAL)
 		check_collisions()
 

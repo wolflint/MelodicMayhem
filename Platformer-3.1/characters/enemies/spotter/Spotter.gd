@@ -1,5 +1,12 @@
 extends KinematicBody2D
 
+signal died(points)
+
+# GAME LAYOUT
+onready var GAME = get_tree().get_root().get_node("Game")
+onready var LEVEL = GAME.get_node("Level")
+onready var MAP = LEVEL.get_child(0)
+
 #### CONSTANTS FROM THE DEMO ENEMY ####
 #const GRAVITY_VEC = Vector2(0, 900)
 const GRAVITY = 900.0
@@ -9,6 +16,12 @@ const WALK_SPEED = 140.0
 
 #ENEMY STATS
 export (float) var strength = 50.0
+var exp_worth = 150
+var score_worth = 300
+onready var hp = $Health
+onready var hitbox = $Hitbox
+
+export (PackedScene) var coin
 
 enum States { IDLE, ROAM, FALL, RETURN, SPOT, FOLLOW, STAGGER, ATTACK, ATTACK_COOLDOWN, DIE, DEAD }
 var state = null
@@ -29,6 +42,10 @@ const ARRIVE_DISTANCE = 10.0
 const SLOW_RADIUS = 150.0
 
 var direction = -1
+
+func _ready() -> void:
+	connect("died", GAME, "_on_enemy_died", [exp_worth])
+	connect("died", LEVEL, "_on_score_changed", [score_worth])
 
 func initialize():
 	var target = get_node('/root/Game/Level').player
@@ -117,6 +134,18 @@ func _physics_process(delta):
 				if not start_position:
 					start_position = position
 				_change_state(States.IDLE)
+		States.DIE:
+			$anim.play("explode")
+			yield($anim, "animation_finished")
+			_change_state(States.DEAD)
+		States.DEAD:
+			queue_free()
+
+func drop_coin():
+	var new_coin = coin.instance()
+	new_coin.set("coin_value", 100)
+	new_coin.set("position", position)
+	get_parent().add_child(new_coin)
 
 func _update_look_direction(target):
 	if (target.x - position.x) < 0:
@@ -131,3 +160,15 @@ func _on_target_died():
 	_change_state(States.RETURN)
 	has_target = false
 	target_position = Vector2()
+
+
+func _on_Hitbox_body_entered(body: PhysicsBody2D) -> void:
+	if body.is_in_group("projectiles"):
+		hp.take_damage(body.strength)
+	if hp.health <= 0:
+		hitbox.set_deferred("disabled", true)
+		set_deferred("state", States.DIE)
+		call_deferred("drop_coin")
+		emit_signal("died")
+	if hp.health < hp.max_health:
+		$HookableHealthBar.set("visible", true)
