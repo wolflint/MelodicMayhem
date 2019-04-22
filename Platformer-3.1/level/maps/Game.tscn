@@ -30,7 +30,6 @@ script = ExtResource( 3 )
 
 [node name="PlayerStats" type="VBoxContainer" parent="UI"]
 pause_mode = 1
-editor/display_folded = true
 visible = false
 margin_left = 16.0
 margin_top = 16.0
@@ -59,7 +58,17 @@ margin_top = 168.0
 margin_right = 600.0
 margin_bottom = 202.0
 custom_fonts/font = ExtResource( 7 )
-text = "Score : 000"
+text = "Score : 0"
+align = 1
+valign = 1
+
+[node name="EffectTime" type="Label" parent="UI/PlayerStats"]
+visible = false
+margin_top = 210.0
+margin_right = 600.0
+margin_bottom = 244.0
+custom_fonts/font = ExtResource( 7 )
+text = "Effect : 0"
 align = 1
 valign = 1
 
@@ -75,4 +84,3 @@ margin_bottom = 400.0
 
 [node name="MainMenu" parent="." instance=ExtResource( 12 )]
 
-[connection signal="score_changed" from="Level" to="." method="_on_Level_score_changed"]

@@ -9,6 +9,17 @@ var map
 var player
 var score = 0
 
+func _process(delta: float) -> void:
+	if not player:
+		return
+	var strength_time_left = player.get_node("StrengthTimer").get_time_left()
+	var effect_label = get_parent()._effect_time_label
+	if not strength_time_left == 0:
+		effect_label.show()
+		effect_label.text = "Strength: " + str(floor(strength_time_left))
+	else:
+		effect_label.hide()
+
 func initialize():
 	player = Player.instance()
 	player.connect("player_out_of_bounds", self, "_on_player_out_of_bounds")
@@ -31,6 +42,7 @@ func change_level(scene_path):
 
 	var spawn = map.get_node("PlayerSpawningPoint")
 	score = 0
+	get_parent()._score_label.text = "Score: " + str(score)	
 	emit_signal("score_changed", score)	
 	assert player
 	player.global_position = spawn.global_position
@@ -59,8 +71,7 @@ func reset_player_position():
 func _on_player_out_of_bounds():
 	reset_player_position()
 
-func _on_enemy_died(points):
+func _on_score_changed(points):
 	score += points
 	HighScoreSystem.add_highscore(map.MAP_NAME, player.PLAYER_NAME, score)
-	emit_signal("score_changed", score)
-	print(HighScoreSystem.highscores)
+	get_parent()._score_label.text = "Score: " + str(score)

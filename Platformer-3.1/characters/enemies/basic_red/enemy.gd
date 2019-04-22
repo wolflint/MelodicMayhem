@@ -39,7 +39,7 @@ export (PackedScene) var coin
 func _ready():
 	$anim.play("SETUP")
 	connect("died", GAME, "_on_enemy_died", [exp_worth])
-	connect("died", LEVEL, "_on_enemy_died", [score_worth])
+	connect("died", LEVEL, "_on_score_changed", [score_worth])
 	$HookableHealthBar.initialize($Health.health, $Health.max_health, [])
 
 func _physics_process(delta):
