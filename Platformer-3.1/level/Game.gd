@@ -88,6 +88,8 @@ func _input(event):
 	if event.is_action_pressed("quick_load"):
 		get_tree().paused = true
 		load_game(yield(_save_slot_popup.open(), "completed"))
+	if event.is_action_pressed("test_button"):
+		OS.window_fullscreen = !OS.window_fullscreen
 
 func pause():
 	get_tree().paused = true

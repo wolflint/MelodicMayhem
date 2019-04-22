@@ -1,1 +1,1 @@
-{"data":[{"filename":"res://characters/player/player.tscn","parent":"/root/Game/Level","properties":{"PLAYER_NAME":"Marcin","coins":1000,"experience":0,"experience_total":0,"level":1,"max_health":100,"max_music":50,"position":"(156, 745.999756)","strength":8}}],"version":"0.0.1"}
+{"data":[{"filename":"res://characters/player/player.tscn","parent":"/root/Game/Level","properties":{"PLAYER_NAME":"Gogot","coins":5210,"experience":4,"experience_total":1462,"level":17,"max_health":105,"max_music":58,"position":"(3005.795654, 598.421265)","strength":18}}],"version":"0.0.1"}

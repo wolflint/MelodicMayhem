@@ -3,6 +3,7 @@ extends Panel
 signal open()
 signal closed()
 
+onready var GAME = get_tree().get_root().get_node("Game")
 onready var buttons = $MarginContainer/Buttons.get_children()
 onready var _save_slot_popup = $SavesPopup
 onready var HighScoreMenu = preload("res://interface/HighscoreMenu.tscn")
@@ -46,8 +47,8 @@ func _on_Load_pressed():
 	if save_slot == 0:
 		focus_owner.grab_focus()
 	else:
-		get_node("/root/Game").initialize_level()
-		get_node("/root/Game").load_game(save_slot)
+		GAME.initialize_level()
+		GAME.load_game(save_slot)
 		close()
 
 func _on_HighScores_pressed():
