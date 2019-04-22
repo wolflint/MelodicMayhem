@@ -77,6 +77,7 @@ func _ready():
 	state = States.IDLE
 	connect("gained_max_health", $Health, "_on_Player_gained_max_health")
 	connect("opened_inventory", GAME, "_on_player_opened_inventory")
+	connect("died", GAME, "_on_Player_died")
 
 func _input(event):
 	# Jumping

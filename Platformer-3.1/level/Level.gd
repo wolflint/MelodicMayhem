@@ -10,7 +10,7 @@ var player
 var score = 0
 
 func _process(delta: float) -> void:
-	if not player:
+	if player == null:
 		return
 	var strength_time_left = player.get_node("StrengthTimer").get_time_left()
 	var effect_label = get_parent()._effect_time_label

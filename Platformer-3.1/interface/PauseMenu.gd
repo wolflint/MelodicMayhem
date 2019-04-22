@@ -32,7 +32,6 @@ func _input(event):
 		close()
 
 func _on_Save_pressed():
-	print("Save")
 	var focus_owner = get_focus_owner()
 	var save_slot = yield(_save_slot_popup.open(), "completed")
 	if save_slot == 0:
@@ -42,7 +41,6 @@ func _on_Save_pressed():
 		close()
 
 func _on_Load_pressed():
-	print("Load")
 	var focus_owner = get_focus_owner()
 	var save_slot = yield(_save_slot_popup.open(), "completed")
 	if save_slot == 0:

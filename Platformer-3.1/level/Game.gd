@@ -11,6 +11,7 @@ func _on_Map_personal_best_changed():
 onready var main_menu = $MainMenu
 onready var pause_menu = $UI/PauseMenu
 onready var level = $Level
+onready var game_over_menu = $UI/GameOverScreen
 
 # SAVE
 onready var _save_slot_popup = $UI/SavesPopup
@@ -138,3 +139,9 @@ func _on_merchant_shop_open_requested(shop, user):
 
 func _on_enemy_died(experience_to_give):
 	$Level/Player.gain_experience(34)
+
+func _on_Player_died():
+	get_tree().paused = true
+	game_over_menu.open()
+	yield(game_over_menu, "closed")
+	get_tree().paused = false
