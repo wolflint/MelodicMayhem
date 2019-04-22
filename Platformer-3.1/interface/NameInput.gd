@@ -2,15 +2,9 @@ extends PopupPanel
 
 signal name_changed()
 
-func _ready():
-#	popup_centered()
-#	get_tree().get_root().set_disable_input(true)
-	set_process_input(true)
-
-func _input(event):
-	if event.is_action_pressed("ui_accept") or event.is_action_pressed("ui_cancel"):
-		if $VBoxContainer/LineEdit.text == "":
-			call_deferred("popup_centered")
-			return
-		get_parent().set("PLAYER_NAME", $VBoxContainer/LineEdit.text)
-		emit_signal("name_changed")
+# If input from lineEdit node is empty, return, else set the player name and emit the name_changed signal
+func _on_LineEdit_text_entered(new_text):
+	if new_text == "":
+		return
+	get_parent().set("PLAYER_NAME", new_text)
+	emit_signal("name_changed")
