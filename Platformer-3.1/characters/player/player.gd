@@ -125,9 +125,10 @@ func change_name():
 		var name_input = NameInput.instance()
 		$ui.add_child(name_input)
 		name_input.popup_centered()
-		yield(name_input, "name_changed")
+		PLAYER_NAME = yield(name_input, "name_changed")
 		name_input.queue_free()
 		get_tree().paused = false
+	print(PLAYER_NAME)
 
 func restore_music(value):
 	current_music += value

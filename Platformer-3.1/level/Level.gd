@@ -46,6 +46,7 @@ func change_level(scene_path):
 	emit_signal("score_changed", score)	
 	assert player
 	player.global_position = spawn.global_position
+	print(player.PLAYER_NAME)
 
 func get_doors():
 	var doors = []

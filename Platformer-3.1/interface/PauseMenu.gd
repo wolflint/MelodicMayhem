@@ -2,7 +2,6 @@ extends Panel
 
 signal open()
 signal closed()
-signal requested_highscores
 
 onready var buttons = $MarginContainer/Buttons.get_children()
 onready var _save_slot_popup = $SavesPopup

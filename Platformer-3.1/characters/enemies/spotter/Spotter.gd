@@ -26,6 +26,7 @@ export (PackedScene) var coin
 enum States { IDLE, ROAM, FALL, RETURN, SPOT, FOLLOW, STAGGER, ATTACK, ATTACK_COOLDOWN, DIE, DEAD }
 var state = null
 
+var target
 var has_target = false
 var target_position = Vector2()
 
@@ -44,17 +45,18 @@ const SLOW_RADIUS = 150.0
 var direction = -1
 
 func _ready() -> void:
+	initialize()
+	target.connect('position_changed', self, '_on_target_position_changed')
+	target.connect('died', self, '_on_target_died')
 	connect("died", GAME, "_on_enemy_died", [exp_worth])
 	connect("died", LEVEL, "_on_score_changed", [score_worth])
 
 func initialize():
-	var target = get_node('/root/Game/Level').player
+	target = get_node('/root/Game/Level').player
 	if not target:
 		print("No target, the monster won't follow or attack")
 		_change_state(States.IDLE)
 		return
-	target.connect('position_changed', self, '_on_target_position_changed')
-	target.connect('died', self, '_on_target_died')
 	has_target = true
 	if is_on_floor():
 		_change_state(States.IDLE)
