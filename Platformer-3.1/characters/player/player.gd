@@ -65,6 +65,8 @@ const STAGGER_DURATION = 0.4
 
 onready var current_weapon = $weapon.weapon_type
 
+var extra_strength = 0
+
 var anim=""
 
 onready var sprite = $sprite
@@ -131,12 +133,11 @@ func restore_music(value):
 	current_music += value
 
 func apply_strength_potion(strength_multiplier, effect_duration):
-	var old_strength = strength
-	strength *= strength_multiplier
+	extra_strength = (strength * strength_multiplier) - strength
 	$StrengthTimer.set("wait_time", effect_duration)
 	$StrengthTimer.start()
 	yield($StrengthTimer, "timeout")
-	strength = old_strength
+	extra_strength = 0
 
 func _horizontal_movement():
 	var target_speed = 0
@@ -157,7 +158,7 @@ func _shoot():
 				current_music -= 1
 				emit_signal("music_level_changed", current_music, max_music)
 				var bullet = preload("note.tscn").instance()
-				bullet.set("strength", strength)
+				bullet.set("strength", strength + extra_strength)
 				bullet.position = $sprite/bullet_shoot.global_position #use node for shoot position
 				bullet.linear_velocity = Vector2(sprite.scale.x * BULLET_VELOCITY, 0)
 				bullet.add_collision_exception_with(self) # don't want player to collide with bullet
@@ -216,13 +217,6 @@ func _stagger():
 	yield($Stagger, "timeout")
 	$Hitbox/CollisionShape2D.disabled = false
 
-
-#func take_damage(damager, amount):
-#	if self.is_a_parent_of(damager):
-#		return
-#	knockback_direction = (damager.global_position - global_position).normalized()
-#	$Health.take_damage(amount)
-
 func get_required_experience(amount):
 	return round(pow(level, 1.8) + level * 4)
 
@@ -261,10 +255,8 @@ func _on_Health_health_changed(new_health):
 		emit_signal('died')
 	emit_signal("health_changed", new_health, $Health.max_health)
 
-
 func _on_Cooldown_timeout():
 	cooldown = false
-
 
 func _on_MusicRegen_timeout():
 	if current_music == max_music:
