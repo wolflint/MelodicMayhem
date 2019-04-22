@@ -121,7 +121,7 @@ func change_name():
 	if PLAYER_NAME == "DefaultName":
 		get_tree().paused = true
 		var name_input = NameInput.instance()
-		add_child(name_input)
+		$ui.add_child(name_input)
 		name_input.popup_centered()
 		yield(name_input, "name_changed")
 		name_input.queue_free()
