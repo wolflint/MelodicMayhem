@@ -3,7 +3,7 @@
 [ext_resource path="res://inventory/items/HealingItem.tscn" type="PackedScene" id=1]
 [ext_resource path="res://inventory/items/red_potion.png" type="Texture" id=2]
 
-[node name="HealthPotionLarge" instance=ExtResource( 1 )]
+[node name="HealthPotionLarge" index="0" instance=ExtResource( 1 )]
 icon = ExtResource( 2 )
 display_name = "Large Health Potion"
 description = "A large health potion heals 50 health points!"
