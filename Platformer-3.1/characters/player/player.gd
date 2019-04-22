@@ -127,6 +127,9 @@ func change_name():
 		name_input.queue_free()
 		get_tree().paused = false
 
+func restore_music(value):
+	current_music += value
+
 func _horizontal_movement():
 	var target_speed = 0
 	if Input.is_action_pressed("move_left"):
