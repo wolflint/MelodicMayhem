@@ -42,8 +42,8 @@ func change_level(scene_path):
 
 	var spawn = map.get_node("PlayerSpawningPoint")
 	score = 0
-	get_parent()._score_label.text = "Score: " + str(score)	
-	emit_signal("score_changed", score)	
+	get_parent()._score_label.text = "Score: " + str(score)
+	emit_signal("score_changed", score)
 	assert player
 	player.global_position = spawn.global_position
 	print(player.PLAYER_NAME)
