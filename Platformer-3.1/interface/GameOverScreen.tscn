@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://interface/GameOverScreen.gd" type="Script" id=1]
 [ext_resource path="res://interface/theme/fonts/SourceCodePro-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://interface/theme/fonts/source_code_pro_26.tres" type="DynamicFont" id=3]
 [ext_resource path="res://save/SavesPopup.tscn" type="PackedScene" id=4]
-[ext_resource path="res://save/SavesPopup.gd" type="Script" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "fade_in"
@@ -70,11 +69,7 @@ size_flags_vertical = 4
 custom_fonts/font = ExtResource( 3 )
 text = "Load Game"
 
-[node name="SavesPopup" type="PopupPanel" parent="VBoxContainer/Buttons/LoadGame" instance=ExtResource( 4 )]
-margin_right = 8.0
-margin_bottom = 8.0
-rect_min_size = Vector2( 500, 400 )
-script = ExtResource( 5 )
+[node name="SavesPopup" parent="VBoxContainer/Buttons/LoadGame" instance=ExtResource( 4 )]
 
 [node name="Quit" type="Button" parent="VBoxContainer/Buttons"]
 margin_top = 84.0

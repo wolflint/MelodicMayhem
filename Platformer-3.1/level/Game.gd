@@ -29,6 +29,7 @@ onready var _hp_bar = $UI/PlayerStats/HealthBar
 onready var _music_bar = $UI/PlayerStats/MusicBar
 onready var _score_label = $UI/PlayerStats/Score
 onready var _effect_time_label = $UI/PlayerStats/EffectTime
+onready var _settings_menu = $UI/SettingsMenu
 
 var save_id = 1
 

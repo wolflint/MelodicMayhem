@@ -46,8 +46,9 @@ func _on_LoadGame_pressed():
 		close()
 
 
-func _on_Options_pressed():
-	print("Options")
+func _on_Settings_pressed():
+	get_parent()._settings_menu.open()
+	close()
 
 func _on_Controls_pressed():
 	print("Controls")

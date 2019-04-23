@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://level/Game.gd" type="Script" id=1]
 [ext_resource path="res://assets/music.ogg" type="AudioStream" id=2]
@@ -11,8 +11,9 @@
 [ext_resource path="res://save/SavesPopup.tscn" type="PackedScene" id=9]
 [ext_resource path="res://interface/PauseMenu.tscn" type="PackedScene" id=10]
 [ext_resource path="res://interface/GameOverScreen.tscn" type="PackedScene" id=11]
-[ext_resource path="res://interface/SaveAndLoad.tscn" type="PackedScene" id=12]
-[ext_resource path="res://interface/MainMenu.tscn" type="PackedScene" id=13]
+[ext_resource path="res://interface/SettingsMenu.tscn" type="PackedScene" id=12]
+[ext_resource path="res://interface/SaveAndLoad.tscn" type="PackedScene" id=13]
+[ext_resource path="res://interface/MainMenu.tscn" type="PackedScene" id=14]
 
 [node name="Game" type="Node"]
 pause_mode = 2
@@ -84,7 +85,10 @@ margin_bottom = 400.0
 [node name="GameOverScreen" parent="UI" instance=ExtResource( 11 )]
 visible = false
 
-[node name="SaveAndLoad" parent="." instance=ExtResource( 12 )]
+[node name="SettingsMenu" parent="UI" instance=ExtResource( 12 )]
+visible = false
 
-[node name="MainMenu" parent="." instance=ExtResource( 13 )]
+[node name="SaveAndLoad" parent="." instance=ExtResource( 13 )]
+
+[node name="MainMenu" parent="." instance=ExtResource( 14 )]
 

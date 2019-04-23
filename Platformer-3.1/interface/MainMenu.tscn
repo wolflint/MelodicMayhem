@@ -88,7 +88,7 @@ text = "Load Game"
 
 [node name="SavesPopup" parent="MarginContainer/VBoxContainer/Buttons/LoadGame" instance=ExtResource( 5 )]
 
-[node name="Options" type="Button" parent="MarginContainer/VBoxContainer/Buttons"]
+[node name="Settings" type="Button" parent="MarginContainer/VBoxContainer/Buttons"]
 margin_left = 498.0
 margin_top = 127.0
 margin_right = 731.0
@@ -97,7 +97,7 @@ rect_min_size = Vector2( 0, 80 )
 size_flags_horizontal = 3
 size_flags_vertical = 4
 custom_fonts/font = ExtResource( 4 )
-text = "Options"
+text = "Settings"
 
 [node name="Controls" type="Button" parent="MarginContainer/VBoxContainer/Buttons"]
 margin_left = 747.0
