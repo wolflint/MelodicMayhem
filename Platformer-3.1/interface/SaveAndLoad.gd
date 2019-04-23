@@ -51,6 +51,8 @@ func load_game(id):
 			var value
 			if is_vector_2(property, node):
 				value = parse_vector_2(properties[property])
+			elif property == "_purse.coins":
+				node._purse.coins = properties[property]
 			else:
 				value = properties[property]
 			node.set(property, value)

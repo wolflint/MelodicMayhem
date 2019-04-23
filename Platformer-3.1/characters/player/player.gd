@@ -10,6 +10,7 @@ signal player_out_of_bounds
 signal opened_inventory
 
 onready var NameInput = preload("res://interface/NameInput.tscn")
+onready var _purse = $Purse
 
 # FOR SPOTTER
 signal position_changed
@@ -20,8 +21,6 @@ export (int) var max_hp = 12
 export (int) var strength = 8
 export (int) var max_music = 50
 var current_music = max_music
-
-var coins
 
 # Experience and leveling system
 export (int) var level = 1
@@ -274,12 +273,12 @@ func get_save_data():
 		"properties": {
 			"PLAYER_NAME": PLAYER_NAME,
 			"max_health": $Health.max_health,
-			"coins": $Purse.coins,
 			"strength": strength,
 			"max_music": max_music,
 			"level": level,
 			"experience": experience,
 			"experience_total": experience_total,
 			"position": position,
+			"_purse.coins": _purse.coins,
 		}
 	}
