@@ -4,6 +4,7 @@ signal open()
 signal closed()
 
 var is_fullscreen = false
+var is_muted = false
 
 # Buttons
 onready var _fullscreen_btn = get_node("VBoxContainer/Buttons/Fullscreen")
@@ -34,7 +35,10 @@ func _on_Fullscreen_pressed() -> void:
 
 
 func _on_SoundMute_pressed() -> void:
-	pass # Replace with function body.
+#	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), -60)
+	is_muted = !is_muted
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), is_muted)
+	_soundmute_btn.text = "Sound Mute: " + str(is_muted)
 
 
 func _on_Back_pressed() -> void:
