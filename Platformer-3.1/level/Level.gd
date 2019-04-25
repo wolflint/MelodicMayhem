@@ -8,17 +8,19 @@ export(PackedScene) var Player = preload("res://characters/player/player.tscn")
 var map
 var player
 var score = 0
+var using_strength_potion = false
 
 func _process(delta: float) -> void:
-	if player == null:
-		return
-	var strength_time_left = player.get_node("StrengthTimer").get_time_left()
-	var effect_label = get_parent()._effect_time_label
-	if not strength_time_left == 0:
-		effect_label.show()
-		effect_label.text = "Strength: " + str(floor(strength_time_left))
-	else:
-		effect_label.hide()
+	if using_strength_potion == true:
+		if player == null:
+			return
+		var strength_time_left = player.get_node("StrengthTimer").get_time_left()
+		var effect_label = get_parent()._effect_time_label
+		if not strength_time_left == 0:
+			effect_label.show()
+			effect_label.text = "Strength: " + str(floor(strength_time_left))
+		else:
+			effect_label.hide()
 
 func initialize():
 	player = Player.instance()
@@ -68,6 +70,9 @@ func reset_player_position():
 	var spawn = map.get_node("PlayerSpawningPoint")
 	player.global_position = spawn.global_position
 
+
+func _on_toggle_strength_potion():
+	using_strength_potion = !using_strength_potion
 
 func _on_player_out_of_bounds():
 	reset_player_position()

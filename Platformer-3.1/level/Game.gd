@@ -97,7 +97,7 @@ func pause():
 	get_tree().paused = false
 
 func quit_to_main_menu():
-	print("QuitToMain")
+	level.set("using_strength_potion", false)
 	level.player.queue_free()
 	level.map.queue_free()
 	level.map = null

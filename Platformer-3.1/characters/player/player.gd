@@ -8,6 +8,7 @@ signal gained_max_health()
 signal music_level_changed(current_music, max_music)
 signal player_out_of_bounds
 signal opened_inventory
+signal toggle_strength_potion
 
 onready var NameInput = preload("res://interface/NameInput.tscn")
 onready var _purse = $Purse
@@ -38,6 +39,7 @@ enum States {
 var state
 
 onready var GAME = get_tree().get_root().get_node("Game")
+onready var LEVEL = GAME.get_node("Level")
 
 # Gameplay constants
 const GRAVITY_VEC = Vector2(0, 1000)
@@ -77,6 +79,7 @@ func _ready():
 	connect("gained_max_health", $Health, "_on_Player_gained_max_health")
 	connect("opened_inventory", GAME, "_on_player_opened_inventory")
 	connect("died", GAME, "_on_Player_died")
+	connect("toggle_strength_potion", LEVEL, "_on_toggle_strength_potion")
 
 func _input(event):
 	# Jumping
@@ -134,10 +137,12 @@ func restore_music(value):
 	current_music += value
 
 func apply_strength_potion(strength_multiplier, effect_duration):
+	emit_signal("toggle_strength_potion")
 	extra_strength = (strength * strength_multiplier) - strength
 	$StrengthTimer.set("wait_time", effect_duration)
 	$StrengthTimer.start()
 	yield($StrengthTimer, "timeout")
+	emit_signal("toggle_strength_potion")
 	extra_strength = 0
 
 func _horizontal_movement():
