@@ -107,12 +107,12 @@ func _physics_process(delta):
 			$anim.play("walk")
 			var distance_to_target = follow(target_position, max_follow_speed)
 			move_and_slide(velocity, FLOOR_NORMAL)
-			if get_slide_count() > 0:
-				var collision_info = get_slide_collision(0)
-				if collision_info.collider.is_in_group("player"):
-					_change_state(States.ATTACK)
-				if distance_to_target > FOLLOW_RANGE:
-					_change_state(States.RETURN)
+#			if get_slide_count() > 0:
+#				var collision_info = get_slide_collision(0)
+#				if collision_info.collider.is_in_group("player"):
+#					_change_state(States.ATTACK)
+			if distance_to_target > FOLLOW_RANGE:
+				_change_state(States.RETURN)
 		States.RETURN:
 			_update_look_direction(start_position)
 			$anim.play("walk")
