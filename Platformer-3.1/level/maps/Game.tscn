@@ -91,4 +91,3 @@ visible = false
 [node name="SaveAndLoad" parent="." instance=ExtResource( 13 )]
 
 [node name="MainMenu" parent="." instance=ExtResource( 14 )]
-
