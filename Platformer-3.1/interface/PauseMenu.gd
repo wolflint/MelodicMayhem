@@ -4,8 +4,10 @@ signal open()
 signal closed()
 
 onready var GAME = get_tree().get_root().get_node("Game")
-onready var buttons = $MarginContainer/Buttons.get_children()
+onready var SAVE = GAME.get_node("SaveAndLoad")
+onready var buttons = $MarginContainer/Menu/Buttons.get_children()
 onready var _save_slot_popup = $SavesPopup
+onready var playtime_lbl = $MarginContainer/Menu/PlayTime
 onready var HighScoreMenu = preload("res://interface/HighscoreMenu.tscn")
 
 func _ready():
@@ -18,6 +20,8 @@ func initialize():
 	_save_slot_popup.initialize()
 
 func open():
+	if SAVE.get_play_time():
+		playtime_lbl.text = SAVE.get_play_time()
 	emit_signal("open")
 	set_process_input(true)
 	buttons[0].grab_focus()

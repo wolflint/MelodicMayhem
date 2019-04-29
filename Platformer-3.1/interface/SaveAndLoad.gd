@@ -6,10 +6,13 @@ signal game_loaded()
 const SAVE_DIRECTORY = "res://save/"
 const SAVE_FILE_EXT = ".game"
 
+var playtime = 0
+
 func save_game(id):
 	HighScoreSystem.save_scores()
 	var save_data = {
 		"version": ProjectSettings.get_setting("application/config/Version"),
+		"playtime": playtime,
 		"data": [],
 	}
 	for node in get_tree().get_nodes_in_group("save"):
@@ -39,7 +42,9 @@ func load_game(id):
 	file.open(path, File.READ)
 	var save_data = parse_json(file.get_as_text())
 	file.close()
-
+	
+	playtime = save_data["playtime"]
+	
 	for node in get_tree().get_nodes_in_group("save"):
 		node.free()
 
@@ -57,6 +62,28 @@ func load_game(id):
 				value = properties[property]
 			node.set(property, value)
 	emit_signal("game_loaded")
+
+func get_play_time():
+	var current_playtime = int(playtime)
+	
+	var day = int(current_playtime / (24 * 3600))
+	
+	current_playtime = current_playtime % (24 * 3600)
+	var hour = current_playtime / 3600
+	
+	current_playtime %= 3600
+	var minutes = current_playtime / 60
+	
+	current_playtime %= 60
+	var seconds = current_playtime
+	
+	print(day)
+	print(hour)
+	print(minutes)
+	return (str(day) + " d " + str(hour) + " h " + str(minutes) + " m " + str(seconds) + " s ")
+
+func _on_Timer_timeout():
+	playtime += 1
 
 func is_vector_2(property_name, node):
 	return typeof(node.get(property_name)) == typeof(Vector2())

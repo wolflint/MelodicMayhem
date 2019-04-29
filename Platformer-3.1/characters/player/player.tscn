@@ -361,7 +361,6 @@ wait_time = 0.5
 
 [node name="StrengthTimer" type="Timer" parent="."]
 one_shot = true
-
 [connection signal="health_changed" from="Health" to="." method="_on_Health_health_changed"]
 [connection signal="timeout" from="Cooldown" to="." method="_on_Cooldown_timeout"]
 [connection signal="timeout" from="MusicRegen" to="." method="_on_MusicRegen_timeout"]
