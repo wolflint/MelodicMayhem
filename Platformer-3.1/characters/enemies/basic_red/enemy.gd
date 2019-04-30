@@ -19,7 +19,7 @@ const FLOOR_NORMAL = Vector2(0, -1)
 const WALK_SPEED = 140
 
 var linear_velocity = Vector2()
-var direction = -1
+var direction
 var anim=""
 
 enum States {WALKING, DIED}
@@ -37,6 +37,12 @@ onready var player = preload("res://characters/player/player.tscn")
 export (PackedScene) var coin
 
 func _ready():
+	# Choose between left and right by randomising a boolean value
+	var choose_direction = bool(randi() % 2)
+	if choose_direction:
+		direction = -1
+	else:
+		direction = 1
 	$anim.play("SETUP")
 	connect("died", GAME, "_on_enemy_died", [exp_worth])
 	connect("died", LEVEL, "_on_score_changed", [score_worth])
@@ -50,12 +56,13 @@ func _physics_process(delta):
 		linear_velocity.x = direction * WALK_SPEED
 		linear_velocity = move_and_slide(linear_velocity, FLOOR_NORMAL)
 		check_collisions()
-
-		if not detect_floor_left.is_colliding() or detect_wall_left.is_colliding():
-			direction = 1.0
-
-		if not detect_floor_right.is_colliding() or detect_wall_right.is_colliding():
-			direction = -1.0
+		
+		if is_on_floor():
+			if not detect_floor_left.is_colliding() or detect_wall_left.is_colliding():
+				direction = 1.0
+	
+			if not detect_floor_right.is_colliding() or detect_wall_right.is_colliding():
+				direction = -1.0
 
 		sprite.scale = Vector2(direction, 1.0)
 		new_anim = "walk"

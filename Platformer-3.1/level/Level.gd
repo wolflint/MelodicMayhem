@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 		if player == null:
 			return
 		var strength_time_left = player.get_node("StrengthTimer").get_time_left()
-		var effect_label = get_parent()._effect_time_label
+		var effect_label = get_parent().player_stats.effect_lbl
 		if not strength_time_left == 0:
 			effect_label.show()
 			effect_label.text = "Strength: " + str(floor(strength_time_left))
@@ -46,7 +46,7 @@ func change_level(scene_path):
 	score = 0
 	get_parent().player_stats.score_lbl.text = "Score: " + str(score)
 	emit_signal("score_changed", score)
-	assert player
+	assert player != null
 	player.global_position = spawn.global_position
 	print(player.PLAYER_NAME)
 

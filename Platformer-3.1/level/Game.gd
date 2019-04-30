@@ -86,11 +86,11 @@ func load_game(save_slot):
 	player_stats = PlayerStats.instance()
 	$UI.add_child(player_stats)
 	player_stats.show()
-	player_stats.initialise()
 	change_level(level.map.get_filename())
 	get_tree().paused = false
 	level.reset_player_position()
 	assert level.player.is_in_group("player")
+	player_stats.initialise()
 
 func _input(event):
 	if event.is_action_pressed("quick_save"):

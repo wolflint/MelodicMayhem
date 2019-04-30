@@ -1,6 +1,6 @@
 extends Node
 
-const SAVE_DIRECTORY = "res://save/"
+const SAVE_DIRECTORY = "user://save/"
 const SAVE_FILE_EXT = ".score"
 
 var highscores = {}
