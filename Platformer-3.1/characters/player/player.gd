@@ -18,7 +18,7 @@ signal position_changed
 signal died
 
 # Character stats
-export (int) var max_hp = 12
+onready var health = $Health
 export (int) var strength = 8
 export (int) var max_music = 50
 var current_music = max_music
@@ -254,6 +254,7 @@ func level_up():
 
 func _check_world_height_limit():
 	if position.y < -2000 or position.y > 2000:
+		$Health.take_damage(int(health.max_health / 3))
 		emit_signal("player_out_of_bounds")
 
 func _on_Health_health_changed(new_health):
@@ -277,7 +278,7 @@ func get_save_data():
 		"parent": get_parent().get_path(),
 		"properties": {
 			"PLAYER_NAME": PLAYER_NAME,
-			"max_health": $Health.max_health,
+			"health.max_health": health.max_health,
 			"strength": strength,
 			"max_music": max_music,
 			"level": level,

@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://interface/HighscoreMenu.gd" type="Script" id=1]
+[ext_resource path="res://interface/ControlsMenu.gd" type="Script" id=1]
 [ext_resource path="res://interface/theme/fonts/source_code_pro_26.tres" type="DynamicFont" id=2]
 [ext_resource path="res://interface/theme/fonts/SourceCodePro-Regular.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 3 )
 
-[node name="HighscoreMenu" type="Control"]
+[node name="ControlsMenu" type="Control"]
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -36,7 +36,7 @@ margin_top = 81.0
 margin_right = 680.0
 margin_bottom = 115.0
 custom_fonts/font = ExtResource( 2 )
-text = "Highscores"
+text = "Controls"
 align = 1
 
 [node name="TextEdit" type="TextEdit" parent="Panel/VBoxContainer"]

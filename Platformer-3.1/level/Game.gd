@@ -7,6 +7,10 @@ func _on_Map_score_changed():
 func _on_Map_personal_best_changed():
 	pass
 
+# UI
+var PlayerStats = preload("res://interface/PlayerStats.tscn")
+var player_stats
+
 # LEVEL
 onready var main_menu = $MainMenu
 onready var pause_menu = $UI/PauseMenu
@@ -23,33 +27,35 @@ onready var InventoryMenu = preload("res://interface/inventory-menu/InventoryMen
 var inventory_opened = false
 
 # PLAYER STATS UI
-onready var _player_stats = $UI/PlayerStats
-onready var _exp_bar = $UI/PlayerStats/ExperienceBar
-onready var _hp_bar = $UI/PlayerStats/HealthBar
-onready var _music_bar = $UI/PlayerStats/MusicBar
-onready var _score_label = $UI/PlayerStats/Score
-onready var _effect_time_label = $UI/PlayerStats/EffectTime
+#onready var _player_stats = $UI/PlayerStats
+#onready var _exp_bar = $UI/PlayerStats/ExperienceBar
+#onready var _hp_bar = $UI/PlayerStats/HealthBar
+#onready var _music_bar = $UI/PlayerStats/MusicBar
+#onready var _score_label = $UI/PlayerStats/Score
+#onready var _effect_time_label = $UI/PlayerStats/EffectTime
+
 onready var _settings_menu = $UI/SettingsMenu
 
-var save_id = 1
 
 func _ready():
 	main_menu.initialize()
 	main_menu.open()
+	player_stats = PlayerStats.instance()
+	$UI.add_child(player_stats)
 	_save_slot_popup.initialize()
 
 
 func initialize_level():
 	level.initialize()
-	_player_stats.show()
+	player_stats.show()
 	_connect_signals()
-	_initialize_player_stats_ui(level.player)
+	player_stats.initialise()
 	print(level.map.get_filename())
 
-func _initialize_player_stats_ui(player):
-	_exp_bar.initialize(player.experience, player.experience_required, [player])
-	_hp_bar.initialize(player.get_node("Health").health, player.get_node("Health").max_health, [player])
-	_music_bar.initialize(player.current_music, player.max_music, [player])
+#func _initialize_player_stats_ui(player):
+#	_exp_bar.initialize(player.experience, player.experience_required, [player])
+#	_hp_bar.initialize(player.get_node("Health").health, player.get_node("Health").max_health, [player])
+#	_music_bar.initialize(player.current_music, player.max_music, [player])
 
 func _connect_signals():
 	for door in level.get_doors():
@@ -72,15 +78,19 @@ func save_game(save_slot):
 	print("It should have saved")
 
 func load_game(save_slot):
+	player_stats.free()
 	if save_slot == 0:
 		get_tree().paused = false
 		return
-	change_level(level.map.get_filename())
 	$SaveAndLoad.load_game(save_slot)
+	player_stats = PlayerStats.instance()
+	$UI.add_child(player_stats)
+	player_stats.show()
+	player_stats.initialise()
+	change_level(level.map.get_filename())
 	get_tree().paused = false
 	level.reset_player_position()
 	assert level.player.is_in_group("player")
-	_initialize_player_stats_ui(level.player)
 
 func _input(event):
 	if event.is_action_pressed("quick_save"):
@@ -101,7 +111,7 @@ func quit_to_main_menu():
 	level.player.queue_free()
 	level.map.queue_free()
 	level.map = null
-	_player_stats.hide()
+	player_stats.hide()
 	main_menu.open()
 
 func open_inventory():

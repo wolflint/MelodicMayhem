@@ -1,6 +1,6 @@
 extends "res://interface/Menu.gd"
 
-var highscore_text = ""
+var controls_text = ""
 
 func initialize(args = []):
 	for level in HighScoreSystem.highscores.keys():
