@@ -8,6 +8,9 @@ const SAVE_FILE_EXT = ".game"
 
 var playtime = 0
 
+func _ready():
+	connect("game_loaded", get_node('/root/Game/Level'), "_on_game_loaded")
+
 func save_game(id):
 	HighScoreSystem.save_scores()
 	var save_data = {

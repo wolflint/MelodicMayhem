@@ -81,3 +81,6 @@ func _on_score_changed(points):
 	score += points
 	HighScoreSystem.add_highscore(map.MAP_NAME, player.PLAYER_NAME, score)
 	get_parent().player_stats.score_lbl.text = "Score: " + str(score)
+
+func _on_game_loaded():
+	player = get_node('/root/Game/Level/Player')

@@ -14,7 +14,7 @@ var player_stats
 # LEVEL
 onready var main_menu = $MainMenu
 onready var pause_menu = $UI/PauseMenu
-onready var level = $Level
+onready var level = get_node('/root/Game/Level')
 onready var game_over_menu = $UI/GameOverScreen
 
 # SAVE
@@ -85,11 +85,14 @@ func load_game(save_slot):
 	player_stats = PlayerStats.instance()
 	$UI.add_child(player_stats)
 	change_level(level.map.get_filename())
+	print("Player before load: " + str(level.player))
 	$SaveAndLoad.load_game(save_slot)
+	print("Player: " + str(level.player))
 	player_stats.show()
 	get_tree().paused = false
-	level.reset_player_position()
+#	print(level.path)
 	assert level.player.is_in_group("player")
+	level.reset_player_position()
 	player_stats.initialise()
 
 func _input(event):
