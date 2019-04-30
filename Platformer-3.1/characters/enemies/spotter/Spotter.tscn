@@ -362,6 +362,5 @@ cast_to = Vector2( 0, 20 )
 position = Vector2( 29.1987, -9.34363 )
 enabled = true
 cast_to = Vector2( 0, 45 )
-
 [connection signal="health_changed" from="Health" to="HookableHealthBar" method="_on_Health_health_changed"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]

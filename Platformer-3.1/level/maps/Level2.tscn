@@ -14,7 +14,7 @@ MAP_NAME = "Level 2"
 
 [node name="Door" parent="Doors" index="0"]
 position = Vector2( 3529.44, 581.042 )
-map_path = "res://level/maps/Home.tscn"
+map_path = "res://level/maps/Level3.tscn"
 
 [node name="Enemies" parent="." index="4"]
 editor/display_folded = true
@@ -701,4 +701,3 @@ position = Vector2( 2806.53, 526.728 )
 
 [node name="coin213" parent="Coins" index="223" instance=ExtResource( 3 )]
 position = Vector2( 3136.08, 515.097 )
-

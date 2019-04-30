@@ -9,9 +9,13 @@ onready var MAP = LEVEL.get_child(0)
 
 #### CONSTANTS FROM THE DEMO ENEMY ####
 #const GRAVITY_VEC = Vector2(0, 900)
-const GRAVITY = 900.0
+const GRAVITY = Vector2(0, 100)
 const FLOOR_NORMAL = Vector2(0, -1)
 const WALK_SPEED = 140.0
+const MIN_ONAIR_TIME = 0.1
+const SLOPE_SLIDE_STOP = 25.0
+var onair_time = 0 #
+var on_floor = false
 #### CONSTANTS FROM THE DEMO ENEMY ####
 
 #ENEMY STATS
@@ -87,16 +91,23 @@ func _change_state(new_state):
 	state = new_state
 
 func _physics_process(delta):
+	onair_time += delta
+	
+	if is_on_floor():
+		onair_time = 0
+	
+	on_floor = onair_time < MIN_ONAIR_TIME
+	
 	if not has_target:
 		initialize()
-	var current_gravity = GRAVITY * delta
-	velocity.y += GRAVITY * delta
+#	var current_gravity = GRAVITY * delta
+	velocity += delta * GRAVITY
 
 	var current_state = state
 	match current_state:
 		States.IDLE:
 			$anim.play("idle")
-			move_and_slide(velocity, FLOOR_NORMAL)
+			move_and_slide(velocity, FLOOR_NORMAL, SLOPE_SLIDE_STOP)
 			var distance_to_target = position.distance_to(target_position)
 			if distance_to_target < FOLLOW_RANGE:
 				if not has_target:
@@ -106,7 +117,7 @@ func _physics_process(delta):
 			_update_look_direction(target_position)
 			$anim.play("walk")
 			var distance_to_target = follow(target_position, max_follow_speed)
-			move_and_slide(velocity, FLOOR_NORMAL)
+			move_and_slide(velocity, FLOOR_NORMAL, SLOPE_SLIDE_STOP)
 #			if get_slide_count() > 0:
 #				var collision_info = get_slide_collision(0)
 #				if collision_info.collider.is_in_group("player"):
@@ -121,7 +132,7 @@ func _physics_process(delta):
 			else:
 				$sprite.scale.x = 1
 			var distance_to_target = arrive_to(start_position, SLOW_RADIUS, max_roam_speed)
-			move_and_slide(velocity, FLOOR_NORMAL)
+			move_and_slide(velocity, FLOOR_NORMAL, SLOPE_SLIDE_STOP)
 			if distance_to_target < ARRIVE_DISTANCE:
 				_change_state(States.IDLE)
 			elif position.distance_to(target_position) < FOLLOW_RANGE:
@@ -130,8 +141,7 @@ func _physics_process(delta):
 				_change_state(States.FOLLOW)
 		States.FALL:
 			$anim.play("idle")
-			velocity = Vector2(0, current_gravity)
-			move_and_slide(velocity, FLOOR_NORMAL)
+			move_and_slide(velocity, FLOOR_NORMAL, SLOPE_SLIDE_STOP)
 			if self.is_on_floor():
 				if not start_position:
 					start_position = position
