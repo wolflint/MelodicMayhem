@@ -51,7 +51,8 @@ func _on_Settings_pressed():
 	close()
 
 func _on_Controls_pressed():
-	print("Controls")
+	$ControlsMenu.open()
+	yield($ControlsMenu, "closed")
 
 func _on_Quit_pressed():
 	get_tree().quit()

@@ -5,10 +5,12 @@
 [ext_resource path="res://interface/theme/fonts/SourceCodePro-Regular.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="DynamicFont" id=1]
+size = 23
 font_data = ExtResource( 3 )
 
 [node name="ControlsMenu" type="Control"]
 pause_mode = 2
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
@@ -45,6 +47,13 @@ margin_right = 680.0
 margin_bottom = 519.0
 rect_min_size = Vector2( 0, 400 )
 custom_fonts/font = SubResource( 1 )
-text = "Test Text"
+text = "Move Left: Left Arrow
+Move Right: Right Arrow
+Jump: Space
+Shoot: Z
+Interact: Up Arrow
+Open Inventory: I
+Pause Game: P
+Quit Current Menu: Esc"
 readonly = true
 wrap_enabled = true
