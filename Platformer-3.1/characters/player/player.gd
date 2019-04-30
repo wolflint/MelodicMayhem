@@ -284,7 +284,7 @@ func get_save_data():
 			"level": level,
 			"experience": experience,
 			"experience_total": experience_total,
-			"position": position,
+#			"position": position,
 			"_purse.coins": _purse.coins,
 		}
 	}
