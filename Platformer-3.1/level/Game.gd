@@ -82,11 +82,11 @@ func load_game(save_slot):
 	if save_slot == 0:
 		get_tree().paused = false
 		return
-	$SaveAndLoad.load_game(save_slot)
 	player_stats = PlayerStats.instance()
 	$UI.add_child(player_stats)
-	player_stats.show()
 	change_level(level.map.get_filename())
+	$SaveAndLoad.load_game(save_slot)
+	player_stats.show()
 	get_tree().paused = false
 	level.reset_player_position()
 	assert level.player.is_in_group("player")
