@@ -11,7 +11,6 @@ enemy = ExtResource( 2 )
 [node name="SpawnTimer" type="Timer" parent="."]
 one_shot = true
 autostart = true
-
 [connection signal="body_entered" from="." to="." method="_on_EnemySpawner_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_EnemySpawner_body_exited"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]

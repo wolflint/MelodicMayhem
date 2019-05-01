@@ -361,6 +361,5 @@ margin_bottom = -22.8176
 
 [node name="Health" parent="." instance=ExtResource( 8 )]
 max_health = 100
-
 [connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]
 [connection signal="health_changed" from="Health" to="HookableHealthBar" method="_on_Health_health_changed"]

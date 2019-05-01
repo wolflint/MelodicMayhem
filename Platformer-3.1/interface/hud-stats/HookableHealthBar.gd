@@ -10,4 +10,4 @@ func initialize(current, maximum, args = []):
 func _on_Health_health_changed(health):
 	if health < 1:
 		set("visible", false)
-	yield(animate_value(health), "completed")
+	yield(animate_value(health, 0.5), "completed")

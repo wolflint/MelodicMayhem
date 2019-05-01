@@ -1,0 +1,90 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://interface/PauseMenu.gd" type="Script" id=1]
+[ext_resource path="res://interface/theme/fonts/source_code_pro_26.tres" type="DynamicFont" id=2]
+[ext_resource path="res://save/SavesPopup.tscn" type="PackedScene" id=3]
+
+[node name="PauseMenu" type="Panel"]
+pause_mode = 2
+visible = false
+modulate = Color( 1, 1, 1, 0.705882 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -250.0
+margin_right = 250.0
+
+[node name="Menu" type="VBoxContainer" parent="MarginContainer"]
+margin_right = 500.0
+margin_bottom = 720.0
+custom_constants/separation = 24
+alignment = 1
+
+[node name="PauseLabel" type="Label" parent="MarginContainer/Menu"]
+margin_top = 54.0
+margin_right = 500.0
+margin_bottom = 88.0
+custom_fonts/font = ExtResource( 2 )
+text = "Pause"
+align = 1
+valign = 1
+
+[node name="PlayTime" type="Label" parent="MarginContainer/Menu"]
+margin_top = 112.0
+margin_right = 500.0
+margin_bottom = 146.0
+custom_fonts/font = ExtResource( 2 )
+text = "Play Time: 00"
+align = 1
+valign = 1
+
+[node name="Buttons" type="VBoxContainer" parent="MarginContainer/Menu"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Save" type="Button" parent="MarginContainer/Menu/Buttons"]
+margin_top = 170.0
+margin_right = 500.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 500, 80 )
+custom_fonts/font = ExtResource( 2 )
+text = "Save"
+
+[node name="Load" type="Button" parent="MarginContainer/Menu/Buttons"]
+margin_top = 274.0
+margin_right = 500.0
+margin_bottom = 354.0
+rect_min_size = Vector2( 500, 80 )
+custom_fonts/font = ExtResource( 2 )
+text = "Load"
+
+[node name="HighScores" type="Button" parent="MarginContainer/Menu/Buttons"]
+margin_top = 378.0
+margin_right = 500.0
+margin_bottom = 458.0
+rect_min_size = Vector2( 500, 80 )
+custom_fonts/font = ExtResource( 2 )
+text = "View High Scores"
+
+[node name="QuitToMenu" type="Button" parent="MarginContainer/Menu/Buttons"]
+margin_top = 482.0
+margin_right = 500.0
+margin_bottom = 562.0
+rect_min_size = Vector2( 500, 80 )
+custom_fonts/font = ExtResource( 2 )
+text = "Quit to Main Menu"
+
+[node name="QuitToDesktop" type="Button" parent="MarginContainer/Menu/Buttons"]
+margin_top = 586.0
+margin_right = 500.0
+margin_bottom = 666.0
+rect_min_size = Vector2( 500, 80 )
+custom_fonts/font = ExtResource( 2 )
+text = "Quit to Desktop"
+
+[node name="SavesPopup" parent="." instance=ExtResource( 3 )]

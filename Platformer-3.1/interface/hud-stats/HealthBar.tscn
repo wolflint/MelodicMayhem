@@ -6,4 +6,3 @@
 [node name="HealthBar" instance=ExtResource( 1 )]
 tint_progress = Color( 0.219608, 1, 0.0588235, 1 )
 script = ExtResource( 2 )
-

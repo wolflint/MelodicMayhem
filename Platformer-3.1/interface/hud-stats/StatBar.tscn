@@ -5,7 +5,6 @@
 [ext_resource path="res://interface/hud-stats/StatBar.gd" type="Script" id=3]
 [ext_resource path="res://interface/theme/fonts/source_code_pro_26.tres" type="DynamicFont" id=4]
 
-
 [node name="StatBar" type="TextureProgress"]
 margin_right = 4.0
 margin_bottom = 14.0

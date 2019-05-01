@@ -56,3 +56,21 @@ func _instance_item_from_db(reference):
 
 func _on_Item_depleted(item):
 	emit_signal("item_removed", item)
+
+### SAVE SYSTEM ###
+#func get_save_data():
+#	return {
+#		"filename": filename,
+#		"parent": get_parent().get_path(),
+#		"properties": {
+#			"PLAYER_NAME": PLAYER_NAME,
+#			"max_health": $Health.max_health,
+#			"coins": $Purse.coins,
+#			"strength": strength,
+#			"max_music": max_music,
+#			"level": level,
+#			"experience": experience,
+#			"experience_total": experience_total,
+#			"position": position,
+#		}
+#	}

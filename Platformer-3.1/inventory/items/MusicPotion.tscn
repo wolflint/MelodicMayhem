@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://inventory/items/Item.tscn" type="PackedScene" id=1]
+[ext_resource path="res://inventory/items/MusicPotion.gd" type="Script" id=2]
+[ext_resource path="res://inventory/items/blue_potion_small.png" type="Texture" id=3]
+
+[node name="MusicPotion" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+icon = ExtResource( 3 )
+display_name = "Music Potion"
+description = "Restores 25 Music Points"
+price = 50
+restore_value = 25
+

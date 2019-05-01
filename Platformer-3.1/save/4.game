@@ -1,0 +1,1 @@
+{"data":[{"filename":"res://characters/player/player.tscn","parent":"/root/Game/Level","properties":{"PLAYER_NAME":"pop","_purse.coins":2920,"experience":51,"experience_total":782,"health.max_health":110,"level":13,"max_music":59,"position":"(387.836426, 745.930298)","strength":10}}],"playtime":148,"version":"0.0.1"}

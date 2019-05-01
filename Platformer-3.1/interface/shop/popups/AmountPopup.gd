@@ -10,7 +10,7 @@ onready var label = $VBoxContainer/Slider/Amount
 func initialize(args = [value, max_value]):
 	var value = args[0]
 	var max_value = args[1]
-	
+
 	label.initialize(value, max_value)
 	slider.initialize(value, max_value)
 	slider.grab_focus()

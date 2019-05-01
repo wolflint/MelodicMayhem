@@ -1,22 +1,27 @@
 extends KinematicBody2D
 
+export (String) var PLAYER_NAME = "DefaultName"
+
 signal experience_gained(growth_data, player)
 signal health_changed(health, max_health)
 signal gained_max_health()
 signal music_level_changed(current_music, max_music)
 signal player_out_of_bounds
+signal opened_inventory
+signal toggle_strength_potion
+
+onready var NameInput = preload("res://interface/NameInput.tscn")
+onready var _purse = $Purse
 
 # FOR SPOTTER
 signal position_changed
 signal died
 
 # Character stats
-export (int) var max_hp = 12
+onready var health = $Health
 export (int) var strength = 8
 export (int) var max_music = 50
 var current_music = max_music
-
-var coins
 
 # Experience and leveling system
 export (int) var level = 1
@@ -32,6 +37,9 @@ enum States {
 	JUMP,
 }
 var state
+
+onready var GAME = get_tree().get_root().get_node("Game")
+onready var LEVEL = GAME.get_node("Level")
 
 # Gameplay constants
 const GRAVITY_VEC = Vector2(0, 1000)
@@ -58,6 +66,8 @@ const STAGGER_DURATION = 0.4
 
 onready var current_weapon = $weapon.weapon_type
 
+var extra_strength = 0
+
 var anim=""
 
 onready var sprite = $sprite
@@ -67,6 +77,9 @@ var cooldown = false
 func _ready():
 	state = States.IDLE
 	connect("gained_max_health", $Health, "_on_Player_gained_max_health")
+	connect("opened_inventory", GAME, "_on_player_opened_inventory")
+	connect("died", GAME, "_on_Player_died")
+	connect("toggle_strength_potion", LEVEL, "_on_toggle_strength_potion")
 
 func _input(event):
 	# Jumping
@@ -74,8 +87,8 @@ func _input(event):
 		linear_vel.y = -JUMP_SPEED
 		$sound_jump.play()
 		jump_count += 1
-	if event.is_action_pressed("test_button"):
-		$Health.take_damage(10)
+	if event.is_action_pressed("open_inventory"):
+		emit_signal("opened_inventory")
 
 func _physics_process(delta):
 	_check_collisions()
@@ -109,6 +122,29 @@ func _physics_process(delta):
 	_animate_sprite()
 	emit_signal('position_changed', global_position)
 
+func change_name():
+	if PLAYER_NAME == "DefaultName":
+		get_tree().paused = true
+		var name_input = NameInput.instance()
+		$ui.add_child(name_input)
+		name_input.popup_centered()
+		PLAYER_NAME = yield(name_input, "name_changed")
+		name_input.queue_free()
+		get_tree().paused = false
+	print(PLAYER_NAME)
+
+func restore_music(value):
+	current_music += value
+
+func apply_strength_potion(strength_multiplier, effect_duration):
+	emit_signal("toggle_strength_potion")
+	extra_strength = (strength * strength_multiplier) - strength
+	$StrengthTimer.set("wait_time", effect_duration)
+	$StrengthTimer.start()
+	yield($StrengthTimer, "timeout")
+	emit_signal("toggle_strength_potion")
+	extra_strength = 0
+
 func _horizontal_movement():
 	var target_speed = 0
 	if Input.is_action_pressed("move_left"):
@@ -128,7 +164,7 @@ func _shoot():
 				current_music -= 1
 				emit_signal("music_level_changed", current_music, max_music)
 				var bullet = preload("note.tscn").instance()
-				bullet.set("strength", strength)
+				bullet.set("strength", strength + extra_strength)
 				bullet.position = $sprite/bullet_shoot.global_position #use node for shoot position
 				bullet.linear_velocity = Vector2(sprite.scale.x * BULLET_VELOCITY, 0)
 				bullet.add_collision_exception_with(self) # don't want player to collide with bullet
@@ -187,13 +223,6 @@ func _stagger():
 	yield($Stagger, "timeout")
 	$Hitbox/CollisionShape2D.disabled = false
 
-
-#func take_damage(damager, amount):
-#	if self.is_a_parent_of(damager):
-#		return
-#	knockback_direction = (damager.global_position - global_position).normalized()
-#	$Health.take_damage(amount)
-
 func get_required_experience(amount):
 	return round(pow(level, 1.8) + level * 4)
 
@@ -225,6 +254,7 @@ func level_up():
 
 func _check_world_height_limit():
 	if position.y < -2000 or position.y > 2000:
+		$Health.take_damage(int(health.max_health / 3))
 		emit_signal("player_out_of_bounds")
 
 func _on_Health_health_changed(new_health):
@@ -232,10 +262,8 @@ func _on_Health_health_changed(new_health):
 		emit_signal('died')
 	emit_signal("health_changed", new_health, $Health.max_health)
 
-
 func _on_Cooldown_timeout():
 	cooldown = false
-
 
 func _on_MusicRegen_timeout():
 	if current_music == max_music:
@@ -249,13 +277,14 @@ func get_save_data():
 		"filename": filename,
 		"parent": get_parent().get_path(),
 		"properties": {
-			"max_health": $Health.max_health,
-			"coins": $Purse.coins,
+			"PLAYER_NAME": PLAYER_NAME,
+			"health.max_health": health.max_health,
 			"strength": strength,
 			"max_music": max_music,
 			"level": level,
 			"experience": experience,
 			"experience_total": experience_total,
-			"position": position,
+#			"position": position,
+			"_purse.coins": _purse.coins,
 		}
 	}

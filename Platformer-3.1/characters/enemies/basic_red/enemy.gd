@@ -1,10 +1,16 @@
 extends KinematicBody2D
 
-signal died(experience_to_give)
+signal died(points)
+
+# GAME LAYOUT
+onready var GAME = get_tree().get_root().get_node("Game")
+onready var LEVEL = GAME.get_node("Level")
+onready var MAP = LEVEL.get_child(0)
 
 # ENEMY STATS
-export(float) var experience_to_give = 50.0
-export(int) var strength = 1
+export(int) var exp_worth = 50
+export(int) var score_worth = 100
+export(int) var strength = 5
 
 
 const GRAVITY_VEC = Vector2(0, 900)
@@ -13,13 +19,12 @@ const FLOOR_NORMAL = Vector2(0, -1)
 const WALK_SPEED = 140
 
 var linear_velocity = Vector2()
-var direction = -1
+var direction
 var anim=""
 
 enum States {WALKING, DIED}
 var state = States.WALKING
 
-onready var GAME_ROOT = get_tree().get_root().get_node("Game")
 onready var hp = $Health
 onready var hitbox = $Hitbox/CollisionPolygon2D
 onready var detect_floor_left = $detect_floor_left
@@ -27,13 +32,20 @@ onready var detect_wall_left = $detect_wall_left
 onready var detect_floor_right = $detect_floor_right
 onready var detect_wall_right = $detect_wall_right
 onready var sprite = $sprite
-#warning-ignore:unused_class_variable
+
 onready var player = preload("res://characters/player/player.tscn")
 export (PackedScene) var coin
 
 func _ready():
+	# Choose between left and right by randomising a boolean value
+	var choose_direction = bool(randi() % 2)
+	if choose_direction:
+		direction = -1
+	else:
+		direction = 1
 	$anim.play("SETUP")
-	connect("died", GAME_ROOT, "_on_enemy_died", [experience_to_give])
+	connect("died", GAME, "_on_enemy_died", [exp_worth])
+	connect("died", LEVEL, "_on_score_changed", [score_worth])
 	$HookableHealthBar.initialize($Health.health, $Health.max_health, [])
 
 func _physics_process(delta):
@@ -42,18 +54,15 @@ func _physics_process(delta):
 	if state == States.WALKING:
 		linear_velocity += GRAVITY_VEC * delta
 		linear_velocity.x = direction * WALK_SPEED
-#		var collider = move_and_collide(linear_velocity)
-#		if collider != null:
-#			if collider == player:
-#				collider.get_node("Health").take_damage(1)
 		linear_velocity = move_and_slide(linear_velocity, FLOOR_NORMAL)
 		check_collisions()
-
-		if not detect_floor_left.is_colliding() or detect_wall_left.is_colliding():
-			direction = 1.0
-
-		if not detect_floor_right.is_colliding() or detect_wall_right.is_colliding():
-			direction = -1.0
+		
+		if is_on_floor():
+			if not detect_floor_left.is_colliding() or detect_wall_left.is_colliding():
+				direction = 1.0
+	
+			if not detect_floor_right.is_colliding() or detect_wall_right.is_colliding():
+				direction = -1.0
 
 		sprite.scale = Vector2(direction, 1.0)
 		new_anim = "walk"
