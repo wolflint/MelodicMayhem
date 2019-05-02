@@ -49,4 +49,3 @@ visible = false
 [node name="MainMenu" parent="." instance=ExtResource( 11 )]
 
 [node name="ControlsMenu" parent="MainMenu" instance=ExtResource( 12 )]
-
