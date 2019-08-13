@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://inventory/items/Item.tscn" type="PackedScene" id=1]
+[ext_resource path="res://inventory/items/ManaRegenPotion.gd" type="Script" id=2]
+[ext_resource path="res://interface/theme/icons/potion_mana.png" type="Texture" id=3]
+
+[node name="ManaRegenPotion" index="0" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+icon = ExtResource( 3 )
+display_name = "Mana Regeneration Potion"
+description = "Increase the speed of mana regeneration for 30s."

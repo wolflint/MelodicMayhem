@@ -145,6 +145,9 @@ func apply_strength_potion(strength_multiplier, effect_duration):
 	emit_signal("toggle_strength_potion")
 	extra_strength = 0
 
+func apply_strength_potion(regen_multiplier, effect_duration):
+	
+
 func _horizontal_movement():
 	var target_speed = 0
 	if Input.is_action_pressed("move_left"):
