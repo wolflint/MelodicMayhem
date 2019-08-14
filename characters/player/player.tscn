@@ -244,11 +244,6 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
-PLAYER_NAME = null
-strength = null
-max_music = null
-level = null
-knockback = null
 
 [node name="sprite" type="Sprite" parent="."]
 editor/display_folded = true

@@ -145,8 +145,15 @@ func apply_strength_potion(strength_multiplier, effect_duration):
 	emit_signal("toggle_strength_potion")
 	extra_strength = 0
 
-func apply_strength_potion(regen_multiplier, effect_duration):
-	
+func apply_mregen_potion(regen_multiplier, effect_duration):
+	$MusicRegen.set("wait_time", $MusicRegen.wait_time * 0.1)
+	var effect_time = Timer.new()
+	add_child(effect_time)
+	effect_time.connect("timeout", self, "_on_effect_time_timeout")
+	effect_time.set("wait_time", effect_duration)
+	effect_time.start()
+	yield(effect_time, "timeout")
+	$MusicRegen.set("wait_time", $MusicRegen.wait_time * 2)
 
 func _horizontal_movement():
 	var target_speed = 0
@@ -273,6 +280,9 @@ func _on_MusicRegen_timeout():
 		return
 	current_music = min(current_music + 1, max_music)
 	emit_signal("music_level_changed", current_music, max_music)
+
+func _on_effect_time_timeout():
+	pass
 
 ### SAVE SYSTEM ###
 func get_save_data():

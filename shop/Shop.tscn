@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://shop/Shop.gd" type="Script" id=1]
 [ext_resource path="res://inventory/Inventory.tscn" type="PackedScene" id=2]
@@ -7,7 +7,8 @@
 [ext_resource path="res://inventory/items/HealthPotionLarge.tscn" type="PackedScene" id=5]
 [ext_resource path="res://inventory/items/MusicPotion.tscn" type="PackedScene" id=6]
 [ext_resource path="res://inventory/items/StrengthPotion.tscn" type="PackedScene" id=7]
-[ext_resource path="res://shop/Purse.tscn" type="PackedScene" id=8]
+[ext_resource path="res://inventory/items/ManaRegenPotion.tscn" type="PackedScene" id=8]
+[ext_resource path="res://shop/Purse.tscn" type="PackedScene" id=9]
 
 [node name="Shop" type="Node"]
 script = ExtResource( 1 )
@@ -29,5 +30,6 @@ amount = 999
 [node name="StrengthPotion" parent="Inventory" instance=ExtResource( 7 )]
 amount = 999
 
-[node name="Purse" parent="." instance=ExtResource( 8 )]
+[node name="ManaRegenPotion" parent="Inventory" instance=ExtResource( 8 )]
 
+[node name="Purse" parent="." instance=ExtResource( 9 )]
