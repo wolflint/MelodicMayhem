@@ -2,7 +2,7 @@ extends Area2D
 
 signal shop_open_requested(shop, user)
 
-const Player = preload("res://characters/player/player.gd")
+const Player = preload("res://characters/player/Player.gd")
 
 func _ready():
 	$anim.play("idle")

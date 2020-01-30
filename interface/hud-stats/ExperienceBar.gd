@@ -1,7 +1,7 @@
 extends "StatBar.gd"
 var _player
 
-func initialize(current, maximum, args = [player]):
+func initialize(current, maximum, args = []):
 	_player = args[0]
 	_player.connect("experience_gained", self, "_on_Player_experience_gained")
 	.initialize(current, maximum)

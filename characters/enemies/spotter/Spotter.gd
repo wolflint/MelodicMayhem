@@ -61,23 +61,22 @@ func initialize():
 		print("No target, the monster won't follow or attack")
 		_change_state(States.IDLE)
 		return
-	has_target = true
 	if is_on_floor():
 		_change_state(States.IDLE)
 	else:
 		_change_state(States.FALL)
 
-func follow(target_position, max_speed):
-	var desired_x = (target_position - position).normalized()
+func follow(destination, max_speed):
+	var desired_x = (destination - position).normalized()
 	desired_x = float(desired_x.x) * max_speed
 	var desired_velocity = Vector2( desired_x, 0)
 	var steering = (desired_velocity - Vector2(velocity.x, 0)) / MASS
 	velocity += steering
-	return position.distance_to(target_position)
+	return position.distance_to(destination)
 
-func arrive_to(target_position, slow_radius, max_speed):
-	var distance_to_target = position.distance_to(target_position)
-	var desired_x = (target_position - position).normalized()
+func arrive_to(destination, slow_radius, max_speed):
+	var distance_to_target = position.distance_to(destination)
+	var desired_x = (destination - position).normalized()
 	desired_x = float(desired_x.x) * max_speed
 	var desired_velocity = Vector2( desired_x, 0)
 	if distance_to_target < slow_radius:

@@ -8,7 +8,7 @@ onready var _submenu = $Column/Menu
 onready var _buy_button = $Column/Buttons/BuyButton
 onready var _sell_button = $Column/Buttons/SellButton
 
-func open(args = [shop, buyer]):
+func open(args = []):
 	var shop = args[0]
 	var buyer = args[1]
 	_buy_button.connect("pressed", self, "open_submenu",
@@ -22,7 +22,7 @@ func close():
 	queue_free()
 	.close()
 
-func open_submenu(Menu, args = [shop, buyer, inventory]):
+func open_submenu(Menu, args = []):
 	var shop = args[0]
 	var buyer = args[1]
 	var inventory = args[2]

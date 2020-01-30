@@ -8,7 +8,7 @@ onready var _item_grid = $VBox/ItemsList/Margin/Grid
 onready var _description_label = $VBox/DescriptionPanel/Margin/Label
 var character
 
-func initialize(args = [inventory, character]):
+func initialize(args = []):
 	var inventory = args[0]
 	character = args[1]
 

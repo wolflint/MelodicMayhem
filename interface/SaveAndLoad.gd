@@ -20,8 +20,8 @@ func save_game(id):
 	}
 	for node in get_tree().get_nodes_in_group("save"):
 		var node_data = node.get_save_data()
-		assert node_data["filename"] != ""
-		assert node_data["parent"] != ""
+		assert(node_data["filename"] != "")
+		assert(node_data["parent"] != "")
 		save_data['data'].append(node_data)
 
 	var directory = Directory.new()

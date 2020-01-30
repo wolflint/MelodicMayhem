@@ -46,7 +46,7 @@ func change_level(scene_path):
 	score = 0
 	get_parent().player_stats.score_lbl.text = "Score: " + str(score)
 	emit_signal("score_changed", score)
-	assert player != null
+	assert(player != null)
 	player.global_position = spawn.global_position
 	print(player.PLAYER_NAME)
 

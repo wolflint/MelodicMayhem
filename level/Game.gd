@@ -91,7 +91,7 @@ func load_game(save_slot):
 	player_stats.show()
 	get_tree().paused = false
 #	print(level.path)
-	assert level.player.is_in_group("player")
+	assert(level.player.is_in_group("player"))
 	level.reset_player_position()
 	player_stats.initialise()
 

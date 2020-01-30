@@ -7,7 +7,7 @@ onready var slider = $VBoxContainer/Slider/HSlider
 onready var label = $VBoxContainer/Slider/Amount
 
 
-func initialize(args = [value, max_value]):
+func initialize(args = []):
 	var value = args[0]
 	var max_value = args[1]
 

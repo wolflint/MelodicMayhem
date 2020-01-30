@@ -1,7 +1,6 @@
 extends "res://interface/Menu.gd"
 
 signal save_slot_selected(id)
-var save_id
 
 onready var amount_popup = self
 onready var save_slots = $SaveSlots.get_children()

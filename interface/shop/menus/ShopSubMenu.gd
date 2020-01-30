@@ -9,7 +9,7 @@ onready var _amount_popup = _items_list.get_node("AmountPopup")
 #onready var buyers_purse = get_tree().get_node("player").get_node("Purse")
 
 
-func initialize(args = [shop, buyer, items]):
+func initialize(args = []):
 	var shop = args[0]
 	var buyer = args[1]
 	var items = args[2]
@@ -45,7 +45,7 @@ func close():
 	queue_free()
 
 func _on_ItemButton_pressed(shop, buyer, item):
-	assert item != null
+	assert(item != null)
 	var focused_item = get_focus_owner()
 	var max_amount = min(round(buyer.get_node("Purse").coins / item.price), item.amount)
 	_amount_popup.initialize([1, max_amount])

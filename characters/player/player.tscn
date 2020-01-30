@@ -1,6 +1,6 @@
 [gd_scene load_steps=28 format=2]
 
-[ext_resource path="res://characters/player/player.gd" type="Script" id=1]
+[ext_resource path="res://characters/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/robot_demo.png" type="Texture" id=2]
 [ext_resource path="res://assets/sound_jump.wav" type="AudioStream" id=3]
 [ext_resource path="res://assets/sound_shoot.wav" type="AudioStream" id=4]
@@ -8,12 +8,14 @@
 [ext_resource path="res://assets/osb_right.png" type="Texture" id=6]
 [ext_resource path="res://assets/osb_jump.png" type="Texture" id=7]
 [ext_resource path="res://assets/osb_fire.png" type="Texture" id=8]
-[ext_resource path="res://characters/player/weapon.gd" type="Script" id=9]
+[ext_resource path="res://characters/player/Weapon.gd" type="Script" id=9]
 [ext_resource path="res://inventory/Inventory.tscn" type="PackedScene" id=10]
 [ext_resource path="res://inventory/items/Food.tscn" type="PackedScene" id=11]
 [ext_resource path="res://shop/Purse.tscn" type="PackedScene" id=12]
 [ext_resource path="res://characters/Health.tscn" type="PackedScene" id=13]
 [ext_resource path="res://interface/NameInput.tscn" type="PackedScene" id=14]
+
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "crouch"
