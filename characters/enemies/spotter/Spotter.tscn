@@ -11,6 +11,124 @@
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
+[sub_resource type="Animation" id=3]
+resource_name = "EXPLODE"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("explosion:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("explosion:process_material:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 4.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("sound_hit:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 1,
+"values": [  ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("sound_explode:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:collision_mask")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Hitbox:collision_mask")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("HookableHealthBar:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "IDLE"
+length = 6.75
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.75, 1.5, 2.25, 3, 3.75, 4.5, 5.25, 6, 6.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 5, 6, 5, 6, 5, 6, 7, 6, 7, 5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:collision_mask")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+
 [sub_resource type="Animation" id=2]
 resource_name = "SETUP"
 length = 0.1
@@ -111,123 +229,9 @@ tracks/7/keys = {
 "values": [ 8 ]
 }
 
-[sub_resource type="Animation" id=3]
-length = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("explosion:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("explosion:process_material:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 1.0, 4.0 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("sound_hit:playing")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = false
-tracks/2/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
-"update": 1,
-"values": [  ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("sound_explode:playing")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = false
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath(".:collision_mask")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 1 ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("Hitbox:collision_mask")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("HookableHealthBar:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-
-[sub_resource type="Animation" id=4]
-length = 6.75
-loop = true
-step = 0.25
-tracks/0/type = "value"
-tracks/0/path = NodePath("sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.75, 1.5, 2.25, 3, 3.75, 4.5, 5.25, 6, 6.75 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 5, 6, 5, 6, 5, 6, 7, 6, 7, 5 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:collision_mask")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 3 ]
-}
-
 [sub_resource type="Animation" id=5]
+resource_name = "WALK"
+length = 0.85
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("sprite:frame")
@@ -236,7 +240,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.7, 0.9 ),
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 1, 2, 3, 4, 0 ]
@@ -290,13 +294,13 @@ material = SubResource( 1 )
 texture = ExtResource( 3 )
 flip_h = true
 hframes = 8
-frame = 7
+frame = 6
 
 [node name="anim" type="AnimationPlayer" parent="."]
+anims/EXPLODE = SubResource( 3 )
+anims/IDLE = SubResource( 4 )
 anims/SETUP = SubResource( 2 )
-anims/explode = SubResource( 3 )
-anims/idle = SubResource( 4 )
-anims/walk = SubResource( 5 )
+anims/WALK = SubResource( 5 )
 
 [node name="HookableHealthBar" parent="." instance=ExtResource( 4 )]
 visible = false
@@ -327,7 +331,7 @@ texture = ExtResource( 8 )
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 4
-collision_mask = 2
+collision_mask = 8
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox"]
 polygon = PoolVector2Array( -48, 2, -16, -28, 18, -28, 46, -4, 52, 24, -48, 24 )

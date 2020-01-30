@@ -105,7 +105,7 @@ func _physics_process(delta):
 	var current_state = state
 	match current_state:
 		States.IDLE:
-			$anim.play("idle")
+			$anim.play("IDLE")
 			move_and_slide(velocity, UP_DIRECTION, SLOPE_SLIDE_STOP)
 			var distance_to_target = position.distance_to(target_position)
 			if distance_to_target < FOLLOW_RANGE:
@@ -114,7 +114,7 @@ func _physics_process(delta):
 				_change_state(States.FOLLOW)
 		States.FOLLOW:
 			_update_look_direction(target_position)
-			$anim.play("walk")
+			$anim.play("WALK")
 			var distance_to_target = follow(target_position, max_follow_speed)
 			move_and_slide(velocity, UP_DIRECTION, SLOPE_SLIDE_STOP)
 #			if get_slide_count() > 0:
@@ -125,7 +125,7 @@ func _physics_process(delta):
 				_change_state(States.RETURN)
 		States.RETURN:
 			_update_look_direction(start_position)
-			$anim.play("walk")
+			$anim.play("WALK")
 			if (start_position.x - position.x) < 0:
 				$sprite.scale.x = -1
 			else:
@@ -139,14 +139,14 @@ func _physics_process(delta):
 					return
 				_change_state(States.FOLLOW)
 		States.FALL:
-			$anim.play("idle")
+			$anim.play("IDLE")
 			move_and_slide(velocity, UP_DIRECTION, SLOPE_SLIDE_STOP)
 			if self.is_on_floor():
 				if not start_position:
 					start_position = position
 				_change_state(States.IDLE)
 		States.DIE:
-			$anim.play("explode")
+			$anim.play("EXPLODE")
 			yield($anim, "animation_finished")
 			_change_state(States.DEAD)
 		States.DEAD:
